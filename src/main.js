@@ -276,17 +276,248 @@ function makeDialogue(topic, vocabularyItems) {
   return [`Student A: What is this?`, `Student B: It is ${firstWord}.`, `Student A: Do you like ${secondWord}?`, `Student B: Yes, I do.`, `แบบง่ายสำหรับผู้เรียนพื้นฐานอ่อน: ${firstWord}. / This is ${firstWord}.`];
 }
 
-function makeActivityCard({ title, objective, materials, steps, teacherTalk, studentActions, expected }) {
+function makeActivityCard({ title, objective, teacherActions, materials, steps, teacherTalk, studentActions, expected }) {
   return {
     type: "activity",
     title,
     objective: asArray(objective, ["นักเรียนปฏิบัติกิจกรรมตามเป้าหมายของบทเรียนได้"]),
+    teacherActions: asArray(teacherActions, ["ครูสาธิตกิจกรรมและคอยช่วยนักเรียนทีละขั้น"]),
     materials: asArray(materials, ["บัตรภาพ", "บัตรคำศัพท์", "กระดาน"]),
     steps: asArray(steps, ["ครูสาธิตกิจกรรม", "นักเรียนปฏิบัติตามขั้นตอน", "ครูสังเกตและให้ความช่วยเหลือ"]),
     teacherTalk: asArray(teacherTalk, ["ลองทำทีละขั้นนะคะ/ครับ"]),
     studentActions: asArray(studentActions, ["นักเรียนฟังคำสั่งและปฏิบัติกิจกรรม"]),
     expected: asArray(expected, ["นักเรียนเข้าใจเนื้อหาและมีความมั่นใจมากขึ้น"]),
   };
+}
+
+const activityLibrary = {
+  english: {
+    vocabulary: {
+      beginner: [
+        {
+          id: "picture-quick-guess",
+          name: "Picture Quick Guess",
+          stage: "Warm-up",
+          progression: "attention-recall",
+          objective: "นักเรียนดูภาพและนึกถึงคำศัพท์เดิมก่อนเริ่มบทเรียน",
+          materials: ["บัตรภาพ {wordList}", "กระดาน", "แม่เหล็กหรือเทปติดภาพ"],
+          teacherActions: ["ครูชูบัตรภาพทีละใบโดยยังไม่บอกคำศัพท์", "ครูถามสั้น ๆ และรับคำตอบทั้งภาษาไทยหรือ English words", "ครูพูดคำศัพท์ที่ถูกต้องช้า ๆ แล้วให้ทั้งห้องพูดตาม"],
+          procedure: ["ครูถือบัตรภาพขึ้นมา 1 ใบแล้วให้เด็กมองเงียบ ๆ 5 วินาที", "ครูถามว่า “What do you see?” หรือ “ใครเคยเห็นภาพนี้บ้าง”", "นักเรียนตอบได้เป็นคำไทย คำอังกฤษ หรือชี้ภาพ", "ครูเฉลยคำศัพท์และติดภาพบนกระดาน", "นักเรียนพูดคำศัพท์ตามครูพร้อมกัน 2 รอบ"],
+          teacherTalk: ["Look at the picture.", "What do you see?", "You can answer in Thai or English.", "Repeat after me."],
+          studentAction: ["นักเรียนมองภาพ", "นักเรียนยกมือตอบหรือพูดคำศัพท์ที่รู้", "นักเรียนพูดคำศัพท์ตามครูพร้อมกัน"],
+          expected: ["นักเรียนสนใจบทเรียนจากภาพใกล้ตัว", "นักเรียนพื้นฐานอ่อนกล้าตอบด้วยคำสั้น ๆ ก่อน"],
+          worksheetType: "picture-word-preview",
+        },
+        {
+          id: "picture-word-sentence-modeling",
+          name: "Picture-Word-Sentence Modeling",
+          stage: "Presentation",
+          progression: "teacher-modeling",
+          objective: "นักเรียนเข้าใจความหมาย ออกเสียงคำศัพท์ และเห็นตัวอย่างประโยคจากครู",
+          materials: ["บัตรภาพ", "บัตรคำศัพท์ {wordList}", "แถบประโยค {sentenceFrame}"],
+          teacherActions: ["ครูติดภาพและบัตรคำคู่กันบนกระดาน", "ครูออกเสียงคำช้า ๆ พร้อมชี้รูปปาก", "ครูเขียนหรือชูแถบประโยคแล้วเปลี่ยนคำศัพท์ในช่องว่าง"],
+          procedure: ["ครูชูบัตรภาพและพูดคำศัพท์ 2 รอบ", "นักเรียนพูดตามพร้อมกันทั้งห้อง", "ครูติดบัตรคำใต้ภาพและบอกความหมายไทยสั้น ๆ", "ครูอ่านประโยคตัวอย่างจากแถบประโยค", "ครูเปลี่ยนบัตรภาพแล้วให้นักเรียนพูดประโยคใหม่ตามครู"],
+          teacherTalk: ["Listen first.", "Repeat after me.", "This is the word.", "Now change the word."],
+          studentAction: ["นักเรียนฟังเสียงคำศัพท์", "นักเรียนพูดตามเป็นกลุ่ม", "นักเรียนดูภาพและคำคู่กัน", "นักเรียนพูดประโยคตามตัวอย่าง"],
+          expected: ["นักเรียนเห็นความสัมพันธ์ระหว่างภาพ คำ และประโยค", "นักเรียนออกเสียงได้มั่นใจขึ้นเพราะมีครูสาธิตชัดเจน"],
+          worksheetType: "trace-and-match",
+        },
+        {
+          id: "listen-point",
+          name: "Listen and Point",
+          stage: "Practice",
+          progression: "controlled-listening",
+          objective: "นักเรียนฟังคำศัพท์แล้วชี้ภาพให้ถูกต้อง",
+          materials: ["บัตรภาพ {wordList}", "บัตรคำศัพท์", "กระดาน"],
+          teacherActions: ["ครูติดบัตรภาพ 5-6 ใบบนกระดาน", "ครูพูดคำศัพท์ทีละคำอย่างช้าและชัด", "ครูสุ่มนักเรียนออกมาชี้ภาพหน้าชั้นโดยเริ่มจากคนที่พร้อม"],
+          procedure: ["ครูติดบัตรภาพบนกระดานให้มองเห็นชัดเจน", "ครูพูดคำศัพท์หนึ่งคำแล้วหยุดรอ", "นักเรียนชี้ภาพพร้อมกันจากที่นั่ง", "ครูเรียกนักเรียนที่พร้อมออกมาชี้ภาพ", "ทั้งห้องพูดคำศัพท์ตามครูอีก 1 รอบ"],
+          teacherTalk: ["Listen carefully.", "Point to {firstWord}.", "Very good.", "Try again."],
+          studentAction: ["นักเรียนฟังคำศัพท์ก่อน", "นักเรียนชี้ภาพที่ตรงกับคำ", "นักเรียนพูดคำศัพท์ตามครูพร้อมกัน"],
+          expected: ["นักเรียนจำคำศัพท์จากภาพได้", "นักเรียนที่ยังไม่กล้าพูดสามารถตอบด้วยการชี้ภาพก่อนได้"],
+          worksheetType: "matching",
+        },
+        {
+          id: "repeat-change",
+          name: "Repeat and Change",
+          stage: "Practice",
+          progression: "controlled-speaking",
+          objective: "นักเรียนพูดประโยคสั้น ๆ โดยเปลี่ยนคำศัพท์ในช่องว่างได้",
+          materials: ["แถบประโยค {sentenceFrame}", "บัตรคำศัพท์", "บัตรภาพ"],
+          teacherActions: ["ครูติดแถบประโยคบนกระดาน", "ครูอ่านนำและชี้ทีละคำ", "ครูเปลี่ยนบัตรภาพเพื่อให้เด็กเปลี่ยนคำในประโยค"],
+          procedure: ["ครูติดแถบประโยคบนกระดานและอ่านนำ 1 รอบ", "นักเรียนพูดตามพร้อมกัน 2 รอบ", "ครูเปลี่ยนบัตรภาพหรือบัตรคำทีละใบ", "นักเรียนพูดประโยคใหม่โดยใช้คำบนบัตร", "ครูให้แถวซ้ายและแถวขวาพูดสลับกัน"],
+          teacherTalk: ["Repeat after me.", "Change the word.", "Say it together.", "Try again slowly."],
+          studentAction: ["นักเรียนดูแถบประโยค", "นักเรียนพูดตามครูพร้อมกัน", "นักเรียนเปลี่ยนคำศัพท์ตามบัตรภาพ", "นักเรียนพูดเป็นกลุ่มเล็กตามแถว"],
+          expected: ["นักเรียนใช้ sentence frame ได้แม้ยังต้องดูบัตรช่วย", "นักเรียนเริ่มพูดประโยคเองได้จากรูปแบบซ้ำ ๆ"],
+          worksheetType: "fill-in-the-blank",
+        },
+        {
+          id: "guided-pair-drill",
+          name: "Guided Pair Drill",
+          stage: "Practice",
+          progression: "supported-pair-practice",
+          objective: "นักเรียนถาม-ตอบกับเพื่อนโดยดูบัตรช่วยได้",
+          materials: ["บัตรบทสนทนา", "บัตรภาพ", "บัตรคำถามและคำตอบ"],
+          teacherActions: ["ครูเลือกนักเรียน 1 คนมาสาธิตหน้าชั้น", "ครูให้ทั้งห้องพูดบทสนทนาพร้อมกันก่อน", "ครูเดินฟังทีละคู่และช่วยบอกคำที่เด็กนึกไม่ออก"],
+          procedure: ["ครูสาธิตกับนักเรียน 1 คนหน้าชั้นเรียน", "นักเรียนจับคู่และรับบัตรภาพคนละ 1 ใบ", "ทั้งห้องอ่านบทสนทนาตามครู 1 รอบ", "นักเรียนฝึกเป็นคู่ 3 นาที", "นักเรียนสลับบทบาทถามและตอบ"],
+          teacherTalk: ["Work in pairs.", "Ask your friend.", "Answer with a short sentence.", "You can look at the card."],
+          studentAction: ["นักเรียนจับคู่กับเพื่อน", "นักเรียนคนหนึ่งถามและอีกคนตอบ", "นักเรียนใช้บัตรช่วยเมื่อลืมคำศัพท์", "นักเรียนสลับบทบาทกับเพื่อน"],
+          expected: ["นักเรียนพูดโต้ตอบสั้น ๆ ได้", "ผู้เรียนพื้นฐานอ่อนตอบเป็นคำเดี่ยวก่อน แล้วค่อยเพิ่มเป็นประโยคได้"],
+          worksheetType: "dialogue-practice",
+        },
+        {
+          id: "mini-communication-task",
+          name: "Mini Communication Task",
+          stage: "Production",
+          progression: "freer-communication",
+          objective: "นักเรียนใช้คำศัพท์และประโยคสั้น ๆ คุยกับเพื่อนได้",
+          materials: ["บัตรภาพ 2 ใบต่อคู่", "บัตร sentence frames", "บัตรคำศัพท์"],
+          teacherActions: ["ครูจัดมุมบัตรภาพไว้หน้าห้อง", "ครูให้แต่ละคู่เลือกบัตรภาพ 2 ใบ", "ครูปล่อยให้เด็กลองพูดเองก่อน แล้วค่อยช่วยเมื่อเด็กติด"],
+          procedure: ["ครูสาธิตบทสนทนากับนักเรียน 1 คนหน้าชั้นเรียน", "นักเรียนจับคู่และเลือกบัตรภาพ 2 ใบ", "นักเรียนใช้กรอบประโยค {sentenceFrame} พูดกับเพื่อน", "นักเรียนสลับบทบาทถาม-ตอบ", "คู่ที่พร้อมออกมาพูดหน้าชั้น 1 รอบ"],
+          teacherTalk: ["Work in pairs.", "Speak slowly.", "You can look at the sentence card.", "If you need help, raise your hand."],
+          studentAction: ["นักเรียนเลือกบัตรภาพเอง", "นักเรียนถาม-ตอบกับเพื่อนตามกรอบประโยค", "นักเรียนพูดช้า ๆ และชี้บัตรภาพประกอบ", "นักเรียนพื้นฐานอ่อนพูดคำเดี่ยวก่อน แล้วค่อยพูดประโยค"],
+          expected: ["นักเรียนใช้ภาษาอังกฤษในสถานการณ์ง่าย ๆ ได้", "นักเรียนมีความมั่นใจเพราะมีบัตรภาพและกรอบประโยคช่วย"],
+          worksheetType: "speaking-card",
+        },
+        {
+          id: "exit-picture-say",
+          name: "Exit Picture Say",
+          stage: "Wrap-up",
+          progression: "quick-review",
+          objective: "นักเรียนทบทวนคำศัพท์หรือประโยคก่อนจบบทเรียนได้",
+          materials: ["บัตรภาพ", "บัตรคำศัพท์", "ประโยคบนกระดาน"],
+          teacherActions: ["ครูชูบัตรภาพแบบเร็วทีละใบ", "ครูให้ตัวช่วยด้วยเสียงต้นคำเมื่อนักเรียนตอบไม่ได้", "ครูให้เด็กเลือกพูดคำศัพท์ 1 คำหรือประโยค 1 ประโยคก่อนจบคาบ"],
+          procedure: ["ครูชูบัตรภาพทีละใบและให้นักเรียนตอบพร้อมกัน", "ครูลบคำบางคำจากประโยคบนกระดาน", "นักเรียนช่วยกันเติมคำจากบัตรภาพ", "นักเรียนเลือกพูดคำศัพท์หรือประโยคกับครู", "ครูชมและจดคำที่ควรทบทวนคาบถัดไป"],
+          teacherTalk: ["What is this?", "Say one word.", "Complete the sentence.", "Good try."],
+          studentAction: ["นักเรียนตอบคำศัพท์พร้อมกัน", "นักเรียนช่วยเติมคำในประโยค", "นักเรียนพูดกับครูแบบสั้น ๆ ก่อนจบคาบ"],
+          expected: ["ครูเห็นคำศัพท์ที่นักเรียนจำได้ทันที", "นักเรียนจบบทเรียนด้วยความสำเร็จเล็ก ๆ"],
+          worksheetType: "exit-ticket",
+        },
+      ],
+    },
+  },
+  general: {
+    core: {
+      beginner: [
+        {
+          id: "look-think-answer",
+          name: "ดูภาพ คิดคำตอบ",
+          stage: "Warm-up",
+          progression: "attention-recall",
+          objective: "นักเรียนสังเกตภาพหรือของจริงแล้วตอบคำถามจากสิ่งที่เห็นได้",
+          materials: ["ภาพประกอบ", "ของจริงที่เกี่ยวกับหัวข้อ", "กระดาน"],
+          teacherActions: ["ครูถือภาพหรือของจริงขึ้นมา", "ครูถามคำถามสั้น ๆ จากสิ่งที่เด็กเห็น", "ครูเขียนคำตอบสำคัญ 2-3 คำบนกระดาน"],
+          procedure: ["ครูถือภาพหรือของจริงให้ทุกคนมองเห็น", "นักเรียนดูเงียบ ๆ 10 วินาที", "ครูถามว่า “นักเรียนเห็นอะไร” หรือ “สิ่งนี้ใช้ทำอะไร”", "นักเรียนตอบทีละคนหรือพร้อมกัน", "ครูสรุปคำตอบสำคัญบนกระดาน"],
+          teacherTalk: ["ดูภาพก่อน ยังไม่ต้องรีบตอบ", "เห็นอะไรบ้าง", "ใครมีคำตอบอีกบ้าง"],
+          studentAction: ["นักเรียนมองภาพหรือของจริง", "นักเรียนยกมือตอบ", "นักเรียนฟังคำตอบของเพื่อน"],
+          expected: ["นักเรียนเริ่มสนใจหัวข้อ", "ครูเห็นพื้นความรู้เดิมของนักเรียน"],
+          worksheetType: "short-answer",
+        },
+        {
+          id: "teacher-demo-follow",
+          name: "ครูทำให้ดู เด็กทำตาม",
+          stage: "Practice",
+          progression: "guided-practice",
+          objective: "นักเรียนทำงานตามตัวอย่างทีละขั้นได้",
+          materials: ["ตัวอย่างงาน", "ใบงาน", "ดินสอหรืออุปกรณ์ตามรายวิชา"],
+          teacherActions: ["ครูทำตัวอย่างหน้าชั้นให้ดูช้า ๆ", "ครูหยุดรอหลังแต่ละขั้น", "ครูเดินดูโต๊ะที่ทำช้าก่อน"],
+          procedure: ["ครูโชว์ตัวอย่างที่ทำเสร็จแล้ว 1 ชิ้น", "ครูทำขั้นที่ 1 บนกระดานหรือหน้าชั้น", "นักเรียนทำขั้นเดียวกันในใบงาน", "ครูทำขั้นต่อไปและให้นักเรียนทำตาม", "นักเรียนจับคู่ตรวจงานเบื้องต้น"],
+          teacherTalk: ["ดูครูก่อนนะคะ/ครับ", "ทำข้อแรกพร้อมกัน", "ใครยังไม่เสร็จไม่เป็นไร ครูรอ", "ลองตรวจคำตอบกับเพื่อนข้าง ๆ"],
+          studentAction: ["นักเรียนดูตัวอย่าง", "นักเรียนทำตามทีละขั้น", "นักเรียนยกมือถามเมื่อทำไม่ทัน", "นักเรียนช่วยเพื่อนตรวจงาน"],
+          expected: ["นักเรียนทำงานได้ถูกขั้นตอน", "นักเรียนที่เรียนช้าตามเพื่อนได้มากขึ้น"],
+          worksheetType: "guided-task",
+        },
+        {
+          id: "small-group-share",
+          name: "ช่วยกันทำ ช่วยกันเล่า",
+          stage: "Production",
+          progression: "small-group-output",
+          objective: "นักเรียนช่วยกันสรุปคำตอบหรือทำชิ้นงานกลุ่มเล็กได้",
+          materials: ["กระดาษกลุ่ม", "สีหรือดินสอ", "บัตรคำถาม"],
+          teacherActions: ["ครูแบ่งกลุ่ม 3-4 คน", "ครูแจกหน้าที่ง่าย ๆ ให้แต่ละคน", "ครูเดินฟังและถามนำเมื่อกลุ่มติดขัด"],
+          procedure: ["ครูแบ่งนักเรียนเป็นกลุ่มเล็ก", "นักเรียนเลือกคนวาด คนเขียน และคนพูด", "กลุ่มช่วยกันทำงาน 5-7 นาที", "ตัวแทนกลุ่มยืนที่โต๊ะแล้วเล่าให้เพื่อนฟังสั้น ๆ", "ครูชมจุดที่ทำได้ดีและเติมคำตอบที่ยังขาด"],
+          teacherTalk: ["คนหนึ่งวาด คนหนึ่งเขียน คนหนึ่งช่วยพูดนะคะ/ครับ", "คุยกันเบา ๆ ในกลุ่ม", "เล่าสั้น ๆ ก็ได้ ไม่ต้องยาว"],
+          studentAction: ["นักเรียนแบ่งหน้าที่", "นักเรียนช่วยกันทำงาน", "นักเรียนเล่าคำตอบของกลุ่มแบบสั้น ๆ"],
+          expected: ["นักเรียนทุกคนมีบทบาทในกลุ่ม", "นักเรียนกล้าพูดจากงานที่ตนเองช่วยทำ"],
+          worksheetType: "group-summary",
+        },
+        {
+          id: "quick-exit-ticket",
+          name: "Exit Ticket สั้น ๆ",
+          stage: "Wrap-up",
+          progression: "lesson-review",
+          objective: "นักเรียนสรุปสิ่งที่เรียนรู้ก่อนจบบทเรียนได้",
+          materials: ["กระดาษแผ่นเล็ก", "กระดาน", "ดินสอ"],
+          teacherActions: ["ครูชี้คำสำคัญบนกระดานทีละคำ", "ครูถามสรุปด้วยคำถามสั้น ๆ", "ครูให้นักเรียนเขียนหรือพูดคำตอบ 1 ข้อก่อนออกจากห้อง"],
+          procedure: ["ครูถามว่า “วันนี้เราได้เรียนอะไรบ้าง”", "นักเรียนตอบสั้น ๆ ทีละคนหรือพร้อมกัน", "นักเรียนเขียนคำสำคัญ 1 คำ วาดภาพ 1 ภาพ หรือพูดสรุป 1 ประโยค", "ครูตรวจเร็ว ๆ และชมความพยายาม", "ครูบอกงานสั้น ๆ สำหรับทบทวน"],
+          teacherTalk: ["วันนี้เราได้เรียนอะไรบ้าง", "เลือกเขียน 1 คำ หรือวาด 1 ภาพก็ได้", "ขอบคุณที่ตั้งใจเรียน"],
+          studentAction: ["นักเรียนตอบคำถามสรุป", "นักเรียนทำ exit ticket", "นักเรียนส่งคำตอบก่อนออกจากห้อง"],
+          expected: ["ครูตรวจความเข้าใจท้ายคาบได้ทันที", "นักเรียนสรุปบทเรียนด้วยภาษาของตนเองได้"],
+          worksheetType: "exit-ticket",
+        },
+      ],
+    },
+  },
+};
+
+activityLibrary.english.speaking = activityLibrary.english.vocabulary;
+activityLibrary.english.listening = activityLibrary.english.vocabulary;
+activityLibrary.english.reading = activityLibrary.english.vocabulary;
+activityLibrary.english.writing = activityLibrary.english.vocabulary;
+
+function normalizeSkillKey(skill) {
+  const value = String(skill || "").toLowerCase();
+  if (value.includes("พูด") || value.includes("speaking")) return "speaking";
+  if (value.includes("ฟัง") || value.includes("listening")) return "listening";
+  if (value.includes("อ่าน") || value.includes("reading")) return "reading";
+  if (value.includes("เขียน") || value.includes("writing")) return "writing";
+  if (value.includes("ศัพท์") || value.includes("vocabulary")) return "vocabulary";
+  return "vocabulary";
+}
+
+function normalizeLevelKey(studentLevel) {
+  const value = String(studentLevel || "").toLowerCase();
+  if (value.includes("อ่อน") || value.includes("beginner")) return "beginner";
+  if (value.includes("มั่นใจ") || value.includes("advanced")) return "beginner";
+  return "beginner";
+}
+
+function getActivities({ subject, skill, studentLevel, stage }) {
+  const subjectKey = isEnglishSubject(subject) ? "english" : "general";
+  const skillKey = normalizeSkillKey(skill);
+  const levelKey = normalizeLevelKey(studentLevel);
+  const subjectLibrary = activityLibrary?.[subjectKey] || activityLibrary.general;
+  const skillLibrary = subjectLibrary?.[skillKey] || subjectLibrary?.vocabulary || subjectLibrary?.core || {};
+  const activities = asArray(skillLibrary?.[levelKey], asArray(skillLibrary?.beginner, []));
+
+  return activities.filter((activity) => !stage || activity?.stage === stage);
+}
+
+function fillActivityText(value, context) {
+  const vocabularyWords = asArray(context.vocabularyWords, ["hello"]);
+  const sentenceFrames = asArray(context.sentenceFrames, ["This is ___."]);
+  return String(value || "")
+    .replaceAll("{topic}", context.topic || "หัวข้อบทเรียน")
+    .replaceAll("{firstWord}", vocabularyWords[0] || "hello")
+    .replaceAll("{wordList}", vocabularyWords.slice(0, 6).join(", ") || "hello, teacher")
+    .replaceAll("{sentenceFrame}", sentenceFrames[0] || "This is ___.");
+}
+
+function fillActivityList(items, context) {
+  return asArray(items, ["ครูสาธิตกิจกรรมและให้นักเรียนทำตามทีละขั้น"]).map((item) => fillActivityText(item, context));
+}
+
+function expandActivityTemplate(activity, context, number) {
+  const template = activity || {};
+  return makeActivityCard({
+    title: `กิจกรรมที่ ${number} : ${template.name || "กิจกรรมฝึกปฏิบัติ"}`,
+    objective: fillActivityList([template.objective], context),
+    teacherActions: fillActivityList(template.teacherActions, context),
+    materials: fillActivityList(template.materials, context),
+    steps: fillActivityList(template.procedure, context),
+    teacherTalk: fillActivityList(template.teacherTalk, context),
+    studentActions: fillActivityList(template.studentAction, context),
+    expected: fillActivityList(template.expected, context),
+  });
 }
 
 function buildLesson(form, templates) {
@@ -302,6 +533,17 @@ function buildLesson(form, templates) {
   const sentenceFrames = makeSentenceFrames(unitFrame.speakingFocus);
   const dialogue = makeDialogue(topic, vocabularyItems);
   const practiceActivity = safeForm.activityType || "ฝึกสนทนาเป็นคู่";
+  const activityContext = { topic, vocabularyWords, sentenceFrames };
+  let activityNumber = 1;
+  const selectActivityCards = (stage, limit = 1) => {
+    const selectedActivities = getActivities({
+      subject: safeForm.subject,
+      skill: safeForm.targetSkill,
+      studentLevel: safeForm.studentLevel,
+      stage,
+    }).slice(0, limit);
+    return selectedActivities.map((activity) => expandActivityTemplate(activity, activityContext, activityNumber++));
+  };
   const basicInfo = [
     `รายวิชา: ${safeForm.subject}`,
     `ระดับชั้น: ${safeForm.gradeLevel}`,
@@ -331,40 +573,15 @@ function buildLesson(form, templates) {
       {
         title: "กระบวนการจัดการเรียนรู้",
         content: [
-          `ขั้นนำเข้าสู่บทเรียน: ครูเริ่มบทเรียนด้วยการทักทายนักเรียน ตรวจความพร้อม และนำภาพ สิ่งของจริง หรือสถานการณ์ใกล้ตัวที่เกี่ยวข้องกับ “${topic}” มาให้สังเกต`,
-          `ครูถามคำถามเชื่อมโยงประสบการณ์เดิม เช่น “นักเรียนเคยพบสิ่งนี้ที่ไหน”, “สิ่งนี้เกี่ยวข้องกับชีวิตประจำวันอย่างไร”, “วันนี้เราจะเรียนรู้เรื่องนี้เพื่อใช้ประโยชน์อะไร”`,
-          `ครูรับฟังคำตอบหลายแบบ เขียนคำสำคัญบนกระดาน และชี้แจงเป้าหมายของคาบเรียนด้วยภาษาสั้น กระชับ เป็นมิตร เพื่อให้นักเรียนเข้าใจทิศทางการเรียน`,
-          `ขั้นจัดกิจกรรมการเรียนรู้ / ขั้นสอน: ครูอธิบายเนื้อหาหลักของ “${topic}” ทีละประเด็น โดยใช้ภาพ ตัวอย่างจริง หรือแผนผังบนกระดานช่วยให้นักเรียนเห็นความสัมพันธ์ของความรู้`,
-          makeActivityCard({
-            title: "กิจกรรมที่ 1 : สำรวจและตอบคำถาม",
-            objective: ["นักเรียนสังเกตข้อมูลหรือภาพประกอบและตอบคำถามเบื้องต้นได้"],
-            materials: ["ภาพประกอบ", "ใบงานสั้น", "กระดาน"],
-            steps: ["ครูแจกภาพหรือใบงานสั้นให้นักเรียน", "นักเรียนสังเกตเป็นคู่", "นักเรียนตอบคำถามที่ครูกำหนด", "ครูชวนให้นักเรียนอธิบายเหตุผลของคำตอบ"],
-            teacherTalk: ["ดูภาพอย่างละเอียดก่อนตอบนะคะ/ครับ", "คำตอบของนักเรียนมีเหตุผลอย่างไร", "ลองอธิบายให้เพื่อนฟังอีกครั้ง"],
-            studentActions: ["นักเรียนสังเกตภาพหรือข้อมูล", "นักเรียนพูดคุยกับคู่ของตน", "นักเรียนตอบคำถามด้วยคำพูดของตนเอง"],
-            expected: ["นักเรียนเข้าใจประเด็นสำคัญของหัวข้อ", "นักเรียนกล้าแสดงความคิดเห็นอย่างสุภาพ"],
-          }),
-          makeActivityCard({
-            title: "กิจกรรมที่ 2 : ฝึกปฏิบัติแบบมีครูช่วย",
-            objective: ["นักเรียนทำงานตามขั้นตอนหลังจากดูครูสาธิตได้"],
-            materials: ["ตัวอย่างงาน", "ใบงาน", "อุปกรณ์ตามรายวิชา"],
-            steps: ["ครูสาธิตขั้นตอนก่อน 1 รอบ", "นักเรียนทำตามทีละขั้น", "ครูหยุดทบทวนจุดสำคัญเมื่อพบว่านักเรียนสับสน", "นักเรียนตรวจคำตอบหรือชิ้นงานร่วมกับครู"],
-            teacherTalk: ["ดูตัวอย่างก่อนนะคะ/ครับ", "ทำทีละขั้น ไม่ต้องรีบ", "ถ้าติดขัดให้ยกมือถามได้"],
-            studentActions: ["นักเรียนดูครูสาธิต", "นักเรียนลงมือทำงาน", "นักเรียนถามเมื่อไม่เข้าใจ"],
-            expected: ["นักเรียนทำกิจกรรมได้ถูกต้องมากขึ้น", "นักเรียนรู้ขั้นตอนการทำงานอย่างเป็นระบบ"],
-          }),
-          makeActivityCard({
-            title: "กิจกรรมที่ 3 : งานกลุ่มย่อย",
-            objective: ["นักเรียนร่วมมือกันสรุปคำตอบหรือสร้างชิ้นงานขนาดเล็กได้"],
-            materials: ["กระดาษกลุ่ม", "ดินสอหรือสี", "บัตรคำถาม"],
-            steps: ["ครูแบ่งนักเรียนเป็นกลุ่มเล็ก", "ครูกำหนดบทบาท เช่น ผู้อ่านคำถาม ผู้บันทึก ผู้นำเสนอ", "นักเรียนช่วยกันทำงานกลุ่ม", "ตัวแทนกลุ่มนำเสนอคำตอบสั้น ๆ"],
-            teacherTalk: ["แบ่งหน้าที่กันให้ชัดเจน", "ฟังความคิดเห็นของเพื่อน", "กลุ่มไหนพร้อมแล้วลองนำเสนอได้เลย"],
-            studentActions: ["นักเรียนแบ่งหน้าที่ในกลุ่ม", "นักเรียนช่วยกันสรุปคำตอบ", "นักเรียนนำเสนอผลงานหรือคำตอบ"],
-            expected: ["นักเรียนมีส่วนร่วมในกิจกรรม", "นักเรียนสื่อสารความเข้าใจของตนเองกับเพื่อนได้"],
-          }),
-          `คำสั่งครูที่ใช้ได้ทันที: “ให้นักเรียนดูตัวอย่างก่อนนะคะ/ครับ จากนั้นลองทำทีละข้อ หากติดขัดให้ยกมือถาม ครูจะเดินช่วยทุกกลุ่ม”`,
-          `ขั้นสรุปบทเรียน: ครูชวนนักเรียนทบทวนสิ่งที่เรียนโดยถามคำถาม 3 ข้อ ได้แก่ “วันนี้เรียนเรื่องอะไร”, “สิ่งสำคัญที่สุดคืออะไร”, “นักเรียนจะนำความรู้นี้ไปใช้ได้อย่างไร”`,
-          `นักเรียนสรุปความรู้ด้วย exit ticket แบบสั้น เช่น เขียนคำสำคัญ 1 คำ วาดภาพ 1 ภาพ หรือพูดสรุป 1 ประโยคตามความถนัด`,
+          `ขั้นนำเข้าสู่บทเรียน: ครูถือภาพหรือของจริงที่เกี่ยวกับ “${topic}” ขึ้นมา 1 ชิ้น แล้วถามนักเรียนสั้น ๆ ว่า “นักเรียนเคยเห็นสิ่งนี้ไหม” หรือ “สิ่งนี้ใช้ทำอะไร” นักเรียนตอบได้ทั้งคำสั้น ๆ หรือยกมือชี้ภาพ`,
+          `ครูเขียนคำตอบของนักเรียน 2-3 คำบนกระดาน แล้วบอกว่า “วันนี้เราจะลองเรียนเรื่องนี้จากของใกล้ตัวของเรา” จากนั้นครูบอกเป้าหมายบทเรียนด้วยประโยคสั้น ๆ`,
+          ...selectActivityCards("Warm-up", 1),
+          `ขั้นจัดกิจกรรมการเรียนรู้ / ขั้นสอน: ครูใช้ภาพ ตัวอย่างจริง หรือแผนผังง่าย ๆ อธิบายหัวข้อ “${topic}” ทีละจุด หลังอธิบาย 1 จุด ครูหยุดถามนักเรียน 1 คำถาม เพื่อเช็กว่าเด็กตามทันหรือไม่`,
+          ...selectActivityCards("Practice", 1),
+          ...selectActivityCards("Production", 1),
+          `ขั้นสรุปบทเรียน: ครูชี้คำสำคัญบนกระดานทีละคำ แล้วถามว่า “วันนี้เราได้เรียนอะไรบ้าง” นักเรียนตอบสั้น ๆ ได้ทีละคนหรือพร้อมกันทั้งห้อง`,
+          `นักเรียนทำ exit ticket แบบเร็ว เช่น เขียนคำสำคัญ 1 คำ วาดภาพ 1 ภาพ หรือพูดสรุป 1 ประโยคก่อนออกจากห้อง`,
+          ...selectActivityCards("Wrap-up", 1),
           `ครูเฉลยหรือสรุปความเข้าใจที่ถูกต้องบนกระดาน ชมเชยความพยายาม และมอบหมายใบงานหรือภาระงานสั้น ๆ ที่สอดคล้องกับหัวข้อ “${topic}”`,
         ],
       },
@@ -430,61 +647,24 @@ function buildLesson(form, templates) {
     {
       title: "กระบวนการจัดการเรียนรู้แบบ 2W3P",
       content: [
-        `Warm-up (ขั้นนำเข้าสู่บทเรียน): ครูเตรียมบัตรภาพหรือภาพจาก PowerPoint ที่เกี่ยวข้องกับ “${topic}” ติดไว้หน้าห้อง ก่อนเริ่มสอนครูยิ้ม ทักทายนักเรียนด้วยประโยคสั้น ๆ เช่น Good morning, class. และให้นักเรียนตอบ Good morning, teacher.`,
-        `ครูเชื่อมโยงความรู้เดิมโดยชูภาพทีละใบแล้วถามเป็นภาษาไทยผสมประโยคอังกฤษง่าย ๆ เช่น “ภาพนี้นักเรียนเคยเห็นไหม”, “What is this?”, “Do you know this word?” หากนักเรียนตอบไม่ได้ ครูให้เดาเป็นภาษาไทยก่อนได้เพื่อสร้างบรรยากาศปลอดภัย`,
-        `ครูใช้กิจกรรม “ดูภาพแล้วชี้” โดยพูดคำศัพท์ 3 คำแรก ได้แก่ ${vocabularyWords.slice(0, 3).join(", ")} แล้วให้นักเรียนชี้ภาพที่ตรงกัน จากนั้นครูชมว่า Very good. หรือ Good try. เพื่อกระตุ้นความมั่นใจ`,
-        `คำพูดครูที่ใช้ได้ทันที: “วันนี้เราจะเรียนเรื่อง ${topic} เราจะค่อย ๆ ฟัง พูดตาม และลองพูดกับเพื่อน นักเรียนไม่ต้องกลัวผิด ครูจะช่วยทีละขั้นนะคะ/ครับ”`,
-        activityFrame.warmUp,
-        `Presentation (ขั้นนำเสนอ): ครูนำเสนอคำศัพท์ด้วยลำดับ “ภาพ - คำ - ความหมาย - การออกเสียง” โดยชูบัตรภาพก่อน พูดคำว่า ${vocabularyWords[0] || "hello"} ช้า ๆ 2 ครั้ง ให้นักเรียนดูรูปปาก แล้วพูดตามพร้อมกัน จากนั้นครูบอกความหมายภาษาไทยและใช้ประโยคตัวอย่างสั้น ๆ`,
-        `แนวทางฝึกออกเสียง: ครูแบ่งคำยาวออกเป็นพยางค์สั้น ๆ ปรบมือกำกับจังหวะ และเน้นเสียงต้นคำ หากนักเรียนออกเสียงไม่ชัด ครูพูดต้นแบบอีกครั้งแทนการตำหนิ`,
-        `รูปประโยคหลักบนกระดาน: ${sentenceFrames.slice(0, 4).join(" | ")} ครูเขียนด้วยตัวใหญ่ อ่านนำทีละประโยค แล้วขีดเส้นใต้ช่องที่นักเรียนต้องเปลี่ยนคำ เช่น ___.`,
-        `ตัวอย่างการอธิบายของครู: “ประโยค ${sentenceFrames[0] || "This is ___."} ใช้เมื่อเราต้องการพูดสั้น ๆ ให้เพื่อนเข้าใจ ครูจะพูดก่อน นักเรียนฟัง แล้วพูดตามพร้อมกันนะคะ/ครับ”`,
-        `ตัวอย่าง board writing: Unit ${unitFrame.unitNumber}: ${safeForm.learningUnit} / Topic: ${topic} / Words: ${vocabularyWords.slice(0, 8).join(", ")} / Pattern: ${sentenceFrames[0] || "This is ___."}`,
-        `ครูสาธิตกับนักเรียน 1 คนหน้าชั้นเรียน โดยใช้บัตรภาพจริง ครูถามช้า ๆ นักเรียนตอบด้วยคำหรือประโยคสั้น ๆ จากนั้นครูให้ทั้งห้องพูดซ้ำพร้อมกันเพื่อช่วยผู้เรียนพื้นฐานอ่อน`,
+        `Warm-up (ขั้นนำเข้าสู่บทเรียน): ครูถือบัตรภาพขึ้นมา 1 ใบโดยยังไม่บอกคำศัพท์ แล้วถามว่า “What do you see?” นักเรียนตอบได้ทั้งภาษาไทยหรือคำอังกฤษสั้น ๆ ครูรับคำตอบและชี้ภาพซ้ำเพื่อดึงความสนใจ`,
+        `ครูทำท่าทางประกอบคำศัพท์ 2-3 คำ เช่น ชี้ตัวเอง ชี้เพื่อน หรือชี้ภาพ แล้วให้นักเรียนเดาคำจากท่าทางก่อน ครูไม่รีบเฉลย เพื่อให้เด็กกล้าตอบ`,
+        `ครูพูดว่า “วันนี้เราจะฟัง ดูภาพ และพูดตามครูทีละนิด ถ้าตอบได้แค่คำเดียวก็ใช้ได้ค่ะ/ครับ” จากนั้นให้นักเรียนปรบมือ 1 ครั้งเมื่อเห็นภาพที่รู้จัก`,
+        ...selectActivityCards("Warm-up", 1),
+        `Presentation (ขั้นนำเสนอ): ครูชูบัตรภาพทีละใบ พูดคำศัพท์ช้า ๆ 2 รอบ เช่น ${vocabularyWords[0] || "hello"} แล้วให้นักเรียนพูดตามพร้อมกัน ครูชี้ที่ปากของตนเองเพื่อให้เด็กดูรูปปาก`,
+        `ครูติดบัตรคำใต้ภาพ แล้วพูดความหมายไทยสั้น ๆ จากนั้นใช้คำในประโยคตัวอย่าง เช่น ${vocabularyItems[0]?.example || "This is a book."} นักเรียนพูดตามทั้งห้องก่อน แล้วครูสุ่ม 2-3 คนพูดเดี่ยว`,
+        `ครูเขียนรูปประโยคบนกระดาน: ${sentenceFrames.slice(0, 3).join(" / ")} แล้วขีดเส้นใต้ช่องว่าง ครูสาธิตการเปลี่ยนคำด้วยบัตรภาพ เช่น เปลี่ยนภาพแล้วพูดประโยคใหม่`,
+        `ถ้านักเรียนออกเสียงยาก ครูแบ่งคำเป็นช่วงสั้น ๆ ให้พูดตาม เช่น ครูพูดครึ่งคำก่อน แล้วค่อยรวมเป็นคำเต็ม ครูใช้คำชมสั้น ๆ เช่น Good try. Try again. เพื่อให้เด็กไม่กลัวผิด`,
+        ...selectActivityCards("Presentation", 1),
         "Practice (ขั้นฝึกปฏิบัติ): ครูพานักเรียนฝึกใช้คำศัพท์และรูปประโยคอย่างเป็นขั้นตอน จากการฟังและชี้ภาพ ไปสู่การพูดตามและฝึกกับเพื่อน โดยครูยังคอยช่วยเหลือใกล้ชิด",
-        makeActivityCard({
-          title: "กิจกรรมที่ 1 : Listen and Point",
-          objective: ["นักเรียนฟังคำศัพท์และชี้ภาพได้ถูกต้อง", "นักเรียนเชื่อมโยงเสียงคำศัพท์กับภาพจริงหรือบัตรภาพได้"],
-          materials: [`บัตรภาพ ${vocabularyWords.slice(0, 6).join(", ")}`, "บัตรคำศัพท์", "กระดาน"],
-          steps: ["ครูติดบัตรภาพบนกระดานให้มองเห็นชัดเจน", "ครูออกเสียงคำศัพท์ทีละคำอย่างช้า ๆ", "นักเรียนชี้ภาพที่ตรงกับคำศัพท์พร้อมกัน", "ครูสุ่มนักเรียน 3-5 คนออกมาชี้ภาพหน้าชั้นเรียน"],
-          teacherTalk: [`Listen carefully.`, `Point to ${vocabularyWords[0] || "hello"}.`, "Very good.", "Try again."],
-          studentActions: ["นักเรียนฟังคำศัพท์", "นักเรียนชี้ภาพให้ถูกต้อง", "นักเรียนพูดคำศัพท์ตามครู"],
-          expected: ["นักเรียนจำคำศัพท์ได้ดีขึ้น", "นักเรียนกล้าตอบคำถามด้วยการชี้ภาพหรือพูดคำศัพท์"],
-        }),
-        makeActivityCard({
-          title: "กิจกรรมที่ 2 : Repeat and Change",
-          objective: ["นักเรียนพูดรูปประโยคโดยเปลี่ยนคำศัพท์ในช่องว่างได้", "นักเรียนออกเสียงคำศัพท์เป้าหมายได้ชัดเจนขึ้น"],
-          materials: [`แถบประโยค ${sentenceFrames[0] || "This is ___."}`, "บัตรคำศัพท์", "บัตรภาพ"],
-          steps: ["ครูติดแถบประโยคบนกระดานและอ่านนำ 1 รอบ", "นักเรียนพูดตามพร้อมกัน 2 รอบ", "ครูเปลี่ยนบัตรคำทีละใบ", "นักเรียนพูดประโยคใหม่โดยใช้คำศัพท์บนบัตร"],
-          teacherTalk: ["Repeat after me.", "Change the word.", "Say it together.", "Try again slowly."],
-          studentActions: ["นักเรียนดูแถบประโยค", "นักเรียนพูดตามครู", "นักเรียนเปลี่ยนคำศัพท์ในประโยคตามบัตรคำ"],
-          expected: ["นักเรียนใช้ sentence frame ได้แม้ยังต้องดูบัตรช่วย", "นักเรียนเริ่มเข้าใจว่าคำศัพท์สามารถเปลี่ยนในประโยคได้"],
-        }),
-        makeActivityCard({
-          title: "กิจกรรมที่ 3 : Guided Pair Drill",
-          objective: ["นักเรียนฝึกถาม-ตอบกับเพื่อนโดยใช้กรอบประโยคที่กำหนด", "นักเรียนทำงานคู่และรอคิวพูดได้อย่างสุภาพ"],
-          materials: ["บัตรบทสนทนา", "บัตรภาพ", "บัตรคำถามและคำตอบ"],
-          steps: ["ครูสาธิตกับนักเรียน 1 คนหน้าชั้นเรียน", "นักเรียนจับคู่และรับบัตรภาพคนละ 1 ใบ", "นักเรียนฝึกพูดตามบทสนทนาตัวอย่างพร้อมกันทั้งห้อง", "นักเรียนฝึกเป็นคู่ 3 นาที โดยครูเดินช่วยออกเสียง"],
-          teacherTalk: ["Work in pairs.", "Ask your friend.", "Answer with a short sentence.", "You can look at the card."],
-          studentActions: ["นักเรียนจับคู่กับเพื่อน", "นักเรียนผลัดกันถามและตอบ", "นักเรียนใช้บัตรช่วยเมื่อลืมคำศัพท์"],
-          expected: ["นักเรียนพูดโต้ตอบสั้น ๆ ได้", "ผู้เรียนพื้นฐานอ่อนสามารถพูดคำตอบสั้น ๆ เช่นคำศัพท์เดี่ยวหรือประโยคง่ายได้"],
-        }),
+        ...selectActivityCards("Practice", 3),
         `กิจกรรมจากโครงสร้างหลักสูตร: ${unitFrame.classroomActivities[0] || activityFrame.classroomActivity}`,
         "Production (ขั้นนำไปใช้): นักเรียนใช้ภาษาอย่างอิสระมากขึ้นผ่านกิจกรรมสื่อสาร โดยครูจัดคู่หรือกลุ่มเล็กเพื่อให้เด็กได้พูดหลายครั้งในบรรยากาศเป็นกันเอง",
-        makeActivityCard({
-          title: "กิจกรรมที่ 4 : Mini Communication Task",
-          objective: ["นักเรียนใช้คำศัพท์และประโยคสั้น ๆ เพื่อสื่อสารกับเพื่อนได้", "นักเรียนเลือกใช้ภาษาในสถานการณ์ใกล้ตัวได้อย่างมั่นใจขึ้น"],
-          materials: ["บัตรภาพ 2 ใบต่อคู่", "บัตร sentence frames", "บัตรคำศัพท์"],
-          steps: ["ครูสาธิตบทสนทนากับนักเรียน 1 คนหน้าชั้นเรียน", "นักเรียนจับคู่และเลือกบัตรภาพ 2 ใบ", `นักเรียนใช้กรอบประโยค ${sentenceFrames.slice(0, 2).join(" / ")} พูดกับเพื่อน`, "นักเรียนสลับบทบาทถาม-ตอบ", "ครูสุ่มคู่ที่พร้อมออกมานำเสนอหน้าชั้นเรียน"],
-          teacherTalk: ["Work in pairs.", "Speak slowly.", "You can look at the sentence card.", "If you need help, raise your hand."],
-          studentActions: ["นักเรียนเลือกคำศัพท์จากบัตรภาพ", "นักเรียนถาม-ตอบกับเพื่อนตามกรอบประโยค", "นักเรียนพยายามใช้เสียงดังพอให้คู่ของตนได้ยิน"],
-          expected: ["นักเรียนใช้ภาษาอังกฤษในสถานการณ์ง่าย ๆ ได้", "นักเรียนพื้นฐานอ่อนสามารถใช้เวอร์ชันง่าย เช่นคำศัพท์เดี่ยวหรือประโยคสั้นที่สุดได้"],
-        }),
-        `Wrap-up (ขั้นสรุป): ครูทบทวนคำศัพท์โดยชูบัตรภาพแบบเร็ว 5-8 ใบ ให้นักเรียนตอบพร้อมกัน หากตอบไม่ได้ให้ครูออกเสียงต้นคำและให้ทั้งห้องช่วยกันพูด ไม่ควรเฉลยทันทีเพื่อเปิดโอกาสให้เด็กคิด`,
-        `ครูทบทวนรูปประโยคบนกระดานโดยลบคำบางคำออก เช่น ${sentenceFrames[0] || "This is ___."} แล้วให้นักเรียนเติมคำจากภาพ ครูถามคำถามตรวจความเข้าใจ เช่น “คำนี้แปลว่าอะไร”, “ประโยคนี้ใช้พูดกับใคร”, “ถ้าจะเปลี่ยนเป็นคำว่า ${vocabularyWords[1] || "book"} ต้องพูดอย่างไร”`,
-        `นักเรียนสรุปการเรียนรู้ด้วย exit ticket แบบปากเปล่า: พูดคำศัพท์ 1 คำ และประโยค 1 ประโยคก่อนออกจากห้อง หรือเขียนลงกระดาษเล็ก ๆ หากเน้นการเขียน`,
-        `ครูมอบหมายใบงานหรือการบ้านสั้น ๆ ให้จับคู่คำศัพท์กับภาพ เติมคำในประโยค และวาดภาพประกอบคำศัพท์ 1 คำ โดยเน้นความเข้าใจมากกว่าการสะกดที่สมบูรณ์`,
-        ...activityFrame.summary,
+        ...selectActivityCards("Production", 1),
+        `Wrap-up (ขั้นสรุป): ครูชูบัตรภาพแบบเร็วทีละใบ ให้นักเรียนตอบพร้อมกัน ถ้าตอบไม่ได้ครูพูดเสียงต้นคำให้ เช่น “h...” แล้วให้นักเรียนลองตอบอีกครั้ง`,
+        `ครูลบคำบางคำออกจากประโยคบนกระดาน เช่น ${sentenceFrames[0] || "This is ___."} แล้วให้นักเรียนช่วยกันเติมคำจากบัตรภาพ`,
+        `ก่อนจบคาบ นักเรียนเลือกพูดคำศัพท์ 1 คำ หรือประโยค 1 ประโยคกับครูที่หน้าประตู สำหรับเด็กที่ยังไม่พร้อมให้ชี้ภาพและพูดคำเดียวก่อน`,
+        ...selectActivityCards("Wrap-up", 1),
       ],
     },
     {
@@ -632,6 +812,7 @@ function LessonSectionCard({ section, index }) {
       return h("div", { className: "activity-card", key: `${section.title}-activity-${itemIndex}` }, [
         h("h4", { key: "title" }, item.title),
         renderActivityList("จุดประสงค์", item.objective),
+        renderActivityList("ครูทำอะไร", item.teacherActions),
         renderActivityList("สื่อ/อุปกรณ์", item.materials),
         renderActivityList("ขั้นตอนกิจกรรม", item.steps, true),
         renderActivityList("คำพูด/คำสั่งของครู", item.teacherTalk),
@@ -676,6 +857,8 @@ function formatList(items) {
         item.title,
         "จุดประสงค์",
         ...asArray(item.objective).map((line) => `- ${line}`),
+        "ครูทำอะไร",
+        ...asArray(item.teacherActions).map((line) => `- ${line}`),
         "สื่อ/อุปกรณ์",
         ...asArray(item.materials).map((line) => `- ${line}`),
         "ขั้นตอนกิจกรรม",
@@ -817,6 +1000,7 @@ function buildLessonPlanHtml({ form, lesson, selectedUnit }) {
       return `<li class="activity-card">
         <h3>${escapeHtml(item.title)}</h3>
         ${list("จุดประสงค์", item.objective)}
+        ${list("ครูทำอะไร", item.teacherActions)}
         ${list("สื่อ/อุปกรณ์", item.materials)}
         ${list("ขั้นตอนกิจกรรม", item.steps, "ol")}
         ${list("คำพูด/คำสั่งของครู", item.teacherTalk)}
@@ -1192,7 +1376,7 @@ function App() {
           ]),
           h("div", { className: "lesson-mini-stat bg-lilac/70", key: "sections" }, [
             h("span", { key: "label" }, "องค์ประกอบแผน"),
-            h("strong", { key: "value" }, "13 ส่วน"),
+            h("strong", { key: "value" }, `${asArray(lesson).length} ส่วน`),
           ]),
         ]),
         h("div", { className: "lesson-section-stack mt-6", key: "cards" },
