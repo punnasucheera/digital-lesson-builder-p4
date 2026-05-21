@@ -359,7 +359,7 @@ textarea {
 
 @media (min-width: 760px) {
   .lesson-export-panel {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     align-items: center;
   }
 }
@@ -424,6 +424,16 @@ textarea {
   box-shadow: 0 14px 30px rgba(85, 99, 132, 0.11);
 }
 
+.lesson-section-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.lesson-section-card h3 {
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+
 .lesson-section-card::after {
   position: absolute;
   right: -1.6rem;
@@ -457,4 +467,41 @@ textarea {
   border-radius: 999px;
   background: #83b7d8;
   box-shadow: 0 0 0 4px rgba(207, 231, 255, 0.72);
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .platform-hero,
+  #builder,
+  .lesson-export-panel,
+  .lesson-mini-stat,
+  .watercolor-band {
+    display: none !important;
+  }
+
+  .app-shell {
+    padding: 0 !important;
+  }
+
+  .lesson-plan-card {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+  }
+
+  .lesson-section-stack {
+    display: block;
+  }
+
+  .lesson-section-card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 14px;
+    box-shadow: none;
+    background: #fff;
+  }
 }

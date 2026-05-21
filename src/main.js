@@ -23,6 +23,20 @@ const defaultForm = {
   activityType: "ฝึกสนทนาเป็นคู่",
 };
 
+const subjectOptions = [
+  "ภาษาอังกฤษพื้นฐาน",
+  "ภาษาอังกฤษ",
+  "English",
+  "Basic English",
+  "ศิลปะ",
+  "การป้องกันการทุจริต",
+  "การงานอาชีพ",
+  "วิทยาศาสตร์",
+  "คณิตศาสตร์",
+  "สังคมศึกษา",
+  "ภาษาไทย",
+];
+
 const fallbackUnitFrame = {
   semester: "ยังไม่ระบุภาคเรียน",
   unitNumber: "-",
@@ -68,7 +82,7 @@ const fallbackActivityFrame = {
 const fallbackTemplates = {
   fieldOptions: {
     gradeLevels: [defaultForm.gradeLevel],
-    subjects: [defaultForm.subject],
+    subjects: subjectOptions,
     learningUnits: [defaultForm.learningUnit],
     studentLevels: [defaultForm.studentLevel],
     targetSkills: [defaultForm.targetSkill],
@@ -151,17 +165,24 @@ const lessonSectionMeta = {
   "ข้อมูลพื้นฐาน": { icon: "clipboard", tone: "bg-mint" },
   "คำศัพท์สำคัญประจำบทเรียน": { icon: "cards", tone: "bg-butter" },
   "จุดประสงค์การเรียนรู้": { icon: "star", tone: "bg-peach" },
-  "Warm-up": { icon: "spark", tone: "bg-butter" },
-  "Presentation": { icon: "book", tone: "bg-skysoft" },
-  "Practice": { icon: "blocks", tone: "bg-lilac" },
-  "Production": { icon: "check", tone: "bg-mint" },
+  "Warm-up (ขั้นนำเข้าสู่บทเรียน)": { icon: "spark", tone: "bg-butter" },
+  "Presentation (ขั้นนำเสนอ)": { icon: "book", tone: "bg-skysoft" },
+  "Practice (ขั้นฝึกปฏิบัติ)": { icon: "blocks", tone: "bg-lilac" },
+  "Production (ขั้นนำไปใช้)": { icon: "check", tone: "bg-mint" },
   "ตัวอย่างบทสนทนา/ประโยคที่ใช้ในกิจกรรม": { icon: "cards", tone: "bg-peach" },
-  "Wrap-up": { icon: "check", tone: "bg-mint" },
+  "Wrap-up (ขั้นสรุป)": { icon: "check", tone: "bg-mint" },
+  "ขั้นนำเข้าสู่บทเรียน": { icon: "spark", tone: "bg-butter" },
+  "ขั้นกิจกรรมการเรียนรู้ / ขั้นสอน": { icon: "book", tone: "bg-skysoft" },
+  "ขั้นสรุป": { icon: "check", tone: "bg-mint" },
   "สื่อการสอน": { icon: "cards", tone: "bg-peach" },
   "ใบงานตัวอย่าง": { icon: "paper", tone: "bg-butter" },
   "การวัดและประเมินผล": { icon: "clipboard", tone: "bg-mint" },
   "ข้อเสนอแนะสำหรับครู": { icon: "star", tone: "bg-lilac" },
 };
+
+function isEnglishSubject(subject) {
+  return ["ภาษาอังกฤษ", "ภาษาอังกฤษพื้นฐาน", "English", "Basic English"].includes(String(subject || "").trim());
+}
 
 const vocabularyMeanings = {
   hello: "สวัสดี", hi: "สวัสดี", goodbye: "ลาก่อน", teacher: "ครู", friend: "เพื่อน", name: "ชื่อ",
@@ -275,6 +296,91 @@ function buildLesson(form, templates) {
   const dialogue = makeDialogue(topic, vocabularyItems);
   const practiceActivity = safeForm.activityType || "ฝึกสนทนาเป็นคู่";
 
+  if (!isEnglishSubject(safeForm.subject)) {
+    return [
+      {
+        title: "ข้อมูลพื้นฐาน",
+        content: [
+          `ชื่อระบบ: MKL Digital Lesson Builder ระบบช่วยออกแบบการจัดการเรียนรู้ดิจิทัลด้วย AI`,
+          `รายวิชา: ${safeForm.subject} | ระดับชั้น: ${safeForm.gradeLevel}`,
+          `หน่วยการเรียนรู้: หน่วยที่ ${unitFrame.unitNumber} ${safeForm.learningUnit} | หัวข้อที่เรียน: ${topic}`,
+          `ภาคเรียน: ${unitFrame.semester} | เวลาเรียนของหน่วยนี้: ${unitFrame.totalHours} ชั่วโมง | ระดับผู้เรียน: ${safeForm.studentLevel}`,
+          `ทักษะที่เน้น: ${safeForm.targetSkill} | รูปแบบกิจกรรมหลัก: ${practiceActivity}`,
+        ],
+      },
+      {
+        title: "จุดประสงค์การเรียนรู้",
+        content: [
+          `นักเรียนสามารถอธิบายความรู้สำคัญของหัวข้อ “${topic}” ด้วยภาษาของตนเองได้อย่างเหมาะสมกับระดับชั้น`,
+          `นักเรียนสามารถปฏิบัติกิจกรรมการเรียนรู้ตามขั้นตอนที่ครูกำหนด โดยใช้สื่อหรือใบงานประกอบการเรียนได้`,
+          `นักเรียนสามารถสรุปสิ่งที่เรียนรู้ แลกเปลี่ยนความคิดเห็นกับเพื่อน และแสดงพฤติกรรมการเรียนรู้ที่รับผิดชอบ`,
+        ],
+      },
+      {
+        title: "ขั้นนำเข้าสู่บทเรียน",
+        content: [
+          `ครูเริ่มบทเรียนด้วยการทักทายนักเรียน ตรวจความพร้อม และนำภาพ สิ่งของจริง หรือสถานการณ์ใกล้ตัวที่เกี่ยวข้องกับ “${topic}” มาให้สังเกต`,
+          `ครูถามคำถามเชื่อมโยงประสบการณ์เดิม เช่น “นักเรียนเคยพบสิ่งนี้ที่ไหน”, “สิ่งนี้เกี่ยวข้องกับชีวิตประจำวันอย่างไร”, “วันนี้เราจะเรียนรู้เรื่องนี้เพื่อใช้ประโยชน์อะไร”`,
+          `ครูรับฟังคำตอบหลายแบบ เขียนคำสำคัญบนกระดาน และชี้แจงเป้าหมายของคาบเรียนด้วยภาษาสั้น กระชับ เป็นมิตร เพื่อให้นักเรียนเข้าใจทิศทางการเรียน`,
+        ],
+      },
+      {
+        title: "ขั้นกิจกรรมการเรียนรู้ / ขั้นสอน",
+        content: [
+          `ครูอธิบายเนื้อหาหลักของ “${topic}” ทีละประเด็น โดยใช้ภาพ ตัวอย่างจริง หรือแผนผังบนกระดานช่วยให้นักเรียนเห็นความสัมพันธ์ของความรู้`,
+          `กิจกรรมที่ 1: สำรวจและตอบคำถาม | ครูแจกภาพหรือใบงานสั้น ๆ ให้นักเรียนสังเกตเป็นคู่ จากนั้นตอบคำถามที่ครูกำหนด ครูเดินดู ช่วยอ่านคำถาม และชวนให้นักเรียนอธิบายเหตุผล`,
+          `กิจกรรมที่ 2: ฝึกปฏิบัติแบบมีครูช่วย | ครูสาธิตขั้นตอนก่อน 1 รอบ แล้วให้นักเรียนทำตามทีละขั้น หากนักเรียนสับสน ครูหยุดทบทวนจุดสำคัญและให้เพื่อนช่วยอธิบายอย่างสุภาพ`,
+          `กิจกรรมที่ 3: งานกลุ่มย่อย | นักเรียนทำชิ้นงานหรือสรุปคำตอบเป็นกลุ่มเล็ก ครูกำหนดบทบาทง่าย ๆ เช่น ผู้อ่านคำถาม ผู้บันทึกคำตอบ ผู้นำเสนอ เพื่อให้นักเรียนทุกคนมีส่วนร่วม`,
+          `คำสั่งครูที่ใช้ได้ทันที: “ให้นักเรียนดูตัวอย่างก่อนนะคะ/ครับ จากนั้นลองทำทีละข้อ หากติดขัดให้ยกมือถาม ครูจะเดินช่วยทุกกลุ่ม”`,
+        ],
+      },
+      {
+        title: "ขั้นสรุป",
+        content: [
+          `ครูชวนนักเรียนทบทวนสิ่งที่เรียนโดยถามคำถาม 3 ข้อ ได้แก่ “วันนี้เรียนเรื่องอะไร”, “สิ่งสำคัญที่สุดคืออะไร”, “นักเรียนจะนำความรู้นี้ไปใช้ได้อย่างไร”`,
+          `นักเรียนสรุปความรู้ด้วย exit ticket แบบสั้น เช่น เขียนคำสำคัญ 1 คำ วาดภาพ 1 ภาพ หรือพูดสรุป 1 ประโยคตามความถนัด`,
+          `ครูเฉลยหรือสรุปความเข้าใจที่ถูกต้องบนกระดาน ชมเชยความพยายาม และมอบหมายใบงานหรือภาระงานสั้น ๆ ที่สอดคล้องกับหัวข้อ “${topic}”`,
+        ],
+      },
+      {
+        title: "สื่อการสอน",
+        content: [
+          "ภาพประกอบหรือบัตรภาพที่เกี่ยวข้องกับหัวข้อ",
+          "ใบงานหนึ่งหน้า สำหรับสำรวจ ตอบคำถาม และสรุปความเข้าใจ",
+          "กระดานและปากกา สำหรับเขียนคำสำคัญ แผนผัง หรือขั้นตอนกิจกรรม",
+          "สิ่งของจริงหรือสื่อในห้องเรียนที่หาได้ง่ายในบริบทโรงเรียนประถม",
+        ],
+      },
+      {
+        title: "ใบงานตัวอย่าง",
+        content: [
+          `ชื่อใบงาน: ใบงานเรื่อง ${topic}`,
+          "คำชี้แจง: ให้นักเรียนอ่านคำถาม สังเกตภาพหรือข้อมูล แล้วตอบด้วยข้อความสั้น ๆ หรือวาดภาพประกอบตามที่ครูกำหนด",
+          "กิจกรรมที่ 1: เขียนคำสำคัญจากบทเรียน 3 คำ และอธิบายความหมายสั้น ๆ",
+          "กิจกรรมที่ 2: ตอบคำถามจากสถานการณ์หรือภาพประกอบ 3 ข้อ",
+          "กิจกรรมที่ 3: สรุปสิ่งที่ได้เรียนรู้ 1 ประโยค หรือวาดภาพสรุปความเข้าใจ",
+          "เฉลยสำหรับครู: ตรวจจากความถูกต้องของแนวคิด ความเชื่อมโยงกับบทเรียน และความพยายามในการอธิบาย ไม่จำเป็นต้องใช้ถ้อยคำเหมือนกันทุกคน",
+        ],
+      },
+      {
+        title: "การวัดและประเมินผล",
+        content: [
+          "สิ่งที่ประเมิน: ความเข้าใจเนื้อหา การมีส่วนร่วม การทำงานตามขั้นตอน และการสรุปความรู้",
+          "วิธีประเมิน: ใช้การสังเกตระหว่างกิจกรรม ตรวจใบงาน และฟังการนำเสนอหรือคำตอบสั้น ๆ ของนักเรียน",
+          "Checklist แบบง่าย: 1 = ต้องช่วยมาก, 2 = ทำได้เมื่อมีตัวอย่าง, 3 = ทำได้ด้วยตนเอง สำหรับรายการ เข้าใจเนื้อหา, ทำกิจกรรม, สื่อสารความคิด, รับผิดชอบงาน",
+        ],
+      },
+      {
+        title: "ข้อเสนอแนะสำหรับครู",
+        content: [
+          "ควรใช้คำสั่งสั้น ชัดเจน และสาธิตตัวอย่างก่อนให้นักเรียนลงมือทำ เพื่อลดความสับสนของผู้เรียนระดับประถมศึกษา",
+          "สำหรับนักเรียนที่ต้องการความช่วยเหลือ ให้จับคู่กับเพื่อนที่พร้อมช่วยอ่านคำถามหรืออธิบายขั้นตอน โดยเน้นบรรยากาศช่วยเหลือกัน",
+          "ควรแบ่งกิจกรรมเป็นช่วงสั้น ๆ และให้คำชมระหว่างทาง เพื่อรักษาความสนใจและความมั่นใจของนักเรียน",
+        ],
+      },
+    ];
+  }
+
   return [
     {
       title: "ข้อมูลพื้นฐาน",
@@ -303,7 +409,7 @@ function buildLesson(form, templates) {
       ],
     },
     {
-      title: "Warm-up",
+      title: "Warm-up (ขั้นนำเข้าสู่บทเรียน)",
       content: [
         `ครูเตรียมบัตรภาพหรือภาพจาก PowerPoint ที่เกี่ยวข้องกับ “${topic}” ติดไว้หน้าห้อง ก่อนเริ่มสอนครูยิ้ม ทักทายนักเรียนด้วยประโยคสั้น ๆ เช่น Good morning, class. และให้นักเรียนตอบ Good morning, teacher.`,
         `ครูเชื่อมโยงความรู้เดิมโดยชูภาพทีละใบแล้วถามเป็นภาษาไทยผสมประโยคอังกฤษง่าย ๆ เช่น “ภาพนี้นักเรียนเคยเห็นไหม”, “What is this?”, “Do you know this word?” หากนักเรียนตอบไม่ได้ ครูให้เดาเป็นภาษาไทยก่อนได้เพื่อสร้างบรรยากาศปลอดภัย`,
@@ -313,7 +419,7 @@ function buildLesson(form, templates) {
       ],
     },
     {
-      title: "Presentation",
+      title: "Presentation (ขั้นนำเสนอ)",
       content: [
         `ครูนำเสนอคำศัพท์ด้วยลำดับ “ภาพ - คำ - ความหมาย - การออกเสียง” โดยชูบัตรภาพก่อน พูดคำว่า ${vocabularyWords[0] || "hello"} ช้า ๆ 2 ครั้ง ให้นักเรียนดูรูปปาก แล้วพูดตามพร้อมกัน จากนั้นครูบอกความหมายภาษาไทยและใช้ประโยคตัวอย่างสั้น ๆ`,
         `แนวทางฝึกออกเสียง: ครูแบ่งคำยาวออกเป็นพยางค์สั้น ๆ ปรบมือกำกับจังหวะ และเน้นเสียงต้นคำ หากนักเรียนออกเสียงไม่ชัด ครูพูดต้นแบบอีกครั้งแทนการตำหนิ`,
@@ -324,7 +430,7 @@ function buildLesson(form, templates) {
       ],
     },
     {
-      title: "Practice",
+      title: "Practice (ขั้นฝึกปฏิบัติ)",
       content: [
         `กิจกรรมที่ 1: Listen and Point | จุดประสงค์: ให้นักเรียนฟังคำศัพท์แล้วเชื่อมโยงกับภาพได้ | สื่อ: บัตรภาพ ${vocabularyWords.slice(0, 6).join(", ")} | ขั้นตอน: ครูวางบัตรภาพบนกระดาน พูดคำศัพท์ทีละคำ นักเรียนชี้ภาพพร้อมกัน จากนั้นครูสุ่มให้นักเรียน 3-5 คนออกมาชี้ภาพ ครูพูดว่า Listen carefully. Point to ${vocabularyWords[0] || "the word"}. คำตอบที่คาดหวัง: นักเรียนชี้ภาพถูกต้องและพูดคำศัพท์ตามครู`,
         `กิจกรรมที่ 2: Repeat and Change | จุดประสงค์: ให้นักเรียนฝึกรูปประโยคโดยเปลี่ยนคำศัพท์ในช่องว่าง | สื่อ: แถบประโยค ${sentenceFrames[0] || "This is ___."} และบัตรคำ | ขั้นตอน: ครูอ่านประโยคต้นแบบ นักเรียนพูดตาม จากนั้นครูเปลี่ยนบัตรคำทีละใบ เช่น ${vocabularyWords.slice(0, 3).join(", ")} นักเรียนพูดประโยคใหม่พร้อมกัน | คำสั่งครู: Repeat after me. Change the word. Try again. | คำตอบที่คาดหวัง: นักเรียนพูดประโยคสั้น ๆ ได้แม้ยังต้องดูบัตรช่วย`,
@@ -333,7 +439,7 @@ function buildLesson(form, templates) {
       ],
     },
     {
-      title: "Production",
+      title: "Production (ขั้นนำไปใช้)",
       content: [
         `กิจกรรมสื่อสาร: Mini Communication Task | นักเรียนใช้ภาษาอย่างอิสระมากขึ้นผ่าน ${practiceActivity} โดยครูจัดคู่หรือกลุ่มเล็ก 3-4 คน เพื่อให้เด็กได้พูดหลายครั้งในบรรยากาศเป็นกันเอง`,
         `ขั้นตอนกิจกรรม: 1. ครูสาธิตบทสนทนากับนักเรียน 1 คนหน้าชั้นเรียน 2. นักเรียนจับคู่และเลือกบัตรภาพ 2 ใบ 3. นักเรียนใช้กรอบประโยค ${sentenceFrames.slice(0, 2).join(" / ")} พูดกับเพื่อน 4. นักเรียนสลับบทบาท 5. ครูสุ่มคู่ที่พร้อมออกมานำเสนอหน้าชั้นโดยไม่บังคับผู้เรียนที่ยังไม่มั่นใจ`,
@@ -351,7 +457,7 @@ function buildLesson(form, templates) {
       ],
     },
     {
-      title: "Wrap-up",
+      title: "Wrap-up (ขั้นสรุป)",
       content: [
         `ครูทบทวนคำศัพท์โดยชูบัตรภาพแบบเร็ว 5-8 ใบ ให้นักเรียนตอบพร้อมกัน หากตอบไม่ได้ให้ครูออกเสียงต้นคำและให้ทั้งห้องช่วยกันพูด ไม่ควรเฉลยทันทีเพื่อเปิดโอกาสให้เด็กคิด`,
         `ครูทบทวนรูปประโยคบนกระดานโดยลบคำบางคำออก เช่น ${sentenceFrames[0] || "This is ___."} แล้วให้นักเรียนเติมคำจากภาพ ครูถามคำถามตรวจความเข้าใจ เช่น “คำนี้แปลว่าอะไร”, “ประโยคนี้ใช้พูดกับใคร”, “ถ้าจะเปลี่ยนเป็นคำว่า ${vocabularyWords[1] || "book"} ต้องพูดอย่างไร”`,
@@ -541,6 +647,32 @@ function buildLessonPlanText({ form, lesson, selectedUnit }) {
 function buildWorksheetText({ form, selectedUnit }) {
   const safeUnit = normalizeUnitFrame(selectedUnit);
   const topic = form.lessonTopic || safeUnit.topics[0] || "หัวข้อบทเรียนตัวอย่าง";
+
+  if (!isEnglishSubject(form.subject)) {
+    return [
+      `ชื่อใบงาน: ใบงานเรื่อง ${topic}`,
+      "",
+      "คำชี้แจง",
+      `ให้นักเรียนทบทวนเนื้อหาจากหน่วยการเรียนรู้ ${form.learningUnit} แล้วทำกิจกรรมตามลำดับ ใบงานนี้ออกแบบสำหรับ ${form.gradeLevel} รายวิชา ${form.subject} ระดับผู้เรียน ${form.studentLevel}`,
+      "",
+      "คำสำคัญประจำบทเรียน",
+      "1. แนวคิดสำคัญของบทเรียน",
+      "2. ตัวอย่างหรือสถานการณ์ใกล้ตัว",
+      "3. วิธีอธิบายคำตอบด้วยภาษาของตนเอง",
+      "",
+      "กิจกรรม/แบบฝึกหัด",
+      "1. เขียนคำสำคัญจากบทเรียน 3 คำ พร้อมอธิบายสั้น ๆ",
+      "2. ดูภาพหรือสถานการณ์ที่ครูกำหนด แล้วตอบคำถาม 3 ข้อ",
+      "3. สรุปสิ่งที่ได้เรียนรู้ 1 ประโยค หรือวาดภาพสรุปความเข้าใจ",
+      "4. แลกเปลี่ยนคำตอบกับเพื่อน 1 คน แล้วปรับคำตอบของตนเองให้ชัดเจนขึ้น",
+      "",
+      "เฉลยสำหรับครู",
+      "1. พิจารณาคำตอบจากความเข้าใจที่สอดคล้องกับหัวข้อ ไม่จำเป็นต้องใช้ถ้อยคำเหมือนตัวอย่าง",
+      "2. ให้คะแนนจากความถูกต้องของแนวคิด การอธิบายเหตุผล และความพยายามในการทำงาน",
+      "3. หากนักเรียนตอบสั้นมาก ให้ครูถามต่อด้วยคำถามนำ เช่น เพราะอะไร หรือยกตัวอย่างได้ไหม",
+    ].join("\n");
+  }
+
   const vocabularyItems = makeVocabularyItems(safeUnit, topic);
   const vocabulary = vocabularyItems.slice(0, 8);
   const patterns = makeSentenceFrames(safeUnit.speakingFocus).slice(0, 4);
@@ -578,6 +710,66 @@ function buildWorksheetText({ form, selectedUnit }) {
 
 function downloadTextFile(filename, text) {
   const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function buildLessonPlanHtml({ form, lesson, selectedUnit }) {
+  const sections = asArray(lesson);
+  const sectionHtml = sections.map((section, index) => `
+    <section class="lesson-section">
+      <h2>${index + 1}. ${escapeHtml(section.title)}</h2>
+      <ol>
+        ${asArray(section.content, ["ยังไม่มีข้อมูลในส่วนนี้"]).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+      </ol>
+    </section>
+  `).join("");
+
+  return `<!doctype html>
+  <html lang="th">
+    <head>
+      <meta charset="UTF-8" />
+      <title>แผนการสอน ${escapeHtml(form.lessonTopic)}</title>
+      <style>
+        body { font-family: "Noto Sans Thai", Tahoma, sans-serif; color: #243044; line-height: 1.7; padding: 32px; }
+        h1 { font-size: 24px; margin: 0 0 8px; }
+        .meta { border: 1px solid #d8e4f0; border-radius: 14px; padding: 16px; margin: 16px 0 22px; background: #f8fbff; }
+        .lesson-section { page-break-inside: avoid; border: 1px solid #d8e4f0; border-radius: 14px; padding: 16px 18px; margin-bottom: 16px; }
+        .lesson-section h2 { font-size: 18px; margin: 0 0 10px; color: #39415a; }
+        li { margin-bottom: 8px; }
+        @media print { body { padding: 0; } .lesson-section { break-inside: avoid; } }
+      </style>
+    </head>
+    <body>
+      <h1>MKL Digital Lesson Builder ระบบช่วยออกแบบการจัดการเรียนรู้ดิจิทัลด้วย AI</h1>
+      <div class="meta">
+        <div>รายวิชา: ${escapeHtml(form.subject)}</div>
+        <div>ระดับชั้น: ${escapeHtml(form.gradeLevel)}</div>
+        <div>หน่วยการเรียนรู้: หน่วยที่ ${escapeHtml(selectedUnit.unitNumber)} ${escapeHtml(form.learningUnit)}</div>
+        <div>หัวข้อที่เรียน: ${escapeHtml(form.lessonTopic)}</div>
+        <div>ภาคเรียน: ${escapeHtml(selectedUnit.semester)} | เวลาเรียน: ${escapeHtml(selectedUnit.totalHours)} ชั่วโมง</div>
+      </div>
+      ${sectionHtml}
+    </body>
+  </html>`;
+}
+
+function downloadWordFile(filename, html) {
+  const blob = new Blob(["\ufeff", html], { type: "application/msword;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
@@ -662,16 +854,31 @@ function App() {
     }
   }
 
-  function downloadLessonPlan() {
-    const text = buildLessonPlanText({ form, lesson, selectedUnit });
-    downloadTextFile(`แผนการสอน-${safeFilename(form.learningUnit)}-${safeFilename(form.lessonTopic)}.txt`, text);
-    setExportNotice("ดาวน์โหลดแผนการสอนเป็นไฟล์ .txt แล้ว");
+  function downloadLessonPdf() {
+    const html = buildLessonPlanHtml({ form, lesson, selectedUnit });
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) {
+      setExportNotice("ไม่สามารถเปิดหน้าพิมพ์ PDF ได้ กรุณาอนุญาต popup ในเบราว์เซอร์");
+      return;
+    }
+    printWindow.document.open();
+    printWindow.document.write(html);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+    setExportNotice("เปิดหน้าพิมพ์แล้ว สามารถเลือกบันทึกเป็น PDF ได้");
+  }
+
+  function downloadLessonWord() {
+    const html = buildLessonPlanHtml({ form, lesson, selectedUnit });
+    downloadWordFile(`แผนการสอน-${safeFilename(form.learningUnit)}-${safeFilename(form.lessonTopic)}.doc`, html);
+    setExportNotice("ดาวน์โหลดแผนการสอนเป็นไฟล์ Word แล้ว");
   }
 
   function downloadWorksheet() {
     const text = buildWorksheetText({ form, selectedUnit });
     downloadTextFile(`ใบงาน-${safeFilename(form.learningUnit)}-${safeFilename(form.lessonTopic)}.txt`, text);
-    setExportNotice("ดาวน์โหลดใบงานตัวอย่างเป็นไฟล์ .txt แล้ว");
+    setExportNotice("ดาวน์โหลดใบงานเป็นไฟล์ .txt แล้ว");
   }
 
   const lessonFrames = templates?.lessonFrames || fallbackTemplates.lessonFrames;
@@ -679,7 +886,7 @@ function App() {
   const fallbackLearningUnits = asArray(Object.keys(lessonFrames), [defaultForm.learningUnit]);
   const options = {
     gradeLevels: asArray(fieldOptions.gradeLevels, [defaultForm.gradeLevel]),
-    subjects: asArray(fieldOptions.subjects, [defaultForm.subject]),
+    subjects: uniqueItems([...subjectOptions, ...asArray(fieldOptions.subjects, [defaultForm.subject])]),
     learningUnits: asArray(fieldOptions.learningUnits, fallbackLearningUnits),
     studentLevels: asArray(fieldOptions.studentLevels, [defaultForm.studentLevel]),
     targetSkills: asArray(fieldOptions.targetSkills, [defaultForm.targetSkill]),
@@ -772,7 +979,7 @@ function App() {
         ]),
         h("div", { className: "grid gap-4 sm:grid-cols-2", key: "fields" }, [
           h(SelectField, { id: "grade-level", label: fieldLabels.gradeLevel, value: form.gradeLevel, options: options.gradeLevels, disabled: true, onChange: (value) => updateField("gradeLevel", value), key: "grade" }),
-          h(SelectField, { id: "subject", label: fieldLabels.subject, value: form.subject, options: options.subjects, disabled: true, onChange: (value) => updateField("subject", value), key: "subject" }),
+          h(SelectField, { id: "subject", label: fieldLabels.subject, value: form.subject, options: options.subjects, onChange: (value) => updateField("subject", value), key: "subject" }),
           h(SelectField, { id: "learning-unit", label: fieldLabels.learningUnit, value: form.learningUnit, options: options.learningUnits, onChange: (value) => updateField("learningUnit", value), key: "unit" }),
           h(SelectField, { id: "lesson-topic", label: fieldLabels.lessonTopic, value: form.lessonTopic, options: topicOptions, onChange: (value) => updateField("lessonTopic", value), key: "topic" }),
           h(SelectField, { id: "student-level", label: fieldLabels.studentLevel, value: form.studentLevel, options: options.studentLevels, onChange: (value) => updateField("studentLevel", value), key: "level" }),
@@ -856,13 +1063,17 @@ function App() {
             h("span", { "aria-hidden": "true", key: "icon" }, "⧉"),
             h("span", { key: "text" }, "คัดลอกแผนการสอน"),
           ]),
-          h("button", { className: "lesson-export-button bg-skysoft/80", onClick: downloadLessonPlan, type: "button", key: "lesson-download" }, [
+          h("button", { className: "lesson-export-button bg-skysoft/80", onClick: downloadLessonPdf, type: "button", key: "lesson-pdf" }, [
             h("span", { "aria-hidden": "true", key: "icon" }, "⇩"),
-            h("span", { key: "text" }, "ดาวน์โหลดแผนการสอน"),
+            h("span", { key: "text" }, "ดาวน์โหลดแผน (PDF)"),
+          ]),
+          h("button", { className: "lesson-export-button bg-lilac/80", onClick: downloadLessonWord, type: "button", key: "lesson-word" }, [
+            h("span", { "aria-hidden": "true", key: "icon" }, "W"),
+            h("span", { key: "text" }, "ดาวน์โหลดแผน (Word)"),
           ]),
           h("button", { className: "lesson-export-button bg-butter/80", onClick: downloadWorksheet, type: "button", key: "worksheet-download" }, [
             h("span", { "aria-hidden": "true", key: "icon" }, "✎"),
-            h("span", { key: "text" }, "ดาวน์โหลดใบงานตัวอย่าง"),
+            h("span", { key: "text" }, "ดาวน์โหลดใบงาน"),
           ]),
           exportNotice ? h("p", { className: "lesson-export-notice", key: "notice" }, exportNotice) : null,
         ]),
@@ -884,7 +1095,7 @@ function App() {
             h("strong", { key: "value" }, "13 ส่วน"),
           ]),
         ]),
-        h("div", { className: "mt-6 grid gap-4 lg:grid-cols-2", key: "cards" },
+        h("div", { className: "lesson-section-stack mt-6", key: "cards" },
           asArray(lesson).map((section, index) => h(LessonSectionCard, { section, index, key: section.title }))
         ),
       ]),
