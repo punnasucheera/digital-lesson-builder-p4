@@ -165,15 +165,8 @@ const lessonSectionMeta = {
   "ข้อมูลพื้นฐาน": { icon: "clipboard", tone: "bg-mint" },
   "คำศัพท์สำคัญประจำบทเรียน": { icon: "cards", tone: "bg-butter" },
   "จุดประสงค์การเรียนรู้": { icon: "star", tone: "bg-peach" },
-  "Warm-up (ขั้นนำเข้าสู่บทเรียน)": { icon: "spark", tone: "bg-butter" },
-  "Presentation (ขั้นนำเสนอ)": { icon: "book", tone: "bg-skysoft" },
-  "Practice (ขั้นฝึกปฏิบัติ)": { icon: "blocks", tone: "bg-lilac" },
-  "Production (ขั้นนำไปใช้)": { icon: "check", tone: "bg-mint" },
-  "ตัวอย่างบทสนทนา / ประโยคที่ใช้ในกิจกรรม": { icon: "cards", tone: "bg-peach" },
-  "Wrap-up (ขั้นสรุป)": { icon: "check", tone: "bg-mint" },
-  "ขั้นนำเข้าสู่บทเรียน": { icon: "spark", tone: "bg-butter" },
-  "ขั้นจัดกิจกรรมการเรียนรู้ / ขั้นสอน": { icon: "book", tone: "bg-skysoft" },
-  "ขั้นสรุปบทเรียน": { icon: "check", tone: "bg-mint" },
+  "กระบวนการจัดการเรียนรู้แบบ 2W3P": { icon: "book", tone: "bg-skysoft" },
+  "กระบวนการจัดการเรียนรู้": { icon: "book", tone: "bg-skysoft" },
   "สื่อ/อุปกรณ์": { icon: "cards", tone: "bg-peach" },
   "ใบงานตัวอย่าง": { icon: "paper", tone: "bg-butter" },
   "การวัดและประเมินผล": { icon: "clipboard", tone: "bg-mint" },
@@ -295,22 +288,23 @@ function buildLesson(form, templates) {
   const sentenceFrames = makeSentenceFrames(unitFrame.speakingFocus);
   const dialogue = makeDialogue(topic, vocabularyItems);
   const practiceActivity = safeForm.activityType || "ฝึกสนทนาเป็นคู่";
+  const basicInfo = [
+    `รายวิชา: ${safeForm.subject}`,
+    `ระดับชั้น: ${safeForm.gradeLevel}`,
+    `หน่วยการเรียนรู้: หน่วยที่ ${unitFrame.unitNumber} ${safeForm.learningUnit}`,
+    `หัวข้อการเรียน: ${topic}`,
+    `ภาคเรียน: ${unitFrame.semester}`,
+    `เวลาเรียน: ${unitFrame.totalHours} ชั่วโมง`,
+    `ระดับผู้เรียน: ${safeForm.studentLevel}`,
+    `ทักษะที่เน้น: ${safeForm.targetSkill}`,
+    `รูปแบบกิจกรรม: ${practiceActivity}`,
+  ];
 
   if (!isEnglishSubject(safeForm.subject)) {
     return [
       {
         title: "ข้อมูลพื้นฐาน",
-        content: [
-          `รายวิชา: ${safeForm.subject}`,
-          `ระดับชั้น: ${safeForm.gradeLevel}`,
-          `หน่วยการเรียนรู้: หน่วยที่ ${unitFrame.unitNumber} ${safeForm.learningUnit}`,
-          `หัวข้อการเรียน: ${topic}`,
-          `ภาคเรียน: ${unitFrame.semester}`,
-          `เวลาเรียน: ${unitFrame.totalHours} ชั่วโมง`,
-          `ระดับผู้เรียน: ${safeForm.studentLevel}`,
-          `ทักษะที่เน้น: ${safeForm.targetSkill}`,
-          `รูปแบบกิจกรรม: ${practiceActivity}`,
-        ],
+        content: basicInfo,
       },
       {
         title: "จุดประสงค์การเรียนรู้",
@@ -321,27 +315,17 @@ function buildLesson(form, templates) {
         ],
       },
       {
-        title: "ขั้นนำเข้าสู่บทเรียน",
+        title: "กระบวนการจัดการเรียนรู้",
         content: [
-          `ครูเริ่มบทเรียนด้วยการทักทายนักเรียน ตรวจความพร้อม และนำภาพ สิ่งของจริง หรือสถานการณ์ใกล้ตัวที่เกี่ยวข้องกับ “${topic}” มาให้สังเกต`,
+          `ขั้นนำเข้าสู่บทเรียน: ครูเริ่มบทเรียนด้วยการทักทายนักเรียน ตรวจความพร้อม และนำภาพ สิ่งของจริง หรือสถานการณ์ใกล้ตัวที่เกี่ยวข้องกับ “${topic}” มาให้สังเกต`,
           `ครูถามคำถามเชื่อมโยงประสบการณ์เดิม เช่น “นักเรียนเคยพบสิ่งนี้ที่ไหน”, “สิ่งนี้เกี่ยวข้องกับชีวิตประจำวันอย่างไร”, “วันนี้เราจะเรียนรู้เรื่องนี้เพื่อใช้ประโยชน์อะไร”`,
           `ครูรับฟังคำตอบหลายแบบ เขียนคำสำคัญบนกระดาน และชี้แจงเป้าหมายของคาบเรียนด้วยภาษาสั้น กระชับ เป็นมิตร เพื่อให้นักเรียนเข้าใจทิศทางการเรียน`,
-        ],
-      },
-      {
-        title: "ขั้นจัดกิจกรรมการเรียนรู้ / ขั้นสอน",
-        content: [
-          `ครูอธิบายเนื้อหาหลักของ “${topic}” ทีละประเด็น โดยใช้ภาพ ตัวอย่างจริง หรือแผนผังบนกระดานช่วยให้นักเรียนเห็นความสัมพันธ์ของความรู้`,
+          `ขั้นจัดกิจกรรมการเรียนรู้ / ขั้นสอน: ครูอธิบายเนื้อหาหลักของ “${topic}” ทีละประเด็น โดยใช้ภาพ ตัวอย่างจริง หรือแผนผังบนกระดานช่วยให้นักเรียนเห็นความสัมพันธ์ของความรู้`,
           `กิจกรรมที่ 1: สำรวจและตอบคำถาม | ครูแจกภาพหรือใบงานสั้น ๆ ให้นักเรียนสังเกตเป็นคู่ จากนั้นตอบคำถามที่ครูกำหนด ครูเดินดู ช่วยอ่านคำถาม และชวนให้นักเรียนอธิบายเหตุผล`,
           `กิจกรรมที่ 2: ฝึกปฏิบัติแบบมีครูช่วย | ครูสาธิตขั้นตอนก่อน 1 รอบ แล้วให้นักเรียนทำตามทีละขั้น หากนักเรียนสับสน ครูหยุดทบทวนจุดสำคัญและให้เพื่อนช่วยอธิบายอย่างสุภาพ`,
           `กิจกรรมที่ 3: งานกลุ่มย่อย | นักเรียนทำชิ้นงานหรือสรุปคำตอบเป็นกลุ่มเล็ก ครูกำหนดบทบาทง่าย ๆ เช่น ผู้อ่านคำถาม ผู้บันทึกคำตอบ ผู้นำเสนอ เพื่อให้นักเรียนทุกคนมีส่วนร่วม`,
           `คำสั่งครูที่ใช้ได้ทันที: “ให้นักเรียนดูตัวอย่างก่อนนะคะ/ครับ จากนั้นลองทำทีละข้อ หากติดขัดให้ยกมือถาม ครูจะเดินช่วยทุกกลุ่ม”`,
-        ],
-      },
-      {
-        title: "ขั้นสรุปบทเรียน",
-        content: [
-          `ครูชวนนักเรียนทบทวนสิ่งที่เรียนโดยถามคำถาม 3 ข้อ ได้แก่ “วันนี้เรียนเรื่องอะไร”, “สิ่งสำคัญที่สุดคืออะไร”, “นักเรียนจะนำความรู้นี้ไปใช้ได้อย่างไร”`,
+          `ขั้นสรุปบทเรียน: ครูชวนนักเรียนทบทวนสิ่งที่เรียนโดยถามคำถาม 3 ข้อ ได้แก่ “วันนี้เรียนเรื่องอะไร”, “สิ่งสำคัญที่สุดคืออะไร”, “นักเรียนจะนำความรู้นี้ไปใช้ได้อย่างไร”`,
           `นักเรียนสรุปความรู้ด้วย exit ticket แบบสั้น เช่น เขียนคำสำคัญ 1 คำ วาดภาพ 1 ภาพ หรือพูดสรุป 1 ประโยคตามความถนัด`,
           `ครูเฉลยหรือสรุปความเข้าใจที่ถูกต้องบนกระดาน ชมเชยความพยายาม และมอบหมายใบงานหรือภาระงานสั้น ๆ ที่สอดคล้องกับหัวข้อ “${topic}”`,
         ],
@@ -388,17 +372,7 @@ function buildLesson(form, templates) {
   return [
     {
       title: "ข้อมูลพื้นฐาน",
-      content: [
-        `รายวิชา: ${safeForm.subject}`,
-        `ระดับชั้น: ${safeForm.gradeLevel}`,
-        `หน่วยการเรียนรู้: หน่วยที่ ${unitFrame.unitNumber} ${safeForm.learningUnit}`,
-        `หัวข้อการเรียน: ${topic}`,
-        `ภาคเรียน: ${unitFrame.semester}`,
-        `เวลาเรียน: ${unitFrame.totalHours} ชั่วโมง`,
-        `ระดับผู้เรียน: ${safeForm.studentLevel}`,
-        `ทักษะที่เน้น: ${safeForm.targetSkill}`,
-        `รูปแบบกิจกรรม: ${practiceActivity}`,
-      ],
+      content: basicInfo,
     },
     {
       title: "คำศัพท์สำคัญประจำบทเรียน",
@@ -416,61 +390,36 @@ function buildLesson(form, templates) {
       ],
     },
     {
-      title: "Warm-up (ขั้นนำเข้าสู่บทเรียน)",
+      title: "กระบวนการจัดการเรียนรู้แบบ 2W3P",
       content: [
-        `ครูเตรียมบัตรภาพหรือภาพจาก PowerPoint ที่เกี่ยวข้องกับ “${topic}” ติดไว้หน้าห้อง ก่อนเริ่มสอนครูยิ้ม ทักทายนักเรียนด้วยประโยคสั้น ๆ เช่น Good morning, class. และให้นักเรียนตอบ Good morning, teacher.`,
+        `Warm-up (ขั้นนำเข้าสู่บทเรียน): ครูเตรียมบัตรภาพหรือภาพจาก PowerPoint ที่เกี่ยวข้องกับ “${topic}” ติดไว้หน้าห้อง ก่อนเริ่มสอนครูยิ้ม ทักทายนักเรียนด้วยประโยคสั้น ๆ เช่น Good morning, class. และให้นักเรียนตอบ Good morning, teacher.`,
         `ครูเชื่อมโยงความรู้เดิมโดยชูภาพทีละใบแล้วถามเป็นภาษาไทยผสมประโยคอังกฤษง่าย ๆ เช่น “ภาพนี้นักเรียนเคยเห็นไหม”, “What is this?”, “Do you know this word?” หากนักเรียนตอบไม่ได้ ครูให้เดาเป็นภาษาไทยก่อนได้เพื่อสร้างบรรยากาศปลอดภัย`,
         `ครูใช้กิจกรรม “ดูภาพแล้วชี้” โดยพูดคำศัพท์ 3 คำแรก ได้แก่ ${vocabularyWords.slice(0, 3).join(", ")} แล้วให้นักเรียนชี้ภาพที่ตรงกัน จากนั้นครูชมว่า Very good. หรือ Good try. เพื่อกระตุ้นความมั่นใจ`,
         `คำพูดครูที่ใช้ได้ทันที: “วันนี้เราจะเรียนเรื่อง ${topic} เราจะค่อย ๆ ฟัง พูดตาม และลองพูดกับเพื่อน นักเรียนไม่ต้องกลัวผิด ครูจะช่วยทีละขั้นนะคะ/ครับ”`,
         activityFrame.warmUp,
-      ],
-    },
-    {
-      title: "Presentation (ขั้นนำเสนอ)",
-      content: [
-        `ครูนำเสนอคำศัพท์ด้วยลำดับ “ภาพ - คำ - ความหมาย - การออกเสียง” โดยชูบัตรภาพก่อน พูดคำว่า ${vocabularyWords[0] || "hello"} ช้า ๆ 2 ครั้ง ให้นักเรียนดูรูปปาก แล้วพูดตามพร้อมกัน จากนั้นครูบอกความหมายภาษาไทยและใช้ประโยคตัวอย่างสั้น ๆ`,
+        `Presentation (ขั้นนำเสนอ): ครูนำเสนอคำศัพท์ด้วยลำดับ “ภาพ - คำ - ความหมาย - การออกเสียง” โดยชูบัตรภาพก่อน พูดคำว่า ${vocabularyWords[0] || "hello"} ช้า ๆ 2 ครั้ง ให้นักเรียนดูรูปปาก แล้วพูดตามพร้อมกัน จากนั้นครูบอกความหมายภาษาไทยและใช้ประโยคตัวอย่างสั้น ๆ`,
         `แนวทางฝึกออกเสียง: ครูแบ่งคำยาวออกเป็นพยางค์สั้น ๆ ปรบมือกำกับจังหวะ และเน้นเสียงต้นคำ หากนักเรียนออกเสียงไม่ชัด ครูพูดต้นแบบอีกครั้งแทนการตำหนิ`,
         `รูปประโยคหลักบนกระดาน: ${sentenceFrames.slice(0, 4).join(" | ")} ครูเขียนด้วยตัวใหญ่ อ่านนำทีละประโยค แล้วขีดเส้นใต้ช่องที่นักเรียนต้องเปลี่ยนคำ เช่น ___.`,
         `ตัวอย่างการอธิบายของครู: “ประโยค ${sentenceFrames[0] || "This is ___."} ใช้เมื่อเราต้องการพูดสั้น ๆ ให้เพื่อนเข้าใจ ครูจะพูดก่อน นักเรียนฟัง แล้วพูดตามพร้อมกันนะคะ/ครับ”`,
         `ตัวอย่าง board writing: Unit ${unitFrame.unitNumber}: ${safeForm.learningUnit} / Topic: ${topic} / Words: ${vocabularyWords.slice(0, 8).join(", ")} / Pattern: ${sentenceFrames[0] || "This is ___."}`,
         `ครูสาธิตกับนักเรียน 1 คนหน้าชั้นเรียน โดยใช้บัตรภาพจริง ครูถามช้า ๆ นักเรียนตอบด้วยคำหรือประโยคสั้น ๆ จากนั้นครูให้ทั้งห้องพูดซ้ำพร้อมกันเพื่อช่วยผู้เรียนพื้นฐานอ่อน`,
-      ],
-    },
-    {
-      title: "Practice (ขั้นฝึกปฏิบัติ)",
-      content: [
-        `กิจกรรมที่ 1: Listen and Point | จุดประสงค์: ให้นักเรียนฟังคำศัพท์แล้วเชื่อมโยงกับภาพได้ | สื่อ: บัตรภาพ ${vocabularyWords.slice(0, 6).join(", ")} | ขั้นตอน: ครูวางบัตรภาพบนกระดาน พูดคำศัพท์ทีละคำ นักเรียนชี้ภาพพร้อมกัน จากนั้นครูสุ่มให้นักเรียน 3-5 คนออกมาชี้ภาพ ครูพูดว่า Listen carefully. Point to ${vocabularyWords[0] || "the word"}. คำตอบที่คาดหวัง: นักเรียนชี้ภาพถูกต้องและพูดคำศัพท์ตามครู`,
+        `Practice (ขั้นฝึกปฏิบัติ): กิจกรรมที่ 1 Listen and Point | จุดประสงค์: ให้นักเรียนฟังคำศัพท์แล้วเชื่อมโยงกับภาพได้ | สื่อ: บัตรภาพ ${vocabularyWords.slice(0, 6).join(", ")} | ขั้นตอน: ครูวางบัตรภาพบนกระดาน พูดคำศัพท์ทีละคำ นักเรียนชี้ภาพพร้อมกัน จากนั้นครูสุ่มให้นักเรียน 3-5 คนออกมาชี้ภาพ ครูพูดว่า Listen carefully. Point to ${vocabularyWords[0] || "the word"}. คำตอบที่คาดหวัง: นักเรียนชี้ภาพถูกต้องและพูดคำศัพท์ตามครู`,
         `กิจกรรมที่ 2: Repeat and Change | จุดประสงค์: ให้นักเรียนฝึกรูปประโยคโดยเปลี่ยนคำศัพท์ในช่องว่าง | สื่อ: แถบประโยค ${sentenceFrames[0] || "This is ___."} และบัตรคำ | ขั้นตอน: ครูอ่านประโยคต้นแบบ นักเรียนพูดตาม จากนั้นครูเปลี่ยนบัตรคำทีละใบ เช่น ${vocabularyWords.slice(0, 3).join(", ")} นักเรียนพูดประโยคใหม่พร้อมกัน | คำสั่งครู: Repeat after me. Change the word. Try again. | คำตอบที่คาดหวัง: นักเรียนพูดประโยคสั้น ๆ ได้แม้ยังต้องดูบัตรช่วย`,
         `กิจกรรมที่ 3: Guided Pair Drill | จุดประสงค์: ให้นักเรียนฝึกถาม-ตอบกับเพื่อนภายใต้กรอบที่ครูกำหนด | สื่อ: บัตรบทสนทนาและบัตรภาพ | ขั้นตอน: ครูจับคู่ให้นักเรียน คนที่ 1 ถือบัตรคำถาม คนที่ 2 ถือบัตรภาพ ครูให้ซ้อมพร้อมกันทั้งห้องก่อน 1 รอบ แล้วให้นักเรียนฝึกเป็นคู่ 3 นาที ครูเดินฟังและช่วยออกเสียง | การช่วยผู้เรียนอ่อน: ให้พูดเฉพาะคำตอบสั้น ๆ ก่อน เช่น ${vocabularyWords[0] || "hello"} แล้วค่อยเพิ่มเป็นประโยค`,
         `กิจกรรมจากโครงสร้างหลักสูตร: ${unitFrame.classroomActivities[0] || activityFrame.classroomActivity}`,
-      ],
-    },
-    {
-      title: "Production (ขั้นนำไปใช้)",
-      content: [
-        `กิจกรรมสื่อสาร: Mini Communication Task | นักเรียนใช้ภาษาอย่างอิสระมากขึ้นผ่าน ${practiceActivity} โดยครูจัดคู่หรือกลุ่มเล็ก 3-4 คน เพื่อให้เด็กได้พูดหลายครั้งในบรรยากาศเป็นกันเอง`,
+        `Production (ขั้นนำไปใช้): กิจกรรมสื่อสาร Mini Communication Task | นักเรียนใช้ภาษาอย่างอิสระมากขึ้นผ่าน ${practiceActivity} โดยครูจัดคู่หรือกลุ่มเล็ก 3-4 คน เพื่อให้เด็กได้พูดหลายครั้งในบรรยากาศเป็นกันเอง`,
         `ขั้นตอนกิจกรรม: 1. ครูสาธิตบทสนทนากับนักเรียน 1 คนหน้าชั้นเรียน 2. นักเรียนจับคู่และเลือกบัตรภาพ 2 ใบ 3. นักเรียนใช้กรอบประโยค ${sentenceFrames.slice(0, 2).join(" / ")} พูดกับเพื่อน 4. นักเรียนสลับบทบาท 5. ครูสุ่มคู่ที่พร้อมออกมานำเสนอหน้าชั้นโดยไม่บังคับผู้เรียนที่ยังไม่มั่นใจ`,
         `คำสั่งครู: Work in pairs. Speak slowly. You can look at the sentence card. If you need help, raise your hand.`,
         `สิ่งที่นักเรียนทำ: นักเรียนเลือกคำศัพท์จากบัตรภาพ ถาม-ตอบกับเพื่อนตามกรอบประโยค และพยายามใช้เสียงดังพอให้คู่ของตนได้ยิน`,
         `เวอร์ชันง่ายสำหรับผู้เรียนพื้นฐานอ่อน: นักเรียนพูดเฉพาะคำศัพท์และประโยคสั้นที่สุด เช่น ${sentenceFrames[0] || "This is ___."} โดยครูหรือเพื่อนช่วยชี้บัตรคำประกอบ`,
-      ],
-    },
-    {
-      title: "Wrap-up (ขั้นสรุป)",
-      content: [
-        `ครูทบทวนคำศัพท์โดยชูบัตรภาพแบบเร็ว 5-8 ใบ ให้นักเรียนตอบพร้อมกัน หากตอบไม่ได้ให้ครูออกเสียงต้นคำและให้ทั้งห้องช่วยกันพูด ไม่ควรเฉลยทันทีเพื่อเปิดโอกาสให้เด็กคิด`,
+        ...dialogue,
+        `Question patterns: ${sentenceFrames.filter((frame) => frame.includes("?")).join(" / ") || "What is this? / Do you like ___?"}`,
+        `Answer patterns: ${sentenceFrames.filter((frame) => !frame.includes("?")).slice(0, 4).join(" / ")}`,
+        `Wrap-up (ขั้นสรุป): ครูทบทวนคำศัพท์โดยชูบัตรภาพแบบเร็ว 5-8 ใบ ให้นักเรียนตอบพร้อมกัน หากตอบไม่ได้ให้ครูออกเสียงต้นคำและให้ทั้งห้องช่วยกันพูด ไม่ควรเฉลยทันทีเพื่อเปิดโอกาสให้เด็กคิด`,
         `ครูทบทวนรูปประโยคบนกระดานโดยลบคำบางคำออก เช่น ${sentenceFrames[0] || "This is ___."} แล้วให้นักเรียนเติมคำจากภาพ ครูถามคำถามตรวจความเข้าใจ เช่น “คำนี้แปลว่าอะไร”, “ประโยคนี้ใช้พูดกับใคร”, “ถ้าจะเปลี่ยนเป็นคำว่า ${vocabularyWords[1] || "book"} ต้องพูดอย่างไร”`,
         `นักเรียนสรุปการเรียนรู้ด้วย exit ticket แบบปากเปล่า: พูดคำศัพท์ 1 คำ และประโยค 1 ประโยคก่อนออกจากห้อง หรือเขียนลงกระดาษเล็ก ๆ หากเน้นการเขียน`,
         `ครูมอบหมายใบงานหรือการบ้านสั้น ๆ ให้จับคู่คำศัพท์กับภาพ เติมคำในประโยค และวาดภาพประกอบคำศัพท์ 1 คำ โดยเน้นความเข้าใจมากกว่าการสะกดที่สมบูรณ์`,
         ...activityFrame.summary,
-      ],
-    },
-    {
-      title: "ตัวอย่างบทสนทนา / ประโยคที่ใช้ในกิจกรรม",
-      content: [
-        ...dialogue,
-        `Question patterns: ${sentenceFrames.filter((frame) => frame.includes("?")).join(" / ") || "What is this? / Do you like ___?"}`,
-        `Answer patterns: ${sentenceFrames.filter((frame) => !frame.includes("?")).slice(0, 4).join(" / ")}`,
       ],
     },
     {
@@ -595,23 +544,29 @@ function ClassroomIcon({ type }) {
 
 function LessonSectionCard({ section, index }) {
   const meta = lessonSectionMeta[section.title] || { icon: String(index + 1), tone: pastelTabs[index % pastelTabs.length] };
+  const isVocabularySection = section.title === "คำศัพท์สำคัญประจำบทเรียน";
 
   return h("article", { className: "lesson-section-card", key: section.title }, [
     h("div", { className: "mb-4 flex items-center gap-3", key: "heading" }, [
       h(TextIcon, { tone: meta.tone, key: "icon" }, h(ClassroomIcon, { type: meta.icon })),
       h("div", { key: "heading-text" }, [
-        h("p", { className: "text-xs font-black uppercase text-slate-400", key: "step" }, `ส่วนที่ ${index + 1}`),
         h("h3", { className: "font-display text-xl font-black leading-snug text-ink", key: "title" }, section.title),
       ]),
     ]),
-    h("ul", { className: "space-y-3 text-sm leading-7 text-slate-600", key: "items" },
-      asArray(section.content, ["ยังไม่มีข้อมูลในส่วนนี้"]).map((item, itemIndex) =>
-        h("li", { className: "lesson-section-item", key: `${section.title}-${itemIndex}` }, [
-          h("span", { className: "lesson-dot", "aria-hidden": "true", key: "dot" }),
-          h("span", { key: "text" }, item),
-        ])
+    isVocabularySection
+      ? h("div", { className: "vocabulary-chip-list", key: "vocab" },
+        asArray(section.content, ["ยังไม่มีข้อมูลในส่วนนี้"]).map((item, itemIndex) =>
+          h("span", { className: "vocabulary-chip", key: `${section.title}-${itemIndex}` }, item)
+        )
       )
-    ),
+      : h("ul", { className: "space-y-3 text-sm leading-7 text-slate-600", key: "items" },
+        asArray(section.content, ["ยังไม่มีข้อมูลในส่วนนี้"]).map((item, itemIndex) =>
+          h("li", { className: "lesson-section-item", key: `${section.title}-${itemIndex}` }, [
+            h("span", { className: "lesson-dot", "aria-hidden": "true", key: "dot" }),
+            h("span", { key: "text" }, item),
+          ])
+        )
+      ),
   ]);
 }
 
@@ -620,7 +575,7 @@ function getLessonSection(lesson, title) {
 }
 
 function formatList(items) {
-  return asArray(items, ["ยังไม่มีข้อมูลในส่วนนี้"]).map((item, index) => `${index + 1}. ${item}`).join("\n");
+  return asArray(items, ["ยังไม่มีข้อมูลในส่วนนี้"]).map((item) => `• ${item}`).join("\n");
 }
 
 function safeFilename(value) {
@@ -740,10 +695,10 @@ function buildLessonPlanHtml({ form, lesson, selectedUnit }) {
   const sections = asArray(lesson);
   const sectionHtml = sections.map((section, index) => `
     <section class="lesson-section">
-      <h2>${index + 1}. ${escapeHtml(section.title)}</h2>
-      <ol>
+      <h2>${escapeHtml(section.title)}</h2>
+      <ul>
         ${asArray(section.content, ["ยังไม่มีข้อมูลในส่วนนี้"]).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
-      </ol>
+      </ul>
     </section>
   `).join("");
 

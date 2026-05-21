@@ -434,6 +434,26 @@ textarea {
   font-size: clamp(1.25rem, 2vw, 1.65rem);
 }
 
+.vocabulary-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.vocabulary-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  background: rgba(255, 241, 184, 0.68);
+  color: #39415a;
+  font-size: 0.95rem;
+  font-weight: 900;
+  line-height: 1.35;
+  padding: 0.58rem 0.9rem;
+  box-shadow: 0 8px 18px rgba(85, 99, 132, 0.09);
+}
+
 .lesson-section-card::after {
   position: absolute;
   right: -1.6rem;
