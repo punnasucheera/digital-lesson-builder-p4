@@ -1,0 +1,417 @@
+{
+  "prototypeScope": {
+    "gradeLevel": "Grade 4",
+    "subject": "Fundamental English",
+    "note": "Curriculum structure for Thai Grade 4 learners with weak English foundations. Units are organized by semester and designed for simple vocabulary, short sentence patterns, and confidence-building classroom practice."
+  },
+  "fieldOptions": {
+    "gradeLevels": ["Grade 4"],
+    "subjects": ["Fundamental English"],
+    "learningUnits": [
+      "Hello English!",
+      "ABC Sounds Fun",
+      "English in My Classroom",
+      "My Family",
+      "Colors & Numbers",
+      "Animals Around Me",
+      "My Daily Life",
+      "Food I Like",
+      "Around My School",
+      "Fun Activities",
+      "Weather & Feelings",
+      "Mini Conversations"
+    ],
+    "studentLevels": ["Very Basic", "Basic", "Growing Confidence"],
+    "targetSkills": ["Speaking", "Vocabulary", "Listening", "Reading", "Writing"],
+    "activityTypes": ["Chant and Repeat", "Pair Practice", "Picture Game", "Role Play", "Worksheet Practice"]
+  },
+  "lessonFrames": {
+    "Hello English!": {
+      "semester": "Semester 1",
+      "unitNumber": 1,
+      "totalHours": 4,
+      "topics": ["Hello and Goodbye", "My Name Is...", "Nice to Meet You"],
+      "lessonProgression": [
+        "Listen and repeat greetings with gestures.",
+        "Practice name sentences: My name is ___.",
+        "Ask and answer: What is your name?",
+        "Use greetings in a short classroom mingle."
+      ],
+      "vocabulary": ["hello", "hi", "goodbye", "teacher", "friend", "name"],
+      "speakingFocus": ["Hello.", "Goodbye.", "My name is ___.", "What is your name?", "Nice to meet you."],
+      "classroomActivities": [
+        "Greeting circle with teacher modeling and student echo practice.",
+        "Name card walk-around where students greet three friends.",
+        "Simple greeting chant with claps and gestures."
+      ],
+      "worksheetIdeas": [
+        "Trace and match greeting words to pictures.",
+        "Complete: My name is ___.",
+        "Draw yourself and write one greeting sentence."
+      ],
+      "assessmentIdeas": [
+        "Students greet the teacher and say their name.",
+        "Teacher checks pronunciation and confidence using a smile checklist.",
+        "Exit ticket: match hello and goodbye pictures."
+      ],
+      "media": ["greeting flashcards", "name cards", "simple greeting chant audio"]
+    },
+    "ABC Sounds Fun": {
+      "semester": "Semester 1",
+      "unitNumber": 2,
+      "totalHours": 5,
+      "topics": ["A-Z Letter Names", "Beginning Sounds", "My ABC Words"],
+      "lessonProgression": [
+        "Sing or chant the alphabet slowly.",
+        "Match uppercase and lowercase letters.",
+        "Listen for beginning sounds in easy words.",
+        "Say simple ABC words with pictures."
+      ],
+      "vocabulary": ["apple", "book", "cat", "dog", "egg", "fish"],
+      "speakingFocus": ["A is for apple.", "B is for book.", "What letter is it?", "It is A."],
+      "classroomActivities": [
+        "Alphabet card race with teacher support.",
+        "Beginning sound picture sort.",
+        "ABC mini-book reading in pairs."
+      ],
+      "worksheetIdeas": [
+        "Match uppercase letters to lowercase letters.",
+        "Circle the picture that starts with the target sound.",
+        "Write one easy word for each letter group."
+      ],
+      "assessmentIdeas": [
+        "Students identify 5 letter sounds from flashcards.",
+        "Students say one sentence: A is for apple.",
+        "Teacher checks letter recognition and sound awareness."
+      ],
+      "media": ["alphabet cards", "phonics picture cards", "ABC song or chant"]
+    },
+    "English in My Classroom": {
+      "semester": "Semester 1",
+      "unitNumber": 3,
+      "totalHours": 4,
+      "topics": ["Classroom Objects", "Classroom Commands", "Polite Classroom English"],
+      "lessonProgression": [
+        "Name common classroom objects.",
+        "Listen and respond to simple commands.",
+        "Practice polite classroom phrases.",
+        "Use classroom English during a short task."
+      ],
+      "vocabulary": ["book", "pencil", "desk", "chair", "open", "close"],
+      "speakingFocus": ["This is a book.", "Open your book.", "May I go out?", "Please.", "Thank you."],
+      "classroomActivities": [
+        "Classroom object hunt with picture clues.",
+        "Teacher says, students do command game.",
+        "Polite phrase role play with classroom situations."
+      ],
+      "worksheetIdeas": [
+        "Label classroom objects.",
+        "Match commands to pictures.",
+        "Complete polite classroom sentences."
+      ],
+      "assessmentIdeas": [
+        "Students point to and name 4 classroom objects.",
+        "Students follow 3 teacher commands.",
+        "Teacher listens for polite phrase use during practice."
+      ],
+      "media": ["real classroom objects", "command cards", "classroom phrase poster"]
+    },
+    "My Family": {
+      "semester": "Semester 1",
+      "unitNumber": 4,
+      "totalHours": 5,
+      "topics": ["Family Members", "This Is My...", "My Family Tree"],
+      "lessonProgression": [
+        "Learn family member words with pictures.",
+        "Practice: This is my mother/father.",
+        "Ask and answer: Who is this?",
+        "Create and present a simple family tree."
+      ],
+      "vocabulary": ["mother", "father", "brother", "sister", "grandmother", "grandfather"],
+      "speakingFocus": ["This is my mother.", "Who is this?", "This is my family.", "I love my family."],
+      "classroomActivities": [
+        "Family flashcard matching game.",
+        "Pair practice with family pictures.",
+        "Draw-and-tell family tree activity."
+      ],
+      "worksheetIdeas": [
+        "Match family words with pictures.",
+        "Fill in: This is my ___.",
+        "Draw a family tree and label 4 people."
+      ],
+      "assessmentIdeas": [
+        "Students introduce 2 family members using simple sentences.",
+        "Teacher checks vocabulary matching accuracy.",
+        "Students answer: Who is this?"
+      ],
+      "media": ["family flashcards", "family tree template", "sentence strip cards"]
+    },
+    "Colors & Numbers": {
+      "semester": "Semester 1",
+      "unitNumber": 5,
+      "totalHours": 5,
+      "topics": ["Basic Colors", "Numbers 1-20", "How Many?"],
+      "lessonProgression": [
+        "Review colors with real objects.",
+        "Count numbers 1-20 with actions.",
+        "Ask and answer: What color is it?",
+        "Ask and answer: How many?"
+      ],
+      "vocabulary": ["red", "blue", "green", "yellow", "one", "two", "ten", "twenty"],
+      "speakingFocus": ["It is red.", "What color is it?", "How many pencils?", "There are five."],
+      "classroomActivities": [
+        "Color touch game around the classroom.",
+        "Number clap and count chant.",
+        "Count-and-color pair worksheet challenge."
+      ],
+      "worksheetIdeas": [
+        "Color the objects by English color words.",
+        "Count and write the number word.",
+        "Complete: There are ___ apples."
+      ],
+      "assessmentIdeas": [
+        "Students name 5 colors from cards.",
+        "Students count objects up to 20.",
+        "Students answer one How many question."
+      ],
+      "media": ["color cards", "number cards 1-20", "counting objects"]
+    },
+    "Animals Around Me": {
+      "semester": "Semester 1",
+      "unitNumber": 6,
+      "totalHours": 5,
+      "topics": ["Pet Animals", "Farm Animals", "Animal Actions"],
+      "lessonProgression": [
+        "Name familiar animals from pictures.",
+        "Sort animals into pet and farm groups.",
+        "Practice animal action words.",
+        "Say what an animal can do."
+      ],
+      "vocabulary": ["cat", "dog", "bird", "fish", "cow", "chicken", "run", "fly"],
+      "speakingFocus": ["It is a cat.", "I like dogs.", "A bird can fly.", "Can it swim?"],
+      "classroomActivities": [
+        "Animal sound guessing game.",
+        "Pet or farm sorting activity.",
+        "Animal action charades."
+      ],
+      "worksheetIdeas": [
+        "Match animals to names.",
+        "Sort animals into two groups.",
+        "Complete: A ___ can ___."
+      ],
+      "assessmentIdeas": [
+        "Students name 4 animals from pictures.",
+        "Students say one animal action sentence.",
+        "Teacher checks sorting and simple sentence use."
+      ],
+      "media": ["animal flashcards", "animal sound clips", "sorting mats"]
+    },
+    "My Daily Life": {
+      "semester": "Semester 2",
+      "unitNumber": 7,
+      "totalHours": 5,
+      "topics": ["Morning Routine", "After School", "My Day"],
+      "lessonProgression": [
+        "Learn daily routine verbs with actions.",
+        "Sequence routine pictures.",
+        "Practice: I wake up. I go to school.",
+        "Tell a short daily routine with picture support."
+      ],
+      "vocabulary": ["wake up", "brush my teeth", "eat breakfast", "go to school", "do homework", "sleep"],
+      "speakingFocus": ["I wake up.", "I go to school.", "What do you do?", "I do homework."],
+      "classroomActivities": [
+        "Routine action chant.",
+        "Picture sequencing in small groups.",
+        "Pair interview about daily routine."
+      ],
+      "worksheetIdeas": [
+        "Number the daily routine pictures.",
+        "Match verbs to pictures.",
+        "Complete: I ___ in the morning."
+      ],
+      "assessmentIdeas": [
+        "Students put 4 routine cards in order.",
+        "Students say 2 daily routine sentences.",
+        "Teacher checks use of I + verb pattern."
+      ],
+      "media": ["routine picture cards", "daily routine timeline", "action chant audio"]
+    },
+    "Food I Like": {
+      "semester": "Semester 2",
+      "unitNumber": 8,
+      "totalHours": 5,
+      "topics": ["Food Words", "I Like / I Don't Like", "My Lunchbox"],
+      "lessonProgression": [
+        "Name common food and drinks.",
+        "Practice likes and dislikes.",
+        "Ask and answer about favorite food.",
+        "Create a simple lunchbox menu."
+      ],
+      "vocabulary": ["rice", "egg", "milk", "water", "fruit", "bread", "like", "don't like"],
+      "speakingFocus": ["I like rice.", "I don't like milk.", "Do you like fruit?", "Yes, I do.", "No, I don't."],
+      "classroomActivities": [
+        "Food flashcard yes/no corners.",
+        "Favorite food pair survey.",
+        "Design my lunchbox activity."
+      ],
+      "worksheetIdeas": [
+        "Match food pictures to words.",
+        "Tick I like or I don't like.",
+        "Draw a lunchbox and write 3 food words."
+      ],
+      "assessmentIdeas": [
+        "Students say one like and one don't like sentence.",
+        "Students ask a friend: Do you like ___?",
+        "Teacher checks food vocabulary recognition."
+      ],
+      "media": ["food flashcards", "lunchbox worksheet", "yes/no cards"]
+    },
+    "Around My School": {
+      "semester": "Semester 2",
+      "unitNumber": 9,
+      "totalHours": 4,
+      "topics": ["Places at School", "Where Is It?", "School Map"],
+      "lessonProgression": [
+        "Name common places at school.",
+        "Practice prepositions with simple pictures.",
+        "Ask: Where is the library?",
+        "Use a school map to give simple answers."
+      ],
+      "vocabulary": ["classroom", "library", "canteen", "playground", "office", "near", "next to"],
+      "speakingFocus": ["Where is the library?", "It is near the classroom.", "This is the canteen."],
+      "classroomActivities": [
+        "School place picture walk.",
+        "Map pointing pair practice.",
+        "Find the place guessing game."
+      ],
+      "worksheetIdeas": [
+        "Label places on a simple school map.",
+        "Match questions with answers.",
+        "Complete: The library is near the ___."
+      ],
+      "assessmentIdeas": [
+        "Students name 4 school places.",
+        "Students answer one Where is it question.",
+        "Teacher checks map vocabulary and simple preposition use."
+      ],
+      "media": ["school map poster", "school place cards", "preposition picture cards"]
+    },
+    "Fun Activities": {
+      "semester": "Semester 2",
+      "unitNumber": 10,
+      "totalHours": 4,
+      "topics": ["Things I Can Do", "Sports and Hobbies", "Can / Can't"],
+      "lessonProgression": [
+        "Learn action words through movement.",
+        "Practice can and can't with gestures.",
+        "Ask and answer about abilities.",
+        "Make a mini poster: I can ___."
+      ],
+      "vocabulary": ["run", "jump", "swim", "sing", "dance", "draw", "can", "can't"],
+      "speakingFocus": ["I can run.", "I can't swim.", "Can you sing?", "Yes, I can.", "No, I can't."],
+      "classroomActivities": [
+        "Action command game.",
+        "Can you? pair interview.",
+        "Ability poster gallery walk."
+      ],
+      "worksheetIdeas": [
+        "Match action words to pictures.",
+        "Circle can or can't.",
+        "Write and draw: I can ___."
+      ],
+      "assessmentIdeas": [
+        "Students act and say 3 action words.",
+        "Students answer one Can you question.",
+        "Teacher checks correct use of can/can't."
+      ],
+      "media": ["action cards", "can/can't cards", "mini poster template"]
+    },
+    "Weather & Feelings": {
+      "semester": "Semester 2",
+      "unitNumber": 11,
+      "totalHours": 5,
+      "topics": ["Today's Weather", "How Do You Feel?", "Weather and Feelings"],
+      "lessonProgression": [
+        "Name common weather words.",
+        "Practice simple feeling words.",
+        "Ask and answer weather and feeling questions.",
+        "Create a daily weather and feeling chart."
+      ],
+      "vocabulary": ["sunny", "rainy", "cloudy", "windy", "happy", "sad", "tired", "hot"],
+      "speakingFocus": ["How is the weather?", "It is sunny.", "How do you feel?", "I feel happy."],
+      "classroomActivities": [
+        "Weather wheel speaking practice.",
+        "Feelings face matching game.",
+        "Daily weather reporter role play."
+      ],
+      "worksheetIdeas": [
+        "Match weather words to pictures.",
+        "Draw a feeling face and complete: I feel ___.",
+        "Fill in a simple weather chart."
+      ],
+      "assessmentIdeas": [
+        "Students answer: How is the weather?",
+        "Students say one feeling sentence.",
+        "Teacher checks weather and feeling vocabulary."
+      ],
+      "media": ["weather wheel", "feelings face cards", "weather chart"]
+    },
+    "Mini Conversations": {
+      "semester": "Semester 2",
+      "unitNumber": 12,
+      "totalHours": 4,
+      "topics": ["Review Greetings", "Ask and Answer", "Short Role Play"],
+      "lessonProgression": [
+        "Review greetings, names, likes, and classroom phrases.",
+        "Practice short question and answer patterns.",
+        "Build a 3-line conversation with sentence cards.",
+        "Perform a mini conversation with a partner."
+      ],
+      "vocabulary": ["hello", "name", "like", "can", "weather", "thank you"],
+      "speakingFocus": ["Hello.", "What is your name?", "Do you like ___?", "Can you ___?", "Thank you."],
+      "classroomActivities": [
+        "Conversation card matching.",
+        "Pair role play with sentence frames.",
+        "Mini conversation performance circle."
+      ],
+      "worksheetIdeas": [
+        "Put conversation lines in order.",
+        "Choose the best answer for each question.",
+        "Write a 3-line conversation with a partner."
+      ],
+      "assessmentIdeas": [
+        "Students perform a 3-line conversation.",
+        "Teacher checks turn-taking and clear pronunciation.",
+        "Students self-check with a simple I can speak checklist."
+      ],
+      "media": ["conversation strips", "role cards", "I can speak checklist"]
+    }
+  },
+  "activityTemplates": {
+    "Chant and Repeat": {
+      "warmUp": "Start with a slow chant. Students listen first, then repeat with claps and gestures.",
+      "classroomActivity": "Students repeat the target words and sentence pattern in small groups, then try one sentence by themselves.",
+      "assessment": "Teacher checks if students can repeat the key words clearly and say one short sentence with support."
+    },
+    "Pair Practice": {
+      "warmUp": "Model one easy question and answer with a confident student, then let the class repeat together.",
+      "classroomActivity": "Students practice the sentence frame with a partner using picture cards and substitution words.",
+      "assessment": "Teacher listens to pairs and checks turn-taking, pronunciation, and use of the sentence frame."
+    },
+    "Picture Game": {
+      "warmUp": "Show picture cards quickly and let students guess the English word with teacher support.",
+      "classroomActivity": "Students play a simple matching or guessing game using pictures, words, and short answers.",
+      "assessment": "Students identify at least four picture words and say one sentence from the lesson."
+    },
+    "Role Play": {
+      "warmUp": "Teacher acts out a simple classroom situation and asks students to repeat useful lines.",
+      "classroomActivity": "Students use role cards to practice a short and friendly conversation with a partner.",
+      "assessment": "Teacher uses a simple checklist for speaking clearly, using key phrases, and responding politely."
+    },
+    "Worksheet Practice": {
+      "warmUp": "Review the target words with flashcards before students open the worksheet.",
+      "classroomActivity": "Students complete a guided worksheet, check answers with a partner, and say one answer aloud.",
+      "assessment": "Teacher checks vocabulary matching, sentence completion, and student confidence during oral checking."
+    }
+  }
+}
