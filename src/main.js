@@ -169,12 +169,12 @@ const lessonSectionMeta = {
   "Presentation (ขั้นนำเสนอ)": { icon: "book", tone: "bg-skysoft" },
   "Practice (ขั้นฝึกปฏิบัติ)": { icon: "blocks", tone: "bg-lilac" },
   "Production (ขั้นนำไปใช้)": { icon: "check", tone: "bg-mint" },
-  "ตัวอย่างบทสนทนา/ประโยคที่ใช้ในกิจกรรม": { icon: "cards", tone: "bg-peach" },
+  "ตัวอย่างบทสนทนา / ประโยคที่ใช้ในกิจกรรม": { icon: "cards", tone: "bg-peach" },
   "Wrap-up (ขั้นสรุป)": { icon: "check", tone: "bg-mint" },
   "ขั้นนำเข้าสู่บทเรียน": { icon: "spark", tone: "bg-butter" },
-  "ขั้นกิจกรรมการเรียนรู้ / ขั้นสอน": { icon: "book", tone: "bg-skysoft" },
-  "ขั้นสรุป": { icon: "check", tone: "bg-mint" },
-  "สื่อการสอน": { icon: "cards", tone: "bg-peach" },
+  "ขั้นจัดกิจกรรมการเรียนรู้ / ขั้นสอน": { icon: "book", tone: "bg-skysoft" },
+  "ขั้นสรุปบทเรียน": { icon: "check", tone: "bg-mint" },
+  "สื่อ/อุปกรณ์": { icon: "cards", tone: "bg-peach" },
   "ใบงานตัวอย่าง": { icon: "paper", tone: "bg-butter" },
   "การวัดและประเมินผล": { icon: "clipboard", tone: "bg-mint" },
   "ข้อเสนอแนะสำหรับครู": { icon: "star", tone: "bg-lilac" },
@@ -301,11 +301,15 @@ function buildLesson(form, templates) {
       {
         title: "ข้อมูลพื้นฐาน",
         content: [
-          `ชื่อระบบ: MKL Digital Lesson Builder ระบบช่วยออกแบบการจัดการเรียนรู้ดิจิทัลด้วย AI`,
-          `รายวิชา: ${safeForm.subject} | ระดับชั้น: ${safeForm.gradeLevel}`,
-          `หน่วยการเรียนรู้: หน่วยที่ ${unitFrame.unitNumber} ${safeForm.learningUnit} | หัวข้อที่เรียน: ${topic}`,
-          `ภาคเรียน: ${unitFrame.semester} | เวลาเรียนของหน่วยนี้: ${unitFrame.totalHours} ชั่วโมง | ระดับผู้เรียน: ${safeForm.studentLevel}`,
-          `ทักษะที่เน้น: ${safeForm.targetSkill} | รูปแบบกิจกรรมหลัก: ${practiceActivity}`,
+          `รายวิชา: ${safeForm.subject}`,
+          `ระดับชั้น: ${safeForm.gradeLevel}`,
+          `หน่วยการเรียนรู้: หน่วยที่ ${unitFrame.unitNumber} ${safeForm.learningUnit}`,
+          `หัวข้อการเรียน: ${topic}`,
+          `ภาคเรียน: ${unitFrame.semester}`,
+          `เวลาเรียน: ${unitFrame.totalHours} ชั่วโมง`,
+          `ระดับผู้เรียน: ${safeForm.studentLevel}`,
+          `ทักษะที่เน้น: ${safeForm.targetSkill}`,
+          `รูปแบบกิจกรรม: ${practiceActivity}`,
         ],
       },
       {
@@ -325,7 +329,7 @@ function buildLesson(form, templates) {
         ],
       },
       {
-        title: "ขั้นกิจกรรมการเรียนรู้ / ขั้นสอน",
+        title: "ขั้นจัดกิจกรรมการเรียนรู้ / ขั้นสอน",
         content: [
           `ครูอธิบายเนื้อหาหลักของ “${topic}” ทีละประเด็น โดยใช้ภาพ ตัวอย่างจริง หรือแผนผังบนกระดานช่วยให้นักเรียนเห็นความสัมพันธ์ของความรู้`,
           `กิจกรรมที่ 1: สำรวจและตอบคำถาม | ครูแจกภาพหรือใบงานสั้น ๆ ให้นักเรียนสังเกตเป็นคู่ จากนั้นตอบคำถามที่ครูกำหนด ครูเดินดู ช่วยอ่านคำถาม และชวนให้นักเรียนอธิบายเหตุผล`,
@@ -335,7 +339,7 @@ function buildLesson(form, templates) {
         ],
       },
       {
-        title: "ขั้นสรุป",
+        title: "ขั้นสรุปบทเรียน",
         content: [
           `ครูชวนนักเรียนทบทวนสิ่งที่เรียนโดยถามคำถาม 3 ข้อ ได้แก่ “วันนี้เรียนเรื่องอะไร”, “สิ่งสำคัญที่สุดคืออะไร”, “นักเรียนจะนำความรู้นี้ไปใช้ได้อย่างไร”`,
           `นักเรียนสรุปความรู้ด้วย exit ticket แบบสั้น เช่น เขียนคำสำคัญ 1 คำ วาดภาพ 1 ภาพ หรือพูดสรุป 1 ประโยคตามความถนัด`,
@@ -343,7 +347,7 @@ function buildLesson(form, templates) {
         ],
       },
       {
-        title: "สื่อการสอน",
+        title: "สื่อ/อุปกรณ์",
         content: [
           "ภาพประกอบหรือบัตรภาพที่เกี่ยวข้องกับหัวข้อ",
           "ใบงานหนึ่งหน้า สำหรับสำรวจ ตอบคำถาม และสรุปความเข้าใจ",
@@ -385,18 +389,21 @@ function buildLesson(form, templates) {
     {
       title: "ข้อมูลพื้นฐาน",
       content: [
-        `ชื่อระบบ: MKL Digital Lesson Builder ระบบช่วยออกแบบการจัดการเรียนรู้ดิจิทัลด้วย AI`,
-        `รายวิชา: ${safeForm.subject} | ระดับชั้น: ${safeForm.gradeLevel}`,
-        `หน่วยการเรียนรู้: หน่วยที่ ${unitFrame.unitNumber} ${safeForm.learningUnit} | หัวข้อที่เรียน: ${topic}`,
-        `ภาคเรียน: ${unitFrame.semester} | เวลาเรียนของหน่วยนี้: ${unitFrame.totalHours} ชั่วโมง | ระดับผู้เรียน: ${safeForm.studentLevel}`,
-        `ทักษะที่เน้น: ${safeForm.targetSkill} | รูปแบบกิจกรรมหลัก: ${practiceActivity}`,
+        `รายวิชา: ${safeForm.subject}`,
+        `ระดับชั้น: ${safeForm.gradeLevel}`,
+        `หน่วยการเรียนรู้: หน่วยที่ ${unitFrame.unitNumber} ${safeForm.learningUnit}`,
+        `หัวข้อการเรียน: ${topic}`,
+        `ภาคเรียน: ${unitFrame.semester}`,
+        `เวลาเรียน: ${unitFrame.totalHours} ชั่วโมง`,
+        `ระดับผู้เรียน: ${safeForm.studentLevel}`,
+        `ทักษะที่เน้น: ${safeForm.targetSkill}`,
+        `รูปแบบกิจกรรม: ${practiceActivity}`,
       ],
     },
     {
       title: "คำศัพท์สำคัญประจำบทเรียน",
       content: [
-        `ครูใช้คำศัพท์ครบชุดตามหัวข้อ “${topic}” โดยเริ่มจากการชี้ภาพหรือสิ่งของจริง อ่านออกเสียงทีละคำ ให้นักเรียนฟัง 1 รอบ พูดตามพร้อมกัน 2 รอบ และสุ่มพูดเป็นรายบุคคลอย่างนุ่มนวล`,
-        ...vocabularyItems.map((item, index) => `${index + 1}. ${item.word} = ${item.meaning} | ตัวอย่าง: ${item.example}`),
+        ...vocabularyItems.map((item) => `${item.word} = ${item.meaning}`),
       ],
     },
     {
@@ -449,14 +456,6 @@ function buildLesson(form, templates) {
       ],
     },
     {
-      title: "ตัวอย่างบทสนทนา/ประโยคที่ใช้ในกิจกรรม",
-      content: [
-        ...dialogue,
-        `Question patterns: ${sentenceFrames.filter((frame) => frame.includes("?")).join(" / ") || "What is this? / Do you like ___?"}`,
-        `Answer patterns: ${sentenceFrames.filter((frame) => !frame.includes("?")).slice(0, 4).join(" / ")}`,
-      ],
-    },
-    {
       title: "Wrap-up (ขั้นสรุป)",
       content: [
         `ครูทบทวนคำศัพท์โดยชูบัตรภาพแบบเร็ว 5-8 ใบ ให้นักเรียนตอบพร้อมกัน หากตอบไม่ได้ให้ครูออกเสียงต้นคำและให้ทั้งห้องช่วยกันพูด ไม่ควรเฉลยทันทีเพื่อเปิดโอกาสให้เด็กคิด`,
@@ -467,7 +466,15 @@ function buildLesson(form, templates) {
       ],
     },
     {
-      title: "สื่อการสอน",
+      title: "ตัวอย่างบทสนทนา / ประโยคที่ใช้ในกิจกรรม",
+      content: [
+        ...dialogue,
+        `Question patterns: ${sentenceFrames.filter((frame) => frame.includes("?")).join(" / ") || "What is this? / Do you like ___?"}`,
+        `Answer patterns: ${sentenceFrames.filter((frame) => !frame.includes("?")).slice(0, 4).join(" / ")}`,
+      ],
+    },
+    {
+      title: "สื่อ/อุปกรณ์",
       content: [
         `Flashcards: บัตรคำศัพท์ชุด ${vocabularyWords.join(", ")} ขนาดใหญ่พอให้นักเรียนหลังห้องมองเห็น`,
         `Picture cards: บัตรภาพตรงกับคำศัพท์ทุกคำ ใช้สำหรับชี้ภาพ จับคู่ และฝึกถาม-ตอบ`,
@@ -627,14 +634,15 @@ function safeFilename(value) {
 function buildLessonPlanText({ form, lesson, selectedUnit }) {
   const safeLesson = asArray(lesson);
   const lines = [
-    "ชื่อระบบ: MKL Digital Lesson Builder ระบบช่วยออกแบบการจัดการเรียนรู้ดิจิทัลด้วย AI",
     `รายวิชา: ${form.subject}`,
     `ระดับชั้น: ${form.gradeLevel}`,
     `หน่วยการเรียนรู้: หน่วยที่ ${selectedUnit.unitNumber} ${form.learningUnit}`,
-    `หัวข้อที่เรียน: ${form.lessonTopic}`,
+    `หัวข้อการเรียน: ${form.lessonTopic}`,
     `ภาคเรียน: ${selectedUnit.semester}`,
     `เวลาเรียน: ${selectedUnit.totalHours} ชั่วโมง`,
-    "",
+    `ระดับผู้เรียน: ${form.studentLevel}`,
+    `ทักษะที่เน้น: ${form.targetSkill}`,
+    `รูปแบบกิจกรรม: ${form.activityType}`,
   ];
 
   safeLesson.forEach((section) => {
@@ -685,7 +693,7 @@ function buildWorksheetText({ form, selectedUnit }) {
     `ให้นักเรียนทบทวนคำศัพท์และประโยคสั้น ๆ จากหน่วยการเรียนรู้ ${form.learningUnit} แล้วทำกิจกรรมตามลำดับ หากยังอ่านไม่คล่อง ครูสามารถอ่านนำ ชี้ภาพ และให้นักเรียนพูดตามก่อนทำใบงานได้ ใบงานนี้ออกแบบสำหรับ ${form.gradeLevel} รายวิชา ${form.subject} ระดับผู้เรียน ${form.studentLevel}`,
     "",
     "คำศัพท์สำคัญ",
-    vocabulary.map((item, index) => `${index + 1}. ${item.word} = ${item.meaning} | ตัวอย่าง: ${item.example}`).join("\n"),
+    vocabulary.map((item, index) => `${index + 1}. ${item.word} = ${item.meaning}`).join("\n"),
     "",
     "รูปประโยคตัวอย่าง",
     patterns.map((pattern, index) => `${index + 1}. ${pattern}`).join("\n"),
@@ -755,13 +763,14 @@ function buildLessonPlanHtml({ form, lesson, selectedUnit }) {
       </style>
     </head>
     <body>
-      <h1>MKL Digital Lesson Builder ระบบช่วยออกแบบการจัดการเรียนรู้ดิจิทัลด้วย AI</h1>
+      <h1>แผนการจัดการเรียนรู้</h1>
       <div class="meta">
         <div>รายวิชา: ${escapeHtml(form.subject)}</div>
         <div>ระดับชั้น: ${escapeHtml(form.gradeLevel)}</div>
         <div>หน่วยการเรียนรู้: หน่วยที่ ${escapeHtml(selectedUnit.unitNumber)} ${escapeHtml(form.learningUnit)}</div>
-        <div>หัวข้อที่เรียน: ${escapeHtml(form.lessonTopic)}</div>
+        <div>หัวข้อการเรียน: ${escapeHtml(form.lessonTopic)}</div>
         <div>ภาคเรียน: ${escapeHtml(selectedUnit.semester)} | เวลาเรียน: ${escapeHtml(selectedUnit.totalHours)} ชั่วโมง</div>
+        <div>ระดับผู้เรียน: ${escapeHtml(form.studentLevel)} | ทักษะที่เน้น: ${escapeHtml(form.targetSkill)} | รูปแบบกิจกรรม: ${escapeHtml(form.activityType)}</div>
       </div>
       ${sectionHtml}
     </body>
@@ -1045,7 +1054,7 @@ function App() {
             h("strong", { key: "value" }, `หน่วยที่ ${selectedUnit.unitNumber} ${form.learningUnit}`),
             ]),
             h("div", { className: "lesson-summary-row", key: "topic" }, [
-              h("span", { key: "label" }, "หัวข้อที่เรียน"),
+              h("span", { key: "label" }, "หัวข้อการเรียน"),
               h("strong", { key: "value" }, form.lessonTopic),
             ]),
             h("div", { className: "lesson-summary-row", key: "semester" }, [
