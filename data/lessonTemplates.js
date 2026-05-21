@@ -1,45 +1,4 @@
-<!doctype html>
-<html lang="th">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MKL Digital Lesson Builder ระบบช่วยออกแบบการจัดการเรียนรู้ดิจิทัลด้วย AI</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              display: ["Noto Sans Thai", "Nunito", "ui-sans-serif", "system-ui"],
-              body: ["Noto Sans Thai", "Inter", "ui-sans-serif", "system-ui"],
-            },
-            colors: {
-              peach: "#FFD9C7",
-              mint: "#CDEFD8",
-              skysoft: "#CFE7FF",
-              butter: "#FFF1B8",
-              lilac: "#E7D8FF",
-              ink: "#39415A",
-            },
-            boxShadow: {
-              paper: "0 18px 50px rgba(85, 99, 132, 0.16)",
-              soft: "0 10px 24px rgba(85, 99, 132, 0.12)",
-            },
-          },
-        },
-      };
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800;900&family=Nunito:wght@700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./src/styles.css?v=20260521" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script id="lesson-template-data" type="application/json">{
+window.MKL_LESSON_TEMPLATES = {
   "prototypeScope": {
     "gradeLevel": "ชั้นประถมศึกษาปีที่ 4",
     "subject": "ภาษาอังกฤษพื้นฐาน",
@@ -735,8 +694,4 @@
       "assessment": "ครูตรวจการจับคู่คำศัพท์ การเติมประโยค และความมั่นใจของนักเรียนขณะเฉลยปากเปล่า"
     }
   }
-}</script>
-    <script src="./data/lessonTemplates.js?v=20260521"></script>
-    <script type="module" src="./src/main.js?v=20260521"></script>
-  </body>
-</html>
+};

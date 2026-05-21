@@ -2,11 +2,20 @@
   "prototypeScope": {
     "gradeLevel": "ชั้นประถมศึกษาปีที่ 4",
     "subject": "ภาษาอังกฤษพื้นฐาน",
-    "note": "โครงสร้างหลักสูตรสำหรับนักเรียนไทยชั้น ป.4 ที่พื้นฐานภาษาอังกฤษยังไม่แข็งแรง เน้นคำศัพท์ง่าย ๆ รูปประโยคสั้น การฟัง-พูดซ้ำ และการสร้างความมั่นใจในห้องเรียน"
+    "note": "โครงสร้างหลักสูตรภาษาอังกฤษพื้นฐาน ชั้นประถมศึกษาปีที่ 4 รวมเวลาเรียน 80 ชั่วโมงต่อปีการศึกษา แบ่งเป็นภาคเรียนที่ 1 จำนวน 40 ชั่วโมง และภาคเรียนที่ 2 จำนวน 40 ชั่วโมง",
+    "academicYearHours": 80,
+    "semesterHours": {
+      "ภาคเรียนที่ 1": 40,
+      "ภาคเรียนที่ 2": 40
+    }
   },
   "fieldOptions": {
-    "gradeLevels": ["ชั้นประถมศึกษาปีที่ 4"],
-    "subjects": ["ภาษาอังกฤษพื้นฐาน"],
+    "gradeLevels": [
+      "ชั้นประถมศึกษาปีที่ 4"
+    ],
+    "subjects": [
+      "ภาษาอังกฤษพื้นฐาน"
+    ],
     "learningUnits": [
       "Hello English!",
       "ABC Sounds Fun",
@@ -21,24 +30,57 @@
       "Weather & Feelings",
       "Mini Conversations"
     ],
-    "studentLevels": ["พื้นฐานอ่อน", "พื้นฐานปานกลาง", "เริ่มมั่นใจ"],
-    "targetSkills": ["การพูด", "คำศัพท์", "การฟัง", "การอ่าน", "การเขียน"],
-    "activityTypes": ["ร้อง chant และพูดตาม", "ฝึกสนทนาเป็นคู่", "เกมบัตรภาพ", "บทบาทสมมติ", "ฝึกด้วยใบงาน"]
+    "studentLevels": [
+      "พื้นฐานอ่อน",
+      "พื้นฐานปานกลาง",
+      "เริ่มมั่นใจ"
+    ],
+    "targetSkills": [
+      "การพูด",
+      "คำศัพท์",
+      "การฟัง",
+      "การอ่าน",
+      "การเขียน"
+    ],
+    "activityTypes": [
+      "ร้อง chant และพูดตาม",
+      "ฝึกสนทนาเป็นคู่",
+      "เกมบัตรภาพ",
+      "บทบาทสมมติ",
+      "ฝึกด้วยใบงาน"
+    ]
   },
   "lessonFrames": {
     "Hello English!": {
       "semester": "ภาคเรียนที่ 1",
       "unitNumber": 1,
-      "totalHours": 4,
-      "topics": ["Hello and Goodbye", "My Name Is...", "Nice to Meet You"],
+      "totalHours": 6,
+      "topics": [
+        "Hello and Goodbye",
+        "My Name Is...",
+        "Nice to Meet You"
+      ],
       "lessonProgression": [
         "ครูให้นักเรียนฟังคำทักทายสั้น ๆ พร้อมท่าทาง แล้วให้นักเรียนพูดตามทีละคำอย่างช้า ๆ",
         "ครูฝึกรูปประโยคแนะนำตนเอง เช่น My name is ___. โดยให้นักเรียนเติมชื่อของตนเอง",
         "นักเรียนฝึกถาม-ตอบกับเพื่อนด้วยประโยค What is your name? และตอบด้วย My name is ___.",
         "นักเรียนเดินทักทายเพื่อนในห้องอย่างสั้น ๆ โดยครูช่วยชี้แนะการออกเสียงและให้กำลังใจ"
       ],
-      "vocabulary": ["hello", "hi", "goodbye", "teacher", "friend", "name"],
-      "speakingFocus": ["Hello.", "Goodbye.", "My name is ___.", "What is your name?", "Nice to meet you."],
+      "vocabulary": [
+        "hello",
+        "hi",
+        "goodbye",
+        "teacher",
+        "friend",
+        "name"
+      ],
+      "speakingFocus": [
+        "Hello.",
+        "Goodbye.",
+        "My name is ___.",
+        "What is your name?",
+        "Nice to meet you."
+      ],
       "classroomActivities": [
         "จัดกิจกรรมวงกลมทักทาย โดยครูเป็นต้นแบบและให้นักเรียนพูดตามแบบ echo practice",
         "ให้นักเรียนถือบัตรชื่อ เดินทักทายเพื่อน 3 คน ด้วยประโยคสั้น ๆ",
@@ -54,21 +96,41 @@
         "ครูใช้รายการตรวจสอบแบบง่าย ดูการกล้าพูด การออกเสียง และการใช้ประโยคทักทาย",
         "ใช้บัตรออกจากห้องเรียน ให้นักเรียนจับคู่ภาพ hello และ goodbye ให้ถูกต้อง"
       ],
-      "media": ["บัตรภาพคำทักทาย", "บัตรชื่อสำหรับนักเรียน", "เสียง chant คำทักทายอย่างง่าย"]
+      "media": [
+        "บัตรภาพคำทักทาย",
+        "บัตรชื่อสำหรับนักเรียน",
+        "เสียง chant คำทักทายอย่างง่าย"
+      ]
     },
     "ABC Sounds Fun": {
       "semester": "ภาคเรียนที่ 1",
       "unitNumber": 2,
-      "totalHours": 5,
-      "topics": ["A-Z Letter Names", "Beginning Sounds", "My ABC Words"],
+      "totalHours": 7,
+      "topics": [
+        "A-Z Letter Names",
+        "Beginning Sounds",
+        "My ABC Words"
+      ],
       "lessonProgression": [
         "ครูร้องหรือเปิดเพลงตัวอักษรภาษาอังกฤษอย่างช้า ๆ แล้วให้นักเรียนร้องตามเป็นช่วงสั้น ๆ",
         "นักเรียนจับคู่ตัวพิมพ์ใหญ่และตัวพิมพ์เล็ก โดยใช้บัตรตัวอักษรที่มีสีต่างกัน",
         "ครูออกเสียงต้นคำง่าย ๆ และให้นักเรียนฟังว่าเสียงนั้นตรงกับภาพใด",
         "นักเรียนฝึกพูดคำศัพท์ ABC ง่าย ๆ พร้อมภาพประกอบทีละคำ"
       ],
-      "vocabulary": ["apple", "book", "cat", "dog", "egg", "fish"],
-      "speakingFocus": ["A is for apple.", "B is for book.", "What letter is it?", "It is A."],
+      "vocabulary": [
+        "apple",
+        "book",
+        "cat",
+        "dog",
+        "egg",
+        "fish"
+      ],
+      "speakingFocus": [
+        "A is for apple.",
+        "B is for book.",
+        "What letter is it?",
+        "It is A."
+      ],
       "classroomActivities": [
         "เล่นเกมวิ่งหาบัตรตัวอักษร โดยครูคอยช่วยอ่านออกเสียงและย้ำเสียงต้นคำ",
         "ให้นักเรียนจัดกลุ่มภาพตามเสียงต้นคำ เช่น apple อยู่กับ A",
@@ -84,21 +146,42 @@
         "ให้นักเรียนพูดประโยคตัวอย่าง 1 ประโยค เช่น A is for apple.",
         "ครูสังเกตการจำตัวอักษรและการฟังเสียงต้นคำของนักเรียน"
       ],
-      "media": ["บัตรตัวอักษร A-Z", "บัตรภาพ phonics", "เพลงหรือ chant ตัวอักษร"]
+      "media": [
+        "บัตรตัวอักษร A-Z",
+        "บัตรภาพ phonics",
+        "เพลงหรือ chant ตัวอักษร"
+      ]
     },
     "English in My Classroom": {
       "semester": "ภาคเรียนที่ 1",
       "unitNumber": 3,
-      "totalHours": 4,
-      "topics": ["Classroom Objects", "Classroom Commands", "Polite Classroom English"],
+      "totalHours": 6,
+      "topics": [
+        "Classroom Objects",
+        "Classroom Commands",
+        "Polite Classroom English"
+      ],
       "lessonProgression": [
         "ครูนำสิ่งของจริงในห้องเรียนมาให้นักเรียนดูและฝึกเรียกชื่อเป็นภาษาอังกฤษ",
         "นักเรียนฟังคำสั่งสั้น ๆ แล้วทำท่าทางตาม เช่น open, close",
         "ครูฝึกวลีสุภาพในห้องเรียน เช่น Please. และ Thank you. ผ่านสถานการณ์ใกล้ตัว",
         "นักเรียนใช้ภาษาอังกฤษในห้องเรียนระหว่างทำภารกิจสั้น ๆ โดยมีบัตรประโยคช่วย"
       ],
-      "vocabulary": ["book", "pencil", "desk", "chair", "open", "close"],
-      "speakingFocus": ["This is a book.", "Open your book.", "May I go out?", "Please.", "Thank you."],
+      "vocabulary": [
+        "book",
+        "pencil",
+        "desk",
+        "chair",
+        "open",
+        "close"
+      ],
+      "speakingFocus": [
+        "This is a book.",
+        "Open your book.",
+        "May I go out?",
+        "Please.",
+        "Thank you."
+      ],
       "classroomActivities": [
         "ให้นักเรียนตามหาสิ่งของในห้องเรียนจากบัตรภาพ แล้วพูดชื่อสิ่งของนั้น",
         "เล่นเกม Teacher says โดยให้นักเรียนฟังคำสั่งและทำท่าทางตาม",
@@ -114,21 +197,41 @@
         "ให้นักเรียนปฏิบัติตามคำสั่งง่าย ๆ ของครูได้ 3 คำสั่ง",
         "ครูสังเกตว่านักเรียนใช้วลีสุภาพระหว่างกิจกรรมได้หรือไม่"
       ],
-      "media": ["สิ่งของจริงในห้องเรียน", "บัตรคำสั่ง", "โปสเตอร์วลีภาษาอังกฤษในห้องเรียน"]
+      "media": [
+        "สิ่งของจริงในห้องเรียน",
+        "บัตรคำสั่ง",
+        "โปสเตอร์วลีภาษาอังกฤษในห้องเรียน"
+      ]
     },
     "My Family": {
       "semester": "ภาคเรียนที่ 1",
       "unitNumber": 4,
-      "totalHours": 5,
-      "topics": ["Family Members", "This Is My...", "My Family Tree"],
+      "totalHours": 7,
+      "topics": [
+        "Family Members",
+        "This Is My...",
+        "My Family Tree"
+      ],
       "lessonProgression": [
         "ครูใช้ภาพครอบครัวเพื่อแนะนำคำศัพท์สมาชิกในครอบครัวทีละคำ",
         "นักเรียนฝึกพูดประโยค This is my mother/father. โดยใช้ภาพหรือบัตรคำ",
         "นักเรียนฝึกถาม-ตอบ Who is this? กับเพื่อนอย่างง่าย",
         "นักเรียนสร้าง family tree แบบง่ายและนำเสนอด้วยประโยคสั้น ๆ"
       ],
-      "vocabulary": ["mother", "father", "brother", "sister", "grandmother", "grandfather"],
-      "speakingFocus": ["This is my mother.", "Who is this?", "This is my family.", "I love my family."],
+      "vocabulary": [
+        "mother",
+        "father",
+        "brother",
+        "sister",
+        "grandmother",
+        "grandfather"
+      ],
+      "speakingFocus": [
+        "This is my mother.",
+        "Who is this?",
+        "This is my family.",
+        "I love my family."
+      ],
       "classroomActivities": [
         "เล่นเกมจับคู่บัตรภาพสมาชิกครอบครัวกับคำศัพท์",
         "ให้นักเรียนจับคู่ฝึกพูดจากภาพครอบครัว โดยใช้ประโยคต้นแบบ",
@@ -144,21 +247,43 @@
         "ครูตรวจความถูกต้องของการจับคู่คำศัพท์กับภาพ",
         "ให้นักเรียนตอบคำถาม Who is this? จากภาพ"
       ],
-      "media": ["บัตรภาพครอบครัว", "แบบฟอร์ม family tree", "บัตรแถบประโยค"]
+      "media": [
+        "บัตรภาพครอบครัว",
+        "แบบฟอร์ม family tree",
+        "บัตรแถบประโยค"
+      ]
     },
     "Colors & Numbers": {
       "semester": "ภาคเรียนที่ 1",
       "unitNumber": 5,
-      "totalHours": 5,
-      "topics": ["Basic Colors", "Numbers 1-20", "How Many?"],
+      "totalHours": 7,
+      "topics": [
+        "Basic Colors",
+        "Numbers 1-20",
+        "How Many?"
+      ],
       "lessonProgression": [
         "ครูทบทวนสีโดยใช้สิ่งของจริงหรือภาพสีสดใสในห้องเรียน",
         "นักเรียนนับเลข 1-20 พร้อมการปรบมือหรือท่าทางประกอบ",
         "นักเรียนฝึกถาม-ตอบ What color is it? ด้วยภาพหรือสิ่งของใกล้ตัว",
         "นักเรียนฝึกถาม-ตอบ How many? โดยนับสิ่งของจริงอย่างช้า ๆ"
       ],
-      "vocabulary": ["red", "blue", "green", "yellow", "one", "two", "ten", "twenty"],
-      "speakingFocus": ["It is red.", "What color is it?", "How many pencils?", "There are five."],
+      "vocabulary": [
+        "red",
+        "blue",
+        "green",
+        "yellow",
+        "one",
+        "two",
+        "ten",
+        "twenty"
+      ],
+      "speakingFocus": [
+        "It is red.",
+        "What color is it?",
+        "How many pencils?",
+        "There are five."
+      ],
       "classroomActivities": [
         "เล่นเกมแตะสีในห้องเรียน โดยครูพูดสีและให้นักเรียนชี้หรือแตะสิ่งของสีนั้น",
         "ทำกิจกรรม clap and count ให้นักเรียนปรบมือตามจำนวนที่ครูกำหนด",
@@ -174,21 +299,43 @@
         "ให้นักเรียนนับสิ่งของได้ถึง 20 ตามระดับความพร้อม",
         "ให้นักเรียนตอบคำถาม How many? อย่างน้อย 1 ข้อ"
       ],
-      "media": ["บัตรสี", "บัตรตัวเลข 1-20", "สิ่งของสำหรับนับในห้องเรียน"]
+      "media": [
+        "บัตรสี",
+        "บัตรตัวเลข 1-20",
+        "สิ่งของสำหรับนับในห้องเรียน"
+      ]
     },
     "Animals Around Me": {
       "semester": "ภาคเรียนที่ 1",
       "unitNumber": 6,
-      "totalHours": 5,
-      "topics": ["Pet Animals", "Farm Animals", "Animal Actions"],
+      "totalHours": 7,
+      "topics": [
+        "Pet Animals",
+        "Farm Animals",
+        "Animal Actions"
+      ],
       "lessonProgression": [
         "ครูใช้ภาพสัตว์ที่นักเรียนคุ้นเคยเพื่อแนะนำคำศัพท์อย่างเป็นลำดับ",
         "นักเรียนจัดกลุ่มสัตว์เลี้ยงและสัตว์ในฟาร์มจากบัตรภาพ",
         "ครูฝึกคำกริยาง่าย ๆ เกี่ยวกับสัตว์ โดยให้นักเรียนทำท่าประกอบ",
         "นักเรียนพูดประโยคบอกความสามารถของสัตว์โดยใช้ภาพช่วย"
       ],
-      "vocabulary": ["cat", "dog", "bird", "fish", "cow", "chicken", "run", "fly"],
-      "speakingFocus": ["It is a cat.", "I like dogs.", "A bird can fly.", "Can it swim?"],
+      "vocabulary": [
+        "cat",
+        "dog",
+        "bird",
+        "fish",
+        "cow",
+        "chicken",
+        "run",
+        "fly"
+      ],
+      "speakingFocus": [
+        "It is a cat.",
+        "I like dogs.",
+        "A bird can fly.",
+        "Can it swim?"
+      ],
       "classroomActivities": [
         "เล่นเกมทายเสียงสัตว์ แล้วให้นักเรียนเลือกบัตรภาพและพูดชื่อสัตว์",
         "จัดกลุ่มภาพสัตว์เป็น pet และ farm พร้อมอ่านคำศัพท์",
@@ -204,21 +351,41 @@
         "ให้นักเรียนพูดประโยคเกี่ยวกับสัตว์ 1 ประโยค",
         "ครูตรวจการจัดกลุ่มสัตว์และการใช้ประโยคง่าย ๆ"
       ],
-      "media": ["บัตรภาพสัตว์", "เสียงสัตว์สั้น ๆ", "แผ่นจัดกลุ่มสัตว์"]
+      "media": [
+        "บัตรภาพสัตว์",
+        "เสียงสัตว์สั้น ๆ",
+        "แผ่นจัดกลุ่มสัตว์"
+      ]
     },
     "My Daily Life": {
       "semester": "ภาคเรียนที่ 2",
       "unitNumber": 7,
-      "totalHours": 5,
-      "topics": ["Morning Routine", "After School", "My Day"],
+      "totalHours": 7,
+      "topics": [
+        "Morning Routine",
+        "After School",
+        "My Day"
+      ],
       "lessonProgression": [
         "ครูสอนคำกริยากิจวัตรประจำวันด้วยท่าทางและภาพประกอบ",
         "นักเรียนเรียงลำดับภาพกิจวัตรประจำวันจากเช้าถึงก่อนนอน",
         "นักเรียนฝึกพูดประโยคสั้น ๆ เช่น I wake up. และ I go to school.",
         "นักเรียนเล่ากิจวัตรของตนเอง 2-3 ขั้นตอนโดยใช้ภาพช่วย"
       ],
-      "vocabulary": ["wake up", "brush my teeth", "eat breakfast", "go to school", "do homework", "sleep"],
-      "speakingFocus": ["I wake up.", "I go to school.", "What do you do?", "I do homework."],
+      "vocabulary": [
+        "wake up",
+        "brush my teeth",
+        "eat breakfast",
+        "go to school",
+        "do homework",
+        "sleep"
+      ],
+      "speakingFocus": [
+        "I wake up.",
+        "I go to school.",
+        "What do you do?",
+        "I do homework."
+      ],
       "classroomActivities": [
         "ทำ chant กิจวัตรพร้อมท่าทาง เพื่อช่วยให้นักเรียนจำคำกริยาได้",
         "ให้นักเรียนเรียงภาพกิจวัตรเป็นกลุ่มเล็กและพูดตามลำดับ",
@@ -234,21 +401,44 @@
         "ให้นักเรียนพูดประโยคกิจวัตรประจำวันได้ 2 ประโยค",
         "ครูตรวจการใช้รูปประโยค I + verb อย่างง่าย"
       ],
-      "media": ["บัตรภาพกิจวัตรประจำวัน", "เส้นเวลา daily routine", "เสียง chant พร้อมท่าทาง"]
+      "media": [
+        "บัตรภาพกิจวัตรประจำวัน",
+        "เส้นเวลา daily routine",
+        "เสียง chant พร้อมท่าทาง"
+      ]
     },
     "Food I Like": {
       "semester": "ภาคเรียนที่ 2",
       "unitNumber": 8,
-      "totalHours": 5,
-      "topics": ["Food Words", "I Like / I Don't Like", "My Lunchbox"],
+      "totalHours": 7,
+      "topics": [
+        "Food Words",
+        "I Like / I Don't Like",
+        "My Lunchbox"
+      ],
       "lessonProgression": [
         "ครูใช้บัตรภาพอาหารและเครื่องดื่มที่นักเรียนคุ้นเคยเพื่อสอนคำศัพท์",
         "นักเรียนฝึกบอกความชอบและไม่ชอบด้วยประโยค I like ___. และ I don't like ___.",
         "นักเรียนฝึกถาม-ตอบเกี่ยวกับอาหารที่ชอบด้วยประโยค Do you like ___?",
         "นักเรียนออกแบบกล่องอาหารกลางวันของตนเองและพูดแนะนำอย่างสั้น ๆ"
       ],
-      "vocabulary": ["rice", "egg", "milk", "water", "fruit", "bread", "like", "don't like"],
-      "speakingFocus": ["I like rice.", "I don't like milk.", "Do you like fruit?", "Yes, I do.", "No, I don't."],
+      "vocabulary": [
+        "rice",
+        "egg",
+        "milk",
+        "water",
+        "fruit",
+        "bread",
+        "like",
+        "don't like"
+      ],
+      "speakingFocus": [
+        "I like rice.",
+        "I don't like milk.",
+        "Do you like fruit?",
+        "Yes, I do.",
+        "No, I don't."
+      ],
       "classroomActivities": [
         "เล่นกิจกรรมมุม Yes/No โดยครูชูบัตรอาหารและถาม Do you like ___?",
         "ให้นักเรียนสำรวจอาหารที่เพื่อนชอบเป็นคู่ แล้วพูดรายงานง่าย ๆ",
@@ -264,21 +454,41 @@
         "ให้นักเรียนถามเพื่อนด้วยประโยค Do you like ___?",
         "ครูตรวจการจำคำศัพท์อาหารและการตอบ Yes, I do. / No, I don't."
       ],
-      "media": ["บัตรภาพอาหาร", "ใบงาน lunchbox", "บัตรคำตอบ Yes/No"]
+      "media": [
+        "บัตรภาพอาหาร",
+        "ใบงาน lunchbox",
+        "บัตรคำตอบ Yes/No"
+      ]
     },
     "Around My School": {
       "semester": "ภาคเรียนที่ 2",
       "unitNumber": 9,
-      "totalHours": 4,
-      "topics": ["Places at School", "Where Is It?", "School Map"],
+      "totalHours": 6,
+      "topics": [
+        "Places at School",
+        "Where Is It?",
+        "School Map"
+      ],
       "lessonProgression": [
         "ครูแนะนำคำศัพท์สถานที่ในโรงเรียนด้วยภาพหรือแผนผังโรงเรียนอย่างง่าย",
         "นักเรียนฝึกคำบอกตำแหน่งง่าย ๆ เช่น near และ next to ผ่านภาพ",
         "นักเรียนฝึกถาม Where is the library? และตอบด้วยประโยคสั้น ๆ",
         "นักเรียนใช้แผนที่โรงเรียนจำลองเพื่อชี้ตำแหน่งและพูดคำตอบ"
       ],
-      "vocabulary": ["classroom", "library", "canteen", "playground", "office", "near", "next to"],
-      "speakingFocus": ["Where is the library?", "It is near the classroom.", "This is the canteen."],
+      "vocabulary": [
+        "classroom",
+        "library",
+        "canteen",
+        "playground",
+        "office",
+        "near",
+        "next to"
+      ],
+      "speakingFocus": [
+        "Where is the library?",
+        "It is near the classroom.",
+        "This is the canteen."
+      ],
       "classroomActivities": [
         "ให้นักเรียนเดินดูภาพสถานที่ในโรงเรียนและพูดชื่อสถานที่ตามครู",
         "ฝึกชี้แผนที่เป็นคู่ โดยคนหนึ่งถามและอีกคนตอบจากภาพ",
@@ -294,21 +504,44 @@
         "ให้นักเรียนตอบคำถาม Where is it? จากแผนที่อย่างน้อย 1 ข้อ",
         "ครูตรวจการใช้คำศัพท์สถานที่และคำบอกตำแหน่งอย่างง่าย"
       ],
-      "media": ["โปสเตอร์แผนที่โรงเรียน", "บัตรภาพสถานที่ในโรงเรียน", "บัตรภาพคำบอกตำแหน่ง"]
+      "media": [
+        "โปสเตอร์แผนที่โรงเรียน",
+        "บัตรภาพสถานที่ในโรงเรียน",
+        "บัตรภาพคำบอกตำแหน่ง"
+      ]
     },
     "Fun Activities": {
       "semester": "ภาคเรียนที่ 2",
       "unitNumber": 10,
-      "totalHours": 4,
-      "topics": ["Things I Can Do", "Sports and Hobbies", "Can / Can't"],
+      "totalHours": 6,
+      "topics": [
+        "Things I Can Do",
+        "Sports and Hobbies",
+        "Can / Can't"
+      ],
       "lessonProgression": [
         "ครูสอนคำกริยาด้วยการทำท่าทาง ให้นักเรียนเดาและพูดตาม",
         "นักเรียนฝึกใช้ can และ can't ผ่านภาพและท่าทางที่เข้าใจง่าย",
         "นักเรียนฝึกถาม-ตอบเกี่ยวกับความสามารถของตนเองกับเพื่อน",
         "นักเรียนทำโปสเตอร์เล็ก ๆ หัวข้อ I can ___. แล้วนำเสนอ 1 ประโยค"
       ],
-      "vocabulary": ["run", "jump", "swim", "sing", "dance", "draw", "can", "can't"],
-      "speakingFocus": ["I can run.", "I can't swim.", "Can you sing?", "Yes, I can.", "No, I can't."],
+      "vocabulary": [
+        "run",
+        "jump",
+        "swim",
+        "sing",
+        "dance",
+        "draw",
+        "can",
+        "can't"
+      ],
+      "speakingFocus": [
+        "I can run.",
+        "I can't swim.",
+        "Can you sing?",
+        "Yes, I can.",
+        "No, I can't."
+      ],
       "classroomActivities": [
         "เล่นเกมคำสั่งท่าทาง โดยครูพูดคำกริยาและให้นักเรียนทำท่าตาม",
         "ให้นักเรียนสัมภาษณ์เพื่อนด้วยคำถาม Can you ___?",
@@ -324,21 +557,43 @@
         "ให้นักเรียนตอบคำถาม Can you ___? อย่างน้อย 1 ข้อ",
         "ครูตรวจการใช้ can/can't ในประโยคสั้น ๆ"
       ],
-      "media": ["บัตรภาพท่าทาง", "บัตร can/can't", "แบบฟอร์มโปสเตอร์ขนาดเล็ก"]
+      "media": [
+        "บัตรภาพท่าทาง",
+        "บัตร can/can't",
+        "แบบฟอร์มโปสเตอร์ขนาดเล็ก"
+      ]
     },
     "Weather & Feelings": {
       "semester": "ภาคเรียนที่ 2",
       "unitNumber": 11,
-      "totalHours": 5,
-      "topics": ["Today's Weather", "How Do You Feel?", "Weather and Feelings"],
+      "totalHours": 7,
+      "topics": [
+        "Today's Weather",
+        "How Do You Feel?",
+        "Weather and Feelings"
+      ],
       "lessonProgression": [
         "ครูใช้วงล้อหรือภาพสภาพอากาศเพื่อแนะนำคำศัพท์ทีละคำ",
         "นักเรียนฝึกคำบอกความรู้สึกง่าย ๆ ผ่านภาพใบหน้าและท่าทาง",
         "นักเรียนฝึกถาม-ตอบ How is the weather? และ How do you feel?",
         "นักเรียนทำตารางบันทึกสภาพอากาศและความรู้สึกประจำวันอย่างง่าย"
       ],
-      "vocabulary": ["sunny", "rainy", "cloudy", "windy", "happy", "sad", "tired", "hot"],
-      "speakingFocus": ["How is the weather?", "It is sunny.", "How do you feel?", "I feel happy."],
+      "vocabulary": [
+        "sunny",
+        "rainy",
+        "cloudy",
+        "windy",
+        "happy",
+        "sad",
+        "tired",
+        "hot"
+      ],
+      "speakingFocus": [
+        "How is the weather?",
+        "It is sunny.",
+        "How do you feel?",
+        "I feel happy."
+      ],
       "classroomActivities": [
         "ใช้ weather wheel ให้เด็กหมุนและพูดประโยค It is ___.",
         "เล่นเกมจับคู่ภาพใบหน้ากับคำศัพท์ความรู้สึก",
@@ -354,21 +609,42 @@
         "ให้นักเรียนพูดประโยคบอกความรู้สึก 1 ประโยค",
         "ครูตรวจการใช้คำศัพท์ weather และ feelings อย่างเหมาะสม"
       ],
-      "media": ["วงล้อสภาพอากาศ", "บัตรภาพความรู้สึก", "ตาราง weather chart"]
+      "media": [
+        "วงล้อสภาพอากาศ",
+        "บัตรภาพความรู้สึก",
+        "ตาราง weather chart"
+      ]
     },
     "Mini Conversations": {
       "semester": "ภาคเรียนที่ 2",
       "unitNumber": 12,
-      "totalHours": 4,
-      "topics": ["Review Greetings", "Ask and Answer", "Short Role Play"],
+      "totalHours": 7,
+      "topics": [
+        "Review Greetings",
+        "Ask and Answer",
+        "Short Role Play"
+      ],
       "lessonProgression": [
         "ครูทบทวนคำทักทาย การแนะนำชื่อ ความชอบ ความสามารถ และวลีในห้องเรียน",
         "นักเรียนฝึกรูปแบบถาม-ตอบสั้น ๆ โดยใช้บัตรประโยคช่วย",
         "นักเรียนเรียงบัตรประโยคเป็นบทสนทนา 3 บรรทัดที่เข้าใจง่าย",
         "นักเรียนแสดง mini conversation กับเพื่อน โดยครูเน้นความกล้าพูดมากกว่าความสมบูรณ์แบบ"
       ],
-      "vocabulary": ["hello", "name", "like", "can", "weather", "thank you"],
-      "speakingFocus": ["Hello.", "What is your name?", "Do you like ___?", "Can you ___?", "Thank you."],
+      "vocabulary": [
+        "hello",
+        "name",
+        "like",
+        "can",
+        "weather",
+        "thank you"
+      ],
+      "speakingFocus": [
+        "Hello.",
+        "What is your name?",
+        "Do you like ___?",
+        "Can you ___?",
+        "Thank you."
+      ],
       "classroomActivities": [
         "จับคู่บัตรคำถามกับบัตรคำตอบเพื่อสร้างบทสนทนาสั้น ๆ",
         "ฝึก role play เป็นคู่โดยใช้ sentence frames ที่ครูเตรียมไว้",
@@ -384,7 +660,11 @@
         "ครูตรวจการผลัดกันพูด การออกเสียงชัดเจน และการตอบให้ตรงคำถาม",
         "ให้นักเรียนประเมินตนเองด้วย checklist สั้น ๆ เช่น I can speak."
       ],
-      "media": ["แถบบทสนทนา", "บัตรบทบาทสมมติ", "แบบประเมินตนเอง I can speak"]
+      "media": [
+        "แถบบทสนทนา",
+        "บัตรบทบาทสมมติ",
+        "แบบประเมินตนเอง I can speak"
+      ]
     }
   },
   "activityTemplates": {
