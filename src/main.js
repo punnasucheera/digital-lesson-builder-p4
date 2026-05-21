@@ -38,32 +38,32 @@ function buildLesson(form, templates) {
     {
       title: "จุดประสงค์การเรียนรู้",
       content: [
-        `Students can understand and use easy words about “${topic}”.`,
-        `Students can say simple Grade 4 sentences: ${speakingFocus.slice(0, 2).join(" / ")}`,
-        `Students can join a ${form.activityType} activity with teacher support and picture clues.`,
+        `นักเรียนเข้าใจและใช้คำศัพท์พื้นฐานเกี่ยวกับหัวข้อ “${topic}” ได้อย่างเหมาะสมกับระดับชั้น`,
+        `นักเรียนฝึกพูดประโยคภาษาอังกฤษสั้น ๆ ได้ เช่น ${speakingFocus.slice(0, 2).join(" / ")}`,
+        `นักเรียนมีส่วนร่วมในกิจกรรม ${form.activityType} โดยใช้บัตรภาพ การพูดซ้ำ และการช่วยเหลือจากครู`,
       ],
     },
     {
       title: "ขั้นนำเข้าสู่บทเรียน",
       content: [
         activityFrame.warmUp,
-        `Use pictures and Thai-friendly gestures to connect students to the topic: “${topic}”.`,
+        `ครูใช้ภาพ ท่าทาง และคำถามนำง่าย ๆ เพื่อเชื่อมโยงเข้าสู่หัวข้อ “${topic}” โดยไม่เร่งให้นักเรียนตอบยาว`,
       ],
     },
     {
       title: "ขั้นสอน",
       content: [
-        `Teach key vocabulary with picture cards: ${vocabulary.join(", ")}.`,
-        `Model the sentence pattern slowly: ${speakingFocus.slice(0, 3).join(" / ")}`,
+        `ครูสอนคำศัพท์สำคัญด้วยบัตรภาพหรือสิ่งของจริง ได้แก่ ${vocabulary.join(", ")}`,
+        `ครูออกเสียงและให้เด็กพูดตามรูปประโยคอย่างช้า ๆ เช่น ${speakingFocus.slice(0, 3).join(" / ")}`,
         ...unitFrame.lessonProgression.slice(0, 3),
       ],
     },
     {
       title: "ขั้นสรุป",
       content: [
-        `Students say one word and one short sentence about “${topic}”.`,
-        "Review the target words with quick picture pointing.",
-        "Give positive feedback and let students repeat one sentence with confidence.",
+        `ให้นักเรียนเลือกพูดคำศัพท์ 1 คำ และประโยคสั้น ๆ 1 ประโยคเกี่ยวกับ “${topic}”`,
+        "ครูทบทวนคำศัพท์เป้าหมายโดยชี้ภาพเร็ว ๆ และให้นักเรียนตอบพร้อมกัน",
+        "ครูให้คำชมและชวนให้นักเรียนพูดซ้ำอีกครั้ง เพื่อสร้างความมั่นใจในการใช้ภาษาอังกฤษ",
       ],
     },
     {
@@ -77,8 +77,8 @@ function buildLesson(form, templates) {
       title: "สื่อการสอน",
       content: [
         ...unitFrame.media,
-        `Vocabulary focus: ${vocabulary.join(", ")}`,
-        `Speaking focus: ${speakingFocus.join(" / ")}`,
+        `คำศัพท์ที่เน้น: ${vocabulary.join(", ")}`,
+        `รูปประโยคที่ใช้ฝึกพูด: ${speakingFocus.join(" / ")}`,
       ],
     },
     {
