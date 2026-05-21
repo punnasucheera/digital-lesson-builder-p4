@@ -148,15 +148,118 @@ function readEmbeddedTemplates() {
 const pastelTabs = ["bg-peach", "bg-mint", "bg-skysoft", "bg-butter", "bg-lilac"];
 
 const lessonSectionMeta = {
+  "ข้อมูลพื้นฐาน": { icon: "clipboard", tone: "bg-mint" },
+  "คำศัพท์สำคัญประจำบทเรียน": { icon: "cards", tone: "bg-butter" },
   "จุดประสงค์การเรียนรู้": { icon: "star", tone: "bg-peach" },
-  "ขั้นนำเข้าสู่บทเรียน": { icon: "spark", tone: "bg-butter" },
-  "ขั้นสอน": { icon: "book", tone: "bg-skysoft" },
-  "ขั้นสรุป": { icon: "check", tone: "bg-mint" },
-  "กิจกรรมการเรียนรู้": { icon: "blocks", tone: "bg-lilac" },
+  "Warm-up": { icon: "spark", tone: "bg-butter" },
+  "Presentation": { icon: "book", tone: "bg-skysoft" },
+  "Practice": { icon: "blocks", tone: "bg-lilac" },
+  "Production": { icon: "check", tone: "bg-mint" },
+  "ตัวอย่างบทสนทนา/ประโยคที่ใช้ในกิจกรรม": { icon: "cards", tone: "bg-peach" },
+  "Wrap-up": { icon: "check", tone: "bg-mint" },
   "สื่อการสอน": { icon: "cards", tone: "bg-peach" },
   "ใบงานตัวอย่าง": { icon: "paper", tone: "bg-butter" },
   "การวัดและประเมินผล": { icon: "clipboard", tone: "bg-mint" },
+  "ข้อเสนอแนะสำหรับครู": { icon: "star", tone: "bg-lilac" },
 };
+
+const vocabularyMeanings = {
+  hello: "สวัสดี", hi: "สวัสดี", goodbye: "ลาก่อน", teacher: "ครู", friend: "เพื่อน", name: "ชื่อ",
+  apple: "แอปเปิล", ball: "ลูกบอล", cat: "แมว", dog: "สุนัข", elephant: "ช้าง", fish: "ปลา",
+  book: "หนังสือ", pencil: "ดินสอ", ruler: "ไม้บรรทัด", eraser: "ยางลบ", chair: "เก้าอี้", desk: "โต๊ะเรียน",
+  father: "พ่อ", mother: "แม่", brother: "พี่ชายหรือน้องชาย", sister: "พี่สาวหรือน้องสาว", grandfather: "ปู่หรือตา", grandmother: "ย่าหรือยาย",
+  red: "สีแดง", blue: "สีน้ำเงิน", yellow: "สีเหลือง", green: "สีเขียว", black: "สีดำ", white: "สีขาว",
+  one: "หนึ่ง", two: "สอง", three: "สาม", four: "สี่", five: "ห้า", ten: "สิบ", twenty: "ยี่สิบ",
+  bird: "นก", cow: "วัว", pig: "หมู", chicken: "ไก่", rabbit: "กระต่าย", duck: "เป็ด", horse: "ม้า",
+  wake: "ตื่นนอน", eat: "กิน", study: "เรียน", play: "เล่น", sleep: "นอน", wash: "ล้าง",
+  rice: "ข้าว", milk: "นม", water: "น้ำ", egg: "ไข่", banana: "กล้วย", bread: "ขนมปัง", juice: "น้ำผลไม้",
+  classroom: "ห้องเรียน", library: "ห้องสมุด", canteen: "โรงอาหาร", playground: "สนามเด็กเล่น", office: "ห้องสำนักงาน", toilet: "ห้องน้ำ", garden: "สวน",
+  run: "วิ่ง", jump: "กระโดด", swim: "ว่ายน้ำ", sing: "ร้องเพลง", dance: "เต้น", draw: "วาดภาพ", read: "อ่าน",
+  sunny: "แดดออก", rainy: "ฝนตก", cloudy: "มีเมฆมาก", windy: "ลมแรง", hot: "ร้อน", cold: "หนาว",
+  happy: "มีความสุข", sad: "เศร้า", tired: "เหนื่อย", fine: "สบายดี", hungry: "หิว", sleepy: "ง่วง",
+  yes: "ใช่", no: "ไม่ใช่", please: "กรุณา", thank: "ขอบคุณ", sorry: "ขอโทษ", listen: "ฟัง", look: "ดู", write: "เขียน", stand: "ยืน", sit: "นั่ง",
+};
+
+const topicVocabularyExtras = {
+  "Hello and Goodbye": ["hello", "hi", "goodbye", "teacher", "friend", "name"],
+  "My Name Is...": ["hello", "name", "friend", "teacher", "hi", "goodbye"],
+  "Nice to Meet You": ["hello", "friend", "name", "teacher", "hi", "goodbye"],
+  "A-Z Letter Names": ["apple", "ball", "cat", "dog", "elephant", "fish"],
+  "Beginning Sounds": ["apple", "ball", "book", "cat", "dog", "desk", "fish"],
+  "My ABC Words": ["apple", "ball", "cat", "dog", "fish", "book", "pencil", "desk"],
+  "Classroom Objects": ["book", "pencil", "ruler", "eraser", "chair", "desk"],
+  "Classroom Commands": ["stand", "sit", "listen", "look", "read", "write"],
+  "Polite Classroom English": ["please", "thank", "sorry", "yes", "no", "teacher"],
+  "Family Members": ["father", "mother", "brother", "sister", "grandfather", "grandmother"],
+  "This Is My...": ["father", "mother", "brother", "sister", "grandfather", "grandmother"],
+  "My Family Tree": ["father", "mother", "brother", "sister", "grandfather", "grandmother"],
+  "Basic Colors": ["red", "blue", "yellow", "green", "black", "white"],
+  "Numbers 1-20": ["one", "two", "three", "four", "five", "ten", "twenty"],
+  "How Many?": ["one", "two", "three", "four", "five", "ten", "twenty"],
+  "Pet Animals": ["dog", "cat", "bird", "rabbit", "fish"],
+  "Farm Animals": ["cow", "pig", "chicken", "duck", "horse"],
+  "Animal Actions": ["run", "jump", "swim", "walk", "play"],
+  "Morning Routine": ["wake", "wash", "eat", "study", "play", "sleep"],
+  "After School": ["play", "read", "draw", "eat", "sleep"],
+  "My Day": ["wake", "eat", "study", "play", "sleep", "wash"],
+  "Food Words": ["rice", "milk", "water", "egg", "banana", "bread", "chicken", "juice"],
+  "I Like / I Don't Like": ["rice", "milk", "banana", "bread", "juice", "egg"],
+  "My Lunchbox": ["rice", "egg", "milk", "water", "banana", "bread"],
+  "Places at School": ["classroom", "library", "canteen", "playground", "office", "toilet", "garden"],
+  "Where Is It?": ["classroom", "library", "canteen", "playground", "office", "toilet"],
+  "School Map": ["classroom", "library", "canteen", "playground", "office", "garden"],
+  "Things I Can Do": ["run", "jump", "swim", "sing", "dance", "draw", "read"],
+  "Sports and Hobbies": ["run", "swim", "sing", "dance", "draw", "read", "play"],
+  "Can / Can't": ["run", "jump", "swim", "sing", "dance", "draw"],
+  "Today's Weather": ["sunny", "rainy", "cloudy", "windy", "hot", "cold"],
+  "How Do You Feel?": ["happy", "sad", "tired", "fine", "hungry", "sleepy"],
+  "Weather and Feelings": ["sunny", "rainy", "cloudy", "happy", "sad", "tired"],
+  "Review Greetings": ["hello", "hi", "goodbye", "name", "friend", "thank"],
+  "Ask and Answer": ["yes", "no", "please", "thank", "name", "friend"],
+  "Short Role Play": ["hello", "name", "please", "thank", "yes", "no", "goodbye"],
+};
+
+function uniqueItems(items) {
+  return [...new Set(asArray(items).map((item) => String(item).trim()).filter(Boolean))];
+}
+
+function makeVocabularyItems(unitFrame, topic) {
+  return uniqueItems([...(topicVocabularyExtras[topic] || []), ...unitFrame.vocabulary]).map((word) => {
+    const key = String(word).toLowerCase();
+    const article = /^[aeiou]/i.test(key) ? "an" : "a";
+    const example = key === "hello" || key === "hi" ? `${word}. My name is Somchai.`
+      : key === "goodbye" ? "Goodbye, teacher."
+        : key === "please" ? "Please listen."
+          : key === "thank" ? "Thank you, teacher."
+            : `This is ${article} ${word}.`;
+    return { word, meaning: vocabularyMeanings[key] || "คำศัพท์สำคัญในหัวข้อนี้", example };
+  });
+}
+
+function makeSentenceFrames(speakingFocus) {
+  return uniqueItems([...asArray(speakingFocus, fallbackUnitFrame.speakingFocus), "This is ___.", "I like ___.", "I can ___.", "It is ___."]).slice(0, 7);
+}
+
+function makeDialogue(topic, vocabularyItems) {
+  const firstWord = vocabularyItems[0]?.word || "book";
+  const secondWord = vocabularyItems[1]?.word || "friend";
+  if (topic.includes("Name") || topic.includes("Hello") || topic.includes("Greeting") || topic.includes("Meet")) {
+    return ["Student A: Hello.", "Student B: Hello.", "Student A: What is your name?", "Student B: My name is Somchai.", "Student A: Nice to meet you.", "Student B: Nice to meet you too.", "แบบง่ายสำหรับผู้เรียนพื้นฐานอ่อน: Hello. / My name is ___. / Goodbye."];
+  }
+  if (topic.includes("Like") || topic.includes("Food") || topic.includes("Lunchbox")) {
+    return ["Student A: Do you like rice?", "Student B: Yes, I do.", "Student A: Do you like milk?", "Student B: No, I don't.", "Student A: What food do you like?", "Student B: I like banana.", "แบบง่ายสำหรับผู้เรียนพื้นฐานอ่อน: I like ___. / I don't like ___."];
+  }
+  if (topic.includes("Where") || topic.includes("School") || topic.includes("Places")) {
+    return ["Student A: Where is the library?", "Student B: It is here.", "Student A: Where is the canteen?", "Student B: It is there.", "แบบง่ายสำหรับผู้เรียนพื้นฐานอ่อน: library, here. / canteen, there."];
+  }
+  if (topic.includes("Can") || topic.includes("Activities")) {
+    return ["Student A: Can you run?", "Student B: Yes, I can.", "Student A: Can you swim?", "Student B: No, I can't.", "Student A: What can you do?", "Student B: I can draw.", "แบบง่ายสำหรับผู้เรียนพื้นฐานอ่อน: I can ___. / I can't ___."];
+  }
+  if (topic.includes("Weather") || topic.includes("Feel")) {
+    return ["Student A: How is the weather?", "Student B: It is sunny.", "Student A: How do you feel?", "Student B: I am happy.", "แบบง่ายสำหรับผู้เรียนพื้นฐานอ่อน: It is ___. / I am ___."];
+  }
+  return [`Student A: What is this?`, `Student B: It is ${firstWord}.`, `Student A: Do you like ${secondWord}?`, `Student B: Yes, I do.`, `แบบง่ายสำหรับผู้เรียนพื้นฐานอ่อน: ${firstWord}. / This is ${firstWord}.`];
+}
 
 function buildLesson(form, templates) {
   const safeForm = { ...defaultForm, ...form };
@@ -164,69 +267,144 @@ function buildLesson(form, templates) {
   const activityTemplates = templates?.activityTemplates || {};
   const unitFrame = normalizeUnitFrame(lessonFrames[safeForm.learningUnit]);
   const activityFrame = normalizeActivityFrame(activityTemplates[safeForm.activityType]);
-  const vocabularyLimit = safeForm.studentLevel === "พื้นฐานอ่อน" ? 4 : 6;
-  const vocabulary = asArray(unitFrame.vocabulary, fallbackUnitFrame.vocabulary).slice(0, vocabularyLimit);
   const topics = asArray(unitFrame.topics, fallbackUnitFrame.topics);
   const topic = safeForm.lessonTopic || topics[0] || "หัวข้อบทเรียนตัวอย่าง";
-  const speakingFocus = asArray(unitFrame.speakingFocus, fallbackUnitFrame.speakingFocus).slice(0, safeForm.studentLevel === "เริ่มมั่นใจ" ? 5 : 4);
+  const vocabularyItems = makeVocabularyItems(unitFrame, topic);
+  const vocabularyWords = vocabularyItems.map((item) => item.word);
+  const sentenceFrames = makeSentenceFrames(unitFrame.speakingFocus);
+  const dialogue = makeDialogue(topic, vocabularyItems);
+  const practiceActivity = safeForm.activityType || "ฝึกสนทนาเป็นคู่";
 
   return [
     {
+      title: "ข้อมูลพื้นฐาน",
+      content: [
+        `ชื่อระบบ: MKL Digital Lesson Builder ระบบช่วยออกแบบการจัดการเรียนรู้ดิจิทัลด้วย AI`,
+        `รายวิชา: ${safeForm.subject} | ระดับชั้น: ${safeForm.gradeLevel}`,
+        `หน่วยการเรียนรู้: หน่วยที่ ${unitFrame.unitNumber} ${safeForm.learningUnit} | หัวข้อที่เรียน: ${topic}`,
+        `ภาคเรียน: ${unitFrame.semester} | เวลาเรียนของหน่วยนี้: ${unitFrame.totalHours} ชั่วโมง | ระดับผู้เรียน: ${safeForm.studentLevel}`,
+        `ทักษะที่เน้น: ${safeForm.targetSkill} | รูปแบบกิจกรรมหลัก: ${practiceActivity}`,
+      ],
+    },
+    {
+      title: "คำศัพท์สำคัญประจำบทเรียน",
+      content: [
+        `ครูใช้คำศัพท์ครบชุดตามหัวข้อ “${topic}” โดยเริ่มจากการชี้ภาพหรือสิ่งของจริง อ่านออกเสียงทีละคำ ให้นักเรียนฟัง 1 รอบ พูดตามพร้อมกัน 2 รอบ และสุ่มพูดเป็นรายบุคคลอย่างนุ่มนวล`,
+        ...vocabularyItems.map((item, index) => `${index + 1}. ${item.word} = ${item.meaning} | ตัวอย่าง: ${item.example}`),
+      ],
+    },
+    {
       title: "จุดประสงค์การเรียนรู้",
       content: [
-        `นักเรียนเข้าใจและใช้คำศัพท์พื้นฐานเกี่ยวกับหัวข้อ “${topic}” ได้อย่างเหมาะสมกับระดับชั้น`,
-        `นักเรียนฝึกพูดประโยคภาษาอังกฤษสั้น ๆ ได้ เช่น ${speakingFocus.slice(0, 2).join(" / ")}`,
-        `นักเรียนมีส่วนร่วมในกิจกรรม ${safeForm.activityType} โดยใช้บัตรภาพ การพูดซ้ำ และการช่วยเหลือจากครู`,
+        `เมื่อจบบทเรียน นักเรียนสามารถบอกความหมายของคำศัพท์เกี่ยวกับ “${topic}” ได้อย่างน้อย ${Math.min(6, vocabularyItems.length)} คำ โดยดูจากบัตรภาพหรือสิ่งของจริง`,
+        `นักเรียนสามารถออกเสียงคำศัพท์สำคัญ เช่น ${vocabularyWords.slice(0, 5).join(", ")} ได้ชัดเจนขึ้น โดยครูเน้นเสียงต้นคำและจังหวะการออกเสียงอย่างช้า ๆ`,
+        `นักเรียนสามารถใช้รูปประโยคสั้น ๆ ในสถานการณ์ใกล้ตัวได้ เช่น ${sentenceFrames.slice(0, 3).join(" / ")}`,
+        `นักเรียนสามารถร่วมกิจกรรม ${practiceActivity} กับเพื่อนอย่างสุภาพ กล้าลองพูด และรับฟังเพื่อนในชั้นเรียน`,
       ],
     },
     {
-      title: "ขั้นนำเข้าสู่บทเรียน",
+      title: "Warm-up",
       content: [
+        `ครูเตรียมบัตรภาพหรือภาพจาก PowerPoint ที่เกี่ยวข้องกับ “${topic}” ติดไว้หน้าห้อง ก่อนเริ่มสอนครูยิ้ม ทักทายนักเรียนด้วยประโยคสั้น ๆ เช่น Good morning, class. และให้นักเรียนตอบ Good morning, teacher.`,
+        `ครูเชื่อมโยงความรู้เดิมโดยชูภาพทีละใบแล้วถามเป็นภาษาไทยผสมประโยคอังกฤษง่าย ๆ เช่น “ภาพนี้นักเรียนเคยเห็นไหม”, “What is this?”, “Do you know this word?” หากนักเรียนตอบไม่ได้ ครูให้เดาเป็นภาษาไทยก่อนได้เพื่อสร้างบรรยากาศปลอดภัย`,
+        `ครูใช้กิจกรรม “ดูภาพแล้วชี้” โดยพูดคำศัพท์ 3 คำแรก ได้แก่ ${vocabularyWords.slice(0, 3).join(", ")} แล้วให้นักเรียนชี้ภาพที่ตรงกัน จากนั้นครูชมว่า Very good. หรือ Good try. เพื่อกระตุ้นความมั่นใจ`,
+        `คำพูดครูที่ใช้ได้ทันที: “วันนี้เราจะเรียนเรื่อง ${topic} เราจะค่อย ๆ ฟัง พูดตาม และลองพูดกับเพื่อน นักเรียนไม่ต้องกลัวผิด ครูจะช่วยทีละขั้นนะคะ/ครับ”`,
         activityFrame.warmUp,
-        `ครูใช้ภาพ ท่าทาง และคำถามนำง่าย ๆ เพื่อเชื่อมโยงเข้าสู่หัวข้อ “${topic}” โดยไม่เร่งให้นักเรียนตอบยาว`,
       ],
     },
     {
-      title: "ขั้นสอน",
+      title: "Presentation",
       content: [
-        `ครูสอนคำศัพท์สำคัญด้วยบัตรภาพหรือสิ่งของจริง ได้แก่ ${vocabulary.join(", ")}`,
-        `ครูออกเสียงและให้เด็กพูดตามรูปประโยคอย่างช้า ๆ เช่น ${speakingFocus.slice(0, 3).join(" / ")}`,
-        ...unitFrame.lessonProgression.slice(0, 3),
+        `ครูนำเสนอคำศัพท์ด้วยลำดับ “ภาพ - คำ - ความหมาย - การออกเสียง” โดยชูบัตรภาพก่อน พูดคำว่า ${vocabularyWords[0] || "hello"} ช้า ๆ 2 ครั้ง ให้นักเรียนดูรูปปาก แล้วพูดตามพร้อมกัน จากนั้นครูบอกความหมายภาษาไทยและใช้ประโยคตัวอย่างสั้น ๆ`,
+        `แนวทางฝึกออกเสียง: ครูแบ่งคำยาวออกเป็นพยางค์สั้น ๆ ปรบมือกำกับจังหวะ และเน้นเสียงต้นคำ หากนักเรียนออกเสียงไม่ชัด ครูพูดต้นแบบอีกครั้งแทนการตำหนิ`,
+        `รูปประโยคหลักบนกระดาน: ${sentenceFrames.slice(0, 4).join(" | ")} ครูเขียนด้วยตัวใหญ่ อ่านนำทีละประโยค แล้วขีดเส้นใต้ช่องที่นักเรียนต้องเปลี่ยนคำ เช่น ___.`,
+        `ตัวอย่างการอธิบายของครู: “ประโยค ${sentenceFrames[0] || "This is ___."} ใช้เมื่อเราต้องการพูดสั้น ๆ ให้เพื่อนเข้าใจ ครูจะพูดก่อน นักเรียนฟัง แล้วพูดตามพร้อมกันนะคะ/ครับ”`,
+        `ตัวอย่าง board writing: Unit ${unitFrame.unitNumber}: ${safeForm.learningUnit} / Topic: ${topic} / Words: ${vocabularyWords.slice(0, 8).join(", ")} / Pattern: ${sentenceFrames[0] || "This is ___."}`,
+        `ครูสาธิตกับนักเรียน 1 คนหน้าชั้นเรียน โดยใช้บัตรภาพจริง ครูถามช้า ๆ นักเรียนตอบด้วยคำหรือประโยคสั้น ๆ จากนั้นครูให้ทั้งห้องพูดซ้ำพร้อมกันเพื่อช่วยผู้เรียนพื้นฐานอ่อน`,
       ],
     },
     {
-      title: "ขั้นสรุป",
+      title: "Practice",
       content: [
-        `ให้นักเรียนเลือกพูดคำศัพท์ 1 คำ และประโยคสั้น ๆ 1 ประโยคเกี่ยวกับ “${topic}”`,
+        `กิจกรรมที่ 1: Listen and Point | จุดประสงค์: ให้นักเรียนฟังคำศัพท์แล้วเชื่อมโยงกับภาพได้ | สื่อ: บัตรภาพ ${vocabularyWords.slice(0, 6).join(", ")} | ขั้นตอน: ครูวางบัตรภาพบนกระดาน พูดคำศัพท์ทีละคำ นักเรียนชี้ภาพพร้อมกัน จากนั้นครูสุ่มให้นักเรียน 3-5 คนออกมาชี้ภาพ ครูพูดว่า Listen carefully. Point to ${vocabularyWords[0] || "the word"}. คำตอบที่คาดหวัง: นักเรียนชี้ภาพถูกต้องและพูดคำศัพท์ตามครู`,
+        `กิจกรรมที่ 2: Repeat and Change | จุดประสงค์: ให้นักเรียนฝึกรูปประโยคโดยเปลี่ยนคำศัพท์ในช่องว่าง | สื่อ: แถบประโยค ${sentenceFrames[0] || "This is ___."} และบัตรคำ | ขั้นตอน: ครูอ่านประโยคต้นแบบ นักเรียนพูดตาม จากนั้นครูเปลี่ยนบัตรคำทีละใบ เช่น ${vocabularyWords.slice(0, 3).join(", ")} นักเรียนพูดประโยคใหม่พร้อมกัน | คำสั่งครู: Repeat after me. Change the word. Try again. | คำตอบที่คาดหวัง: นักเรียนพูดประโยคสั้น ๆ ได้แม้ยังต้องดูบัตรช่วย`,
+        `กิจกรรมที่ 3: Guided Pair Drill | จุดประสงค์: ให้นักเรียนฝึกถาม-ตอบกับเพื่อนภายใต้กรอบที่ครูกำหนด | สื่อ: บัตรบทสนทนาและบัตรภาพ | ขั้นตอน: ครูจับคู่ให้นักเรียน คนที่ 1 ถือบัตรคำถาม คนที่ 2 ถือบัตรภาพ ครูให้ซ้อมพร้อมกันทั้งห้องก่อน 1 รอบ แล้วให้นักเรียนฝึกเป็นคู่ 3 นาที ครูเดินฟังและช่วยออกเสียง | การช่วยผู้เรียนอ่อน: ให้พูดเฉพาะคำตอบสั้น ๆ ก่อน เช่น ${vocabularyWords[0] || "hello"} แล้วค่อยเพิ่มเป็นประโยค`,
+        `กิจกรรมจากโครงสร้างหลักสูตร: ${unitFrame.classroomActivities[0] || activityFrame.classroomActivity}`,
+      ],
+    },
+    {
+      title: "Production",
+      content: [
+        `กิจกรรมสื่อสาร: Mini Communication Task | นักเรียนใช้ภาษาอย่างอิสระมากขึ้นผ่าน ${practiceActivity} โดยครูจัดคู่หรือกลุ่มเล็ก 3-4 คน เพื่อให้เด็กได้พูดหลายครั้งในบรรยากาศเป็นกันเอง`,
+        `ขั้นตอนกิจกรรม: 1. ครูสาธิตบทสนทนากับนักเรียน 1 คนหน้าชั้นเรียน 2. นักเรียนจับคู่และเลือกบัตรภาพ 2 ใบ 3. นักเรียนใช้กรอบประโยค ${sentenceFrames.slice(0, 2).join(" / ")} พูดกับเพื่อน 4. นักเรียนสลับบทบาท 5. ครูสุ่มคู่ที่พร้อมออกมานำเสนอหน้าชั้นโดยไม่บังคับผู้เรียนที่ยังไม่มั่นใจ`,
+        `คำสั่งครู: Work in pairs. Speak slowly. You can look at the sentence card. If you need help, raise your hand.`,
+        `สิ่งที่นักเรียนทำ: นักเรียนเลือกคำศัพท์จากบัตรภาพ ถาม-ตอบกับเพื่อนตามกรอบประโยค และพยายามใช้เสียงดังพอให้คู่ของตนได้ยิน`,
+        `เวอร์ชันง่ายสำหรับผู้เรียนพื้นฐานอ่อน: นักเรียนพูดเฉพาะคำศัพท์และประโยคสั้นที่สุด เช่น ${sentenceFrames[0] || "This is ___."} โดยครูหรือเพื่อนช่วยชี้บัตรคำประกอบ`,
+      ],
+    },
+    {
+      title: "ตัวอย่างบทสนทนา/ประโยคที่ใช้ในกิจกรรม",
+      content: [
+        ...dialogue,
+        `Question patterns: ${sentenceFrames.filter((frame) => frame.includes("?")).join(" / ") || "What is this? / Do you like ___?"}`,
+        `Answer patterns: ${sentenceFrames.filter((frame) => !frame.includes("?")).slice(0, 4).join(" / ")}`,
+      ],
+    },
+    {
+      title: "Wrap-up",
+      content: [
+        `ครูทบทวนคำศัพท์โดยชูบัตรภาพแบบเร็ว 5-8 ใบ ให้นักเรียนตอบพร้อมกัน หากตอบไม่ได้ให้ครูออกเสียงต้นคำและให้ทั้งห้องช่วยกันพูด ไม่ควรเฉลยทันทีเพื่อเปิดโอกาสให้เด็กคิด`,
+        `ครูทบทวนรูปประโยคบนกระดานโดยลบคำบางคำออก เช่น ${sentenceFrames[0] || "This is ___."} แล้วให้นักเรียนเติมคำจากภาพ ครูถามคำถามตรวจความเข้าใจ เช่น “คำนี้แปลว่าอะไร”, “ประโยคนี้ใช้พูดกับใคร”, “ถ้าจะเปลี่ยนเป็นคำว่า ${vocabularyWords[1] || "book"} ต้องพูดอย่างไร”`,
+        `นักเรียนสรุปการเรียนรู้ด้วย exit ticket แบบปากเปล่า: พูดคำศัพท์ 1 คำ และประโยค 1 ประโยคก่อนออกจากห้อง หรือเขียนลงกระดาษเล็ก ๆ หากเน้นการเขียน`,
+        `ครูมอบหมายใบงานหรือการบ้านสั้น ๆ ให้จับคู่คำศัพท์กับภาพ เติมคำในประโยค และวาดภาพประกอบคำศัพท์ 1 คำ โดยเน้นความเข้าใจมากกว่าการสะกดที่สมบูรณ์`,
         ...activityFrame.summary,
-      ],
-    },
-    {
-      title: "กิจกรรมการเรียนรู้",
-      content: [
-        activityFrame.classroomActivity,
-        ...activityFrame.activities.slice(0, 1),
-        ...unitFrame.classroomActivities.slice(0, 2),
       ],
     },
     {
       title: "สื่อการสอน",
       content: [
-        ...activityFrame.media,
-        ...unitFrame.media,
-        `คำศัพท์ที่เน้น: ${vocabulary.join(", ")}`,
-        `รูปประโยคที่ใช้ฝึกพูด: ${speakingFocus.join(" / ")}`,
+        `Flashcards: บัตรคำศัพท์ชุด ${vocabularyWords.join(", ")} ขนาดใหญ่พอให้นักเรียนหลังห้องมองเห็น`,
+        `Picture cards: บัตรภาพตรงกับคำศัพท์ทุกคำ ใช้สำหรับชี้ภาพ จับคู่ และฝึกถาม-ตอบ`,
+        `Word cards และ sentence strips: บัตรคำและแถบประโยค ${sentenceFrames.slice(0, 3).join(" / ")} สำหรับติดบนกระดานและให้เด็กเปลี่ยนคำในช่องว่าง`,
+        `PowerPoint: สไลด์ภาพทีละคำ พร้อมคำศัพท์และประโยคตัวอย่าง ใช้เฉพาะภาพชัด ๆ ไม่ใส่ข้อความมากเกินไป`,
+        `Worksheet: ใบงานหนึ่งหน้า มีจับคู่ภาพ เติมคำ และเขียนประโยคสั้น ๆ ตามระดับผู้เรียน`,
+        `Board writing: เขียน Unit, Topic, Words, Pattern และตัวอย่างบทสนทนาไว้เป็นมุมอ้างอิงตลอดคาบ`,
+        `Classroom objects หรือสิ่งของใกล้ตัว: ใช้ของจริงในห้องเรียนหรือภาพจากบริบทโรงเรียนชนบท เพื่อช่วยให้นักเรียนเข้าใจโดยไม่ต้องแปลทุกคำ`,
+        `เพลงหรือวิดีโอสั้น: ใช้ได้เมื่อเกี่ยวข้องกับหัวข้อและมีจังหวะช้า เช่น chant คำศัพท์ 30-60 วินาที เพื่อทบทวนก่อนฝึกพูด`,
       ],
     },
     {
       title: "ใบงานตัวอย่าง",
-      content: [...activityFrame.worksheet, ...unitFrame.worksheetIdeas],
+      content: [
+        `ชื่อใบงาน: English Practice Worksheet - ${topic}`,
+        `คำชี้แจงสำหรับนักเรียน: ให้นักเรียนดูภาพ อ่านคำศัพท์ตามครู แล้วทำกิจกรรมทีละข้อ หากอ่านยังไม่คล่องให้ฟังครูอ่านก่อนและพูดตาม`,
+        `ตอนที่ 1 จับคู่คำศัพท์กับความหมายหรือภาพ: ใช้คำว่า ${vocabularyWords.slice(0, 6).join(", ")} โดยให้นักเรียนลากเส้นจากคำไปยังภาพที่ถูกต้อง`,
+        `ตอนที่ 2 เติมคำในประโยค: ครูให้ประโยค ${sentenceFrames[0] || "This is ___."} จำนวน 4 ข้อ และมีคลังคำศัพท์ให้เลือก เพื่อลดความยากสำหรับผู้เรียนพื้นฐานอ่อน`,
+        `ตอนที่ 3 ฝึกเขียนหรือพูด: ให้นักเรียนเลือกคำศัพท์ 1 คำ วาดภาพประกอบ และเขียนประโยคสั้น ๆ 1 ประโยค เช่น ${vocabularyItems[0]?.example || "This is a book."}`,
+        `เฉลยสำหรับครู: คำตอบพิจารณาจากการจับคู่ภาพถูกต้อง การเลือกคำศัพท์ตรงกับประโยค และการใช้รูปประโยคที่สื่อความหมายได้ หากสะกดผิดเล็กน้อยแต่สื่อสารได้ ให้ครูให้คำแนะนำเพิ่มเติมแทนการหักคะแนนทั้งหมด`,
+        ...unitFrame.worksheetIdeas,
+      ],
     },
     {
       title: "การวัดและประเมินผล",
       content: [
+        `สิ่งที่ประเมิน: ความเข้าใจคำศัพท์ การออกเสียง การใช้ประโยคสั้น ๆ การร่วมกิจกรรมคู่หรือกลุ่ม และความกล้าลองสื่อสารภาษาอังกฤษ`,
+        `วิธีประเมินระหว่างเรียน: ครูใช้การสังเกตขณะนักเรียนทำ Listen and Point, Repeat and Change และ Mini Communication Task โดยบันทึกนักเรียนที่ต้องการความช่วยเหลือเพิ่มเติม`,
+        `จุดสังเกตของครู: นักเรียนชี้ภาพถูกต้องหรือไม่ พูดคำศัพท์ตามได้หรือไม่ ใช้ประโยคจากบัตรช่วยได้หรือไม่ ฟังเพื่อนและรอคิวพูดได้หรือไม่`,
+        `Checklist แบบง่าย: 1 = ต้องช่วยมาก, 2 = ทำได้เมื่อมีบัตรช่วย, 3 = ทำได้ด้วยตนเอง สำหรับรายการ คำศัพท์, การออกเสียง, ประโยค, การมีส่วนร่วม`,
+        `การประเมินท้ายบทเรียน: ให้นักเรียนพูดคำศัพท์ 3 คำ และเลือกใช้ประโยค 1 ประโยคจาก ${sentenceFrames.slice(0, 2).join(" หรือ ")} ครูให้คะแนนแบบให้กำลังใจและจดคำที่ควรทบทวนในคาบถัดไป`,
         activityFrame.assessment,
         ...unitFrame.assessmentIdeas.slice(0, 2),
+      ],
+    },
+    {
+      title: "ข้อเสนอแนะสำหรับครู",
+      content: [
+        `สำหรับผู้เรียนพื้นฐานอ่อน ให้ลดภาระภาษาโดยเริ่มจากการฟังและชี้ภาพก่อน แล้วจึงพูดคำเดี่ยว จากนั้นค่อยเพิ่มเป็นประโยคสั้น ๆ ไม่ควรให้เด็กอ่านประโยคยาวทันที`,
+        `การจัดการชั้นเรียนควรใช้คู่ช่วยคู่ โดยจับคู่นักเรียนที่มั่นใจกับนักเรียนที่ยังไม่มั่นใจ และกำหนดเวลาแต่ละกิจกรรมสั้น ๆ ชัดเจน เช่น 3 นาทีสำหรับฝึกคู่ และ 2 นาทีสำหรับนำเสนอ`,
+        `การช่วยออกเสียงควรใช้วิธีครูพูดต้นแบบ เด็กพูดตามพร้อมกัน แบ่งคำเป็นช่วงสั้น ๆ และให้กำลังใจด้วยคำว่า Good try. Try again. Excellent. หลีกเลี่ยงการตำหนิเมื่อนักเรียนออกเสียงผิด`,
+        `หากสื่อดิจิทัลไม่พร้อม ครูสามารถใช้บัตรภาพวาดเอง กระดานดำ สิ่งของจริงในห้องเรียน และการทำท่าทางแทน PowerPoint ได้ โดยยังคงลำดับ 2W3P เหมือนเดิม`,
+        `ควรปิดบทเรียนด้วยความสำเร็จเล็ก ๆ เช่น ให้นักเรียนทุกคนพูดได้อย่างน้อย 1 คำหรือ 1 ประโยค เพื่อสร้างเจตคติที่ดีต่อภาษาอังกฤษ`,
       ],
     },
   ];
@@ -314,8 +492,8 @@ function LessonSectionCard({ section, index }) {
       ]),
     ]),
     h("ul", { className: "space-y-3 text-sm leading-7 text-slate-600", key: "items" },
-      asArray(section.content, ["ยังไม่มีข้อมูลในส่วนนี้"]).map((item) =>
-        h("li", { className: "lesson-section-item", key: item }, [
+      asArray(section.content, ["ยังไม่มีข้อมูลในส่วนนี้"]).map((item, itemIndex) =>
+        h("li", { className: "lesson-section-item", key: `${section.title}-${itemIndex}` }, [
           h("span", { className: "lesson-dot", "aria-hidden": "true", key: "dot" }),
           h("span", { key: "text" }, item),
         ])
@@ -341,6 +519,7 @@ function safeFilename(value) {
 }
 
 function buildLessonPlanText({ form, lesson, selectedUnit }) {
+  const safeLesson = asArray(lesson);
   const lines = [
     "ชื่อระบบ: MKL Digital Lesson Builder ระบบช่วยออกแบบการจัดการเรียนรู้ดิจิทัลด้วย AI",
     `รายวิชา: ${form.subject}`,
@@ -350,60 +529,50 @@ function buildLessonPlanText({ form, lesson, selectedUnit }) {
     `ภาคเรียน: ${selectedUnit.semester}`,
     `เวลาเรียน: ${selectedUnit.totalHours} ชั่วโมง`,
     "",
-    "จุดประสงค์การเรียนรู้",
-    formatList(getLessonSection(lesson, "จุดประสงค์การเรียนรู้")),
-    "",
-    "ขั้นนำเข้าสู่บทเรียน",
-    formatList(getLessonSection(lesson, "ขั้นนำเข้าสู่บทเรียน")),
-    "",
-    "ขั้นสอน",
-    formatList(getLessonSection(lesson, "ขั้นสอน")),
-    "",
-    "ขั้นสรุป",
-    formatList(getLessonSection(lesson, "ขั้นสรุป")),
-    "",
-    "กิจกรรมการเรียนรู้",
-    formatList(getLessonSection(lesson, "กิจกรรมการเรียนรู้")),
-    "",
-    "สื่อการสอน",
-    formatList(getLessonSection(lesson, "สื่อการสอน")),
-    "",
-    "ใบงานตัวอย่าง",
-    formatList(getLessonSection(lesson, "ใบงานตัวอย่าง")),
-    "",
-    "การวัดและประเมินผล",
-    formatList(getLessonSection(lesson, "การวัดและประเมินผล")),
   ];
+
+  safeLesson.forEach((section) => {
+    lines.push("", section.title, formatList(section.content));
+  });
 
   return lines.join("\n");
 }
 
 function buildWorksheetText({ form, selectedUnit }) {
   const safeUnit = normalizeUnitFrame(selectedUnit);
-  const vocabulary = safeUnit.vocabulary.slice(0, 6);
-  const patterns = safeUnit.speakingFocus.slice(0, 3);
+  const topic = form.lessonTopic || safeUnit.topics[0] || "หัวข้อบทเรียนตัวอย่าง";
+  const vocabularyItems = makeVocabularyItems(safeUnit, topic);
+  const vocabulary = vocabularyItems.slice(0, 8);
+  const patterns = makeSentenceFrames(safeUnit.speakingFocus).slice(0, 4);
   const exercises = safeUnit.worksheetIdeas;
 
   return [
-    `ชื่อใบงาน: ใบงานภาษาอังกฤษ เรื่อง ${form.lessonTopic}`,
+    `ชื่อใบงาน: ใบงานภาษาอังกฤษ เรื่อง ${topic}`,
     "",
     "คำชี้แจง",
-    `ให้นักเรียนทบทวนคำศัพท์และประโยคสั้น ๆ จากหน่วยการเรียนรู้ ${form.learningUnit} แล้วทำกิจกรรมตามลำดับ หากยังอ่านไม่ได้คล่อง ครูสามารถอ่านนำและให้นักเรียนพูดตามก่อนทำใบงาน`,
+    `ให้นักเรียนทบทวนคำศัพท์และประโยคสั้น ๆ จากหน่วยการเรียนรู้ ${form.learningUnit} แล้วทำกิจกรรมตามลำดับ หากยังอ่านไม่คล่อง ครูสามารถอ่านนำ ชี้ภาพ และให้นักเรียนพูดตามก่อนทำใบงานได้ ใบงานนี้ออกแบบสำหรับ ${form.gradeLevel} รายวิชา ${form.subject} ระดับผู้เรียน ${form.studentLevel}`,
     "",
     "คำศัพท์สำคัญ",
-    vocabulary.map((word, index) => `${index + 1}. ${word}`).join("\n"),
+    vocabulary.map((item, index) => `${index + 1}. ${item.word} = ${item.meaning} | ตัวอย่าง: ${item.example}`).join("\n"),
     "",
     "รูปประโยคตัวอย่าง",
     patterns.map((pattern, index) => `${index + 1}. ${pattern}`).join("\n"),
     "",
     "กิจกรรม/แบบฝึกหัด",
-    exercises.map((item, index) => `${index + 1}. ${item}`).join("\n"),
+    [
+      `1. จับคู่คำศัพท์กับภาพ: ให้นักเรียนจับคู่คำศัพท์ ${vocabulary.slice(0, 6).map((item) => item.word).join(", ")} กับภาพที่ครูเตรียมไว้`,
+      `2. เติมคำในประโยค: ให้นักเรียนเลือกคำศัพท์จากคลังคำมาเติมในรูปประโยค ${patterns[0] || "This is ___."} จำนวน 4 ข้อ`,
+      `3. อ่านแล้ววงคำตอบ: ครูเขียนประโยคสั้น ๆ 3 ประโยค นักเรียนวงคำศัพท์ที่ตรงกับภาพ เช่น ${vocabulary[0]?.example || "This is a book."}`,
+      `4. วาดและเขียน: ให้นักเรียนเลือกคำศัพท์ 1 คำ วาดภาพประกอบ และเขียนประโยคสั้น ๆ 1 ประโยคตามกรอบที่กำหนด`,
+      ...exercises.map((item, index) => `${index + 5}. ${item}`),
+    ].join("\n"),
     "",
     "เฉลยสำหรับครู",
-    "1. คำตอบของกิจกรรมจับคู่หรือเลือกคำศัพท์ให้พิจารณาจากคำศัพท์สำคัญในบทเรียน",
+    `1. คำตอบของกิจกรรมจับคู่ให้พิจารณาจากความหมายของคำศัพท์ เช่น ${vocabulary.slice(0, 4).map((item) => `${item.word} = ${item.meaning}`).join(", ")}`,
     `2. ประโยคคำตอบควรใช้รูปประโยคตัวอย่าง เช่น ${patterns.join(" / ")}`,
-    "3. หากนักเรียนสะกดคำยังไม่ครบถ้วน ให้ครูให้คะแนนจากความเข้าใจคำศัพท์ การเลือกภาพถูกต้อง และความกล้าพูดประกอบ",
-    "4. สำหรับคำตอบแบบวาดภาพหรือเขียนประโยคสั้น ๆ ครูสามารถรับคำตอบที่สอดคล้องกับหัวข้อและใช้คำศัพท์เป้าหมายได้",
+    "3. กิจกรรมเติมคำให้ตรวจว่าคำศัพท์สัมพันธ์กับภาพและรูปประโยค หากสะกดผิดเล็กน้อยแต่สื่อความหมายได้ ให้ครูเขียนคำที่ถูกต้องให้ดูและให้นักเรียนอ่านซ้ำ",
+    "4. กิจกรรมวาดและเขียนสามารถรับคำตอบที่สอดคล้องกับหัวข้อ ใช้คำศัพท์เป้าหมาย และนักเรียนสามารถอธิบายภาพของตนเองด้วยคำหรือประโยคสั้น ๆ ได้",
+    "5. สำหรับผู้เรียนพื้นฐานอ่อน ครูอาจให้คะแนนจากการชี้ภาพถูกต้อง การอ่านตามครู และความพยายามในการพูด มากกว่าความสมบูรณ์ของการเขียน",
   ].join("\n");
 }
 
@@ -661,7 +830,7 @@ function App() {
             ]),
             h("p", { className: "text-sm font-extrabold uppercase text-slate-500", key: "eyebrow" }, "ผลลัพธ์แผนการสอน"),
             h("h2", { className: "mt-2 break-words font-display text-3xl font-black leading-tight text-ink sm:text-4xl", key: "title" }, form.lessonTopic),
-            h("p", { className: "mt-3 max-w-3xl text-sm leading-7 text-slate-600", key: "description" }, "แผนบทเรียนภาษาอังกฤษอย่างง่ายสำหรับนักเรียนไทย ป.4 ที่ต้องการพื้นฐานคำศัพท์ ประโยคสั้น และความมั่นใจในการสื่อสาร"),
+            h("p", { className: "mt-3 max-w-3xl text-sm leading-7 text-slate-600", key: "description" }, "แผนบทเรียนภาษาอังกฤษแบบ 2W3P สำหรับนักเรียนไทย ป.4 มีขั้นตอนสอน คำพูดครู กิจกรรมฝึกปฏิบัติ ใบงาน สื่อ และการประเมินที่นำไปใช้ในห้องเรียนได้ทันที"),
           ]),
           h("div", { className: "lesson-summary-panel", key: "summary" }, [
             h("div", { className: "lesson-summary-row", key: "unit" }, [
@@ -712,7 +881,7 @@ function App() {
           ]),
           h("div", { className: "lesson-mini-stat bg-lilac/70", key: "sections" }, [
             h("span", { key: "label" }, "องค์ประกอบแผน"),
-            h("strong", { key: "value" }, "8 ส่วน"),
+            h("strong", { key: "value" }, "13 ส่วน"),
           ]),
         ]),
         h("div", { className: "mt-6 grid gap-4 lg:grid-cols-2", key: "cards" },
