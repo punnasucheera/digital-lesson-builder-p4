@@ -187,6 +187,100 @@ function LessonSectionCard({ section, index }) {
   ]);
 }
 
+function getLessonSection(lesson, title) {
+  return lesson.find((section) => section.title === title)?.content || [];
+}
+
+function formatList(items) {
+  return items.map((item, index) => `${index + 1}. ${item}`).join("\n");
+}
+
+function safeFilename(value) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9ก-๙]+/gi, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80) || "lesson";
+}
+
+function buildLessonPlanText({ form, lesson, selectedUnit }) {
+  const lines = [
+    "ชื่อระบบ: Digital Lesson Builder ระบบช่วยออกแบบแผนการจัดการเรียนรู้",
+    `รายวิชา: ${form.subject}`,
+    `ระดับชั้น: ${form.gradeLevel}`,
+    `หน่วยการเรียนรู้: Unit ${selectedUnit.unitNumber} ${form.learningUnit}`,
+    `หัวข้อที่เรียน: ${form.lessonTopic}`,
+    `ภาคเรียน: ${selectedUnit.semester}`,
+    `เวลาเรียน: ${selectedUnit.totalHours} ชั่วโมง`,
+    "",
+    "จุดประสงค์การเรียนรู้",
+    formatList(getLessonSection(lesson, "จุดประสงค์การเรียนรู้")),
+    "",
+    "ขั้นนำเข้าสู่บทเรียน",
+    formatList(getLessonSection(lesson, "ขั้นนำเข้าสู่บทเรียน")),
+    "",
+    "ขั้นสอน",
+    formatList(getLessonSection(lesson, "ขั้นสอน")),
+    "",
+    "ขั้นสรุป",
+    formatList(getLessonSection(lesson, "ขั้นสรุป")),
+    "",
+    "กิจกรรมการเรียนรู้",
+    formatList(getLessonSection(lesson, "กิจกรรมการเรียนรู้")),
+    "",
+    "สื่อการสอน",
+    formatList(getLessonSection(lesson, "สื่อการสอน")),
+    "",
+    "ใบงานตัวอย่าง",
+    formatList(getLessonSection(lesson, "ใบงานตัวอย่าง")),
+    "",
+    "การวัดและประเมินผล",
+    formatList(getLessonSection(lesson, "การวัดและประเมินผล")),
+  ];
+
+  return lines.join("\n");
+}
+
+function buildWorksheetText({ form, selectedUnit }) {
+  const vocabulary = selectedUnit.vocabulary.slice(0, 6);
+  const patterns = selectedUnit.speakingFocus.slice(0, 3);
+  const exercises = selectedUnit.worksheetIdeas;
+
+  return [
+    `ชื่อใบงาน: ใบงานภาษาอังกฤษ เรื่อง ${form.lessonTopic}`,
+    "",
+    "คำชี้แจง",
+    `ให้นักเรียนทบทวนคำศัพท์และประโยคสั้น ๆ จากหน่วยการเรียนรู้ ${form.learningUnit} แล้วทำกิจกรรมตามลำดับ หากยังอ่านไม่ได้คล่อง ครูสามารถอ่านนำและให้นักเรียนพูดตามก่อนทำใบงาน`,
+    "",
+    "คำศัพท์สำคัญ",
+    vocabulary.map((word, index) => `${index + 1}. ${word}`).join("\n"),
+    "",
+    "รูปประโยคตัวอย่าง",
+    patterns.map((pattern, index) => `${index + 1}. ${pattern}`).join("\n"),
+    "",
+    "กิจกรรม/แบบฝึกหัด",
+    exercises.map((item, index) => `${index + 1}. ${item}`).join("\n"),
+    "",
+    "เฉลยสำหรับครู",
+    "1. คำตอบของกิจกรรมจับคู่หรือเลือกคำศัพท์ให้พิจารณาจากคำศัพท์สำคัญในบทเรียน",
+    `2. ประโยคคำตอบควรใช้รูปประโยคตัวอย่าง เช่น ${patterns.join(" / ")}`,
+    "3. หากนักเรียนสะกดคำยังไม่ครบถ้วน ให้ครูให้คะแนนจากความเข้าใจคำศัพท์ การเลือกภาพถูกต้อง และความกล้าพูดประกอบ",
+    "4. สำหรับคำตอบแบบวาดภาพหรือเขียนประโยคสั้น ๆ ครูสามารถรับคำตอบที่สอดคล้องกับหัวข้อและใช้คำศัพท์เป้าหมายได้",
+  ].join("\n");
+}
+
+function downloadTextFile(filename, text) {
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
 function App() {
   const [templates, setTemplates] = useState(null);
   const [form, setForm] = useState({
@@ -199,6 +293,7 @@ function App() {
     activityType: "Pair Practice",
   });
   const [lesson, setLesson] = useState(null);
+  const [exportNotice, setExportNotice] = useState("");
 
   useEffect(() => {
     fetch("./data/lessonTemplates.json")
@@ -230,6 +325,34 @@ function App() {
     window.requestAnimationFrame(() => {
       document.querySelector("#lesson-result")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+  }
+
+  async function copyLessonPlan() {
+    const text = buildLessonPlanText({ form, lesson, selectedUnit });
+    try {
+      await navigator.clipboard.writeText(text);
+      setExportNotice("คัดลอกแผนการสอนเรียบร้อยแล้ว");
+    } catch {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      textArea.remove();
+      setExportNotice("คัดลอกแผนการสอนเรียบร้อยแล้ว");
+    }
+  }
+
+  function downloadLessonPlan() {
+    const text = buildLessonPlanText({ form, lesson, selectedUnit });
+    downloadTextFile(`แผนการสอน-${safeFilename(form.learningUnit)}-${safeFilename(form.lessonTopic)}.txt`, text);
+    setExportNotice("ดาวน์โหลดแผนการสอนเป็นไฟล์ .txt แล้ว");
+  }
+
+  function downloadWorksheet() {
+    const text = buildWorksheetText({ form, selectedUnit });
+    downloadTextFile(`ใบงาน-${safeFilename(form.learningUnit)}-${safeFilename(form.lessonTopic)}.txt`, text);
+    setExportNotice("ดาวน์โหลดใบงานตัวอย่างเป็นไฟล์ .txt แล้ว");
   }
 
   if (!templates) {
@@ -336,6 +459,21 @@ function App() {
               h("strong", { key: "value" }, `${selectedUnit.totalHours} ชั่วโมง`),
             ]),
           ]),
+        ]),
+        h("div", { className: "lesson-export-panel", key: "export-actions" }, [
+          h("button", { className: "lesson-export-button bg-mint/80", onClick: copyLessonPlan, type: "button", key: "copy" }, [
+            h("span", { "aria-hidden": "true", key: "icon" }, "⧉"),
+            h("span", { key: "text" }, "คัดลอกแผนการสอน"),
+          ]),
+          h("button", { className: "lesson-export-button bg-skysoft/80", onClick: downloadLessonPlan, type: "button", key: "lesson-download" }, [
+            h("span", { "aria-hidden": "true", key: "icon" }, "⇩"),
+            h("span", { key: "text" }, "ดาวน์โหลดแผนการสอน"),
+          ]),
+          h("button", { className: "lesson-export-button bg-butter/80", onClick: downloadWorksheet, type: "button", key: "worksheet-download" }, [
+            h("span", { "aria-hidden": "true", key: "icon" }, "✎"),
+            h("span", { key: "text" }, "ดาวน์โหลดใบงานตัวอย่าง"),
+          ]),
+          exportNotice ? h("p", { className: "lesson-export-notice", key: "notice" }, exportNotice) : null,
         ]),
         h("div", { className: "mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4", key: "mini-stats" }, [
           h("div", { className: "lesson-mini-stat bg-peach/70", key: "level" }, [
