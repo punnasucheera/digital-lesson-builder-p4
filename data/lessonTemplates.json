@@ -1,12 +1,12 @@
 {
   "prototypeScope": {
-    "gradeLevel": "Grade 4",
-    "subject": "Fundamental English",
+    "gradeLevel": "ชั้นประถมศึกษาปีที่ 4",
+    "subject": "ภาษาอังกฤษพื้นฐาน",
     "note": "โครงสร้างหลักสูตรสำหรับนักเรียนไทยชั้น ป.4 ที่พื้นฐานภาษาอังกฤษยังไม่แข็งแรง เน้นคำศัพท์ง่าย ๆ รูปประโยคสั้น การฟัง-พูดซ้ำ และการสร้างความมั่นใจในห้องเรียน"
   },
   "fieldOptions": {
-    "gradeLevels": ["Grade 4"],
-    "subjects": ["Fundamental English"],
+    "gradeLevels": ["ชั้นประถมศึกษาปีที่ 4"],
+    "subjects": ["ภาษาอังกฤษพื้นฐาน"],
     "learningUnits": [
       "Hello English!",
       "ABC Sounds Fun",
@@ -21,13 +21,13 @@
       "Weather & Feelings",
       "Mini Conversations"
     ],
-    "studentLevels": ["Very Basic", "Basic", "Growing Confidence"],
-    "targetSkills": ["Speaking", "Vocabulary", "Listening", "Reading", "Writing"],
-    "activityTypes": ["Chant and Repeat", "Pair Practice", "Picture Game", "Role Play", "Worksheet Practice"]
+    "studentLevels": ["พื้นฐานอ่อน", "พื้นฐานปานกลาง", "เริ่มมั่นใจ"],
+    "targetSkills": ["การพูด", "คำศัพท์", "การฟัง", "การอ่าน", "การเขียน"],
+    "activityTypes": ["ร้อง chant และพูดตาม", "ฝึกสนทนาเป็นคู่", "เกมบัตรภาพ", "บทบาทสมมติ", "ฝึกด้วยใบงาน"]
   },
   "lessonFrames": {
     "Hello English!": {
-      "semester": "Semester 1",
+      "semester": "ภาคเรียนที่ 1",
       "unitNumber": 1,
       "totalHours": 4,
       "topics": ["Hello and Goodbye", "My Name Is...", "Nice to Meet You"],
@@ -57,7 +57,7 @@
       "media": ["บัตรภาพคำทักทาย", "บัตรชื่อสำหรับนักเรียน", "เสียง chant คำทักทายอย่างง่าย"]
     },
     "ABC Sounds Fun": {
-      "semester": "Semester 1",
+      "semester": "ภาคเรียนที่ 1",
       "unitNumber": 2,
       "totalHours": 5,
       "topics": ["A-Z Letter Names", "Beginning Sounds", "My ABC Words"],
@@ -87,7 +87,7 @@
       "media": ["บัตรตัวอักษร A-Z", "บัตรภาพ phonics", "เพลงหรือ chant ตัวอักษร"]
     },
     "English in My Classroom": {
-      "semester": "Semester 1",
+      "semester": "ภาคเรียนที่ 1",
       "unitNumber": 3,
       "totalHours": 4,
       "topics": ["Classroom Objects", "Classroom Commands", "Polite Classroom English"],
@@ -117,7 +117,7 @@
       "media": ["สิ่งของจริงในห้องเรียน", "บัตรคำสั่ง", "โปสเตอร์วลีภาษาอังกฤษในห้องเรียน"]
     },
     "My Family": {
-      "semester": "Semester 1",
+      "semester": "ภาคเรียนที่ 1",
       "unitNumber": 4,
       "totalHours": 5,
       "topics": ["Family Members", "This Is My...", "My Family Tree"],
@@ -147,7 +147,7 @@
       "media": ["บัตรภาพครอบครัว", "แบบฟอร์ม family tree", "บัตรแถบประโยค"]
     },
     "Colors & Numbers": {
-      "semester": "Semester 1",
+      "semester": "ภาคเรียนที่ 1",
       "unitNumber": 5,
       "totalHours": 5,
       "topics": ["Basic Colors", "Numbers 1-20", "How Many?"],
@@ -177,7 +177,7 @@
       "media": ["บัตรสี", "บัตรตัวเลข 1-20", "สิ่งของสำหรับนับในห้องเรียน"]
     },
     "Animals Around Me": {
-      "semester": "Semester 1",
+      "semester": "ภาคเรียนที่ 1",
       "unitNumber": 6,
       "totalHours": 5,
       "topics": ["Pet Animals", "Farm Animals", "Animal Actions"],
@@ -207,7 +207,7 @@
       "media": ["บัตรภาพสัตว์", "เสียงสัตว์สั้น ๆ", "แผ่นจัดกลุ่มสัตว์"]
     },
     "My Daily Life": {
-      "semester": "Semester 2",
+      "semester": "ภาคเรียนที่ 2",
       "unitNumber": 7,
       "totalHours": 5,
       "topics": ["Morning Routine", "After School", "My Day"],
@@ -237,7 +237,7 @@
       "media": ["บัตรภาพกิจวัตรประจำวัน", "เส้นเวลา daily routine", "เสียง chant พร้อมท่าทาง"]
     },
     "Food I Like": {
-      "semester": "Semester 2",
+      "semester": "ภาคเรียนที่ 2",
       "unitNumber": 8,
       "totalHours": 5,
       "topics": ["Food Words", "I Like / I Don't Like", "My Lunchbox"],
@@ -267,7 +267,7 @@
       "media": ["บัตรภาพอาหาร", "ใบงาน lunchbox", "บัตรคำตอบ Yes/No"]
     },
     "Around My School": {
-      "semester": "Semester 2",
+      "semester": "ภาคเรียนที่ 2",
       "unitNumber": 9,
       "totalHours": 4,
       "topics": ["Places at School", "Where Is It?", "School Map"],
@@ -297,7 +297,7 @@
       "media": ["โปสเตอร์แผนที่โรงเรียน", "บัตรภาพสถานที่ในโรงเรียน", "บัตรภาพคำบอกตำแหน่ง"]
     },
     "Fun Activities": {
-      "semester": "Semester 2",
+      "semester": "ภาคเรียนที่ 2",
       "unitNumber": 10,
       "totalHours": 4,
       "topics": ["Things I Can Do", "Sports and Hobbies", "Can / Can't"],
@@ -327,7 +327,7 @@
       "media": ["บัตรภาพท่าทาง", "บัตร can/can't", "แบบฟอร์มโปสเตอร์ขนาดเล็ก"]
     },
     "Weather & Feelings": {
-      "semester": "Semester 2",
+      "semester": "ภาคเรียนที่ 2",
       "unitNumber": 11,
       "totalHours": 5,
       "topics": ["Today's Weather", "How Do You Feel?", "Weather and Feelings"],
@@ -357,7 +357,7 @@
       "media": ["วงล้อสภาพอากาศ", "บัตรภาพความรู้สึก", "ตาราง weather chart"]
     },
     "Mini Conversations": {
-      "semester": "Semester 2",
+      "semester": "ภาคเรียนที่ 2",
       "unitNumber": 12,
       "totalHours": 4,
       "topics": ["Review Greetings", "Ask and Answer", "Short Role Play"],
@@ -388,27 +388,27 @@
     }
   },
   "activityTemplates": {
-    "Chant and Repeat": {
+    "ร้อง chant และพูดตาม": {
       "warmUp": "เริ่มด้วย chant ช้า ๆ ให้นักเรียนฟังก่อน 1 รอบ จากนั้นพูดตามพร้อมปรบมือและทำท่าทางประกอบ",
       "classroomActivity": "ให้นักเรียนพูดคำศัพท์และรูปประโยคซ้ำเป็นกลุ่มเล็ก แล้วค่อยลองพูดประโยคสั้น ๆ ด้วยตนเอง",
       "assessment": "ครูตรวจว่านักเรียนพูดคำสำคัญได้ชัดขึ้น และสามารถพูดประโยคสั้น ๆ ได้โดยมีครูหรือบัตรภาพช่วย"
     },
-    "Pair Practice": {
+    "ฝึกสนทนาเป็นคู่": {
       "warmUp": "ครูสาธิตคำถามและคำตอบง่าย ๆ กับนักเรียนหนึ่งคน จากนั้นให้ทั้งชั้นพูดตามพร้อมกัน",
       "classroomActivity": "ให้นักเรียนจับคู่ฝึกรูปประโยค โดยใช้บัตรภาพและคำศัพท์สำหรับเปลี่ยนคำในประโยค",
       "assessment": "ครูเดินฟังแต่ละคู่ โดยดูการผลัดกันพูด การออกเสียง และการใช้รูปประโยคที่กำหนด"
     },
-    "Picture Game": {
+    "เกมบัตรภาพ": {
       "warmUp": "ครูชูบัตรภาพอย่างรวดเร็ว ให้นักเรียนเดาคำศัพท์ภาษาอังกฤษ โดยครูช่วยใบ้และออกเสียงนำ",
       "classroomActivity": "ให้นักเรียนเล่นเกมจับคู่หรือเกมทายคำจากภาพ คำศัพท์ และคำตอบสั้น ๆ",
       "assessment": "ให้นักเรียนระบุคำศัพท์จากภาพได้อย่างน้อย 4 คำ และพูดประโยคสั้น ๆ จากบทเรียนได้ 1 ประโยค"
     },
-    "Role Play": {
+    "บทบาทสมมติ": {
       "warmUp": "ครูแสดงสถานการณ์ง่าย ๆ ในห้องเรียน แล้วให้นักเรียนพูดประโยคสำคัญตามทีละบรรทัด",
       "classroomActivity": "ให้นักเรียนใช้บัตรบทบาทเพื่อฝึกบทสนทนาสั้น ๆ กับเพื่อนอย่างเป็นมิตรและไม่กดดัน",
       "assessment": "ครูใช้ checklist ง่าย ๆ เพื่อตรวจการพูดชัดเจน การใช้วลีสำคัญ และการตอบกลับอย่างสุภาพ"
     },
-    "Worksheet Practice": {
+    "ฝึกด้วยใบงาน": {
       "warmUp": "ทบทวนคำศัพท์เป้าหมายด้วยบัตรภาพก่อนให้นักเรียนเริ่มทำใบงาน",
       "classroomActivity": "ให้นักเรียนทำใบงานแบบมีตัวอย่างนำทาง ตรวจคำตอบกับเพื่อน แล้วเลือกคำตอบหนึ่งข้อพูด aloud",
       "assessment": "ครูตรวจการจับคู่คำศัพท์ การเติมประโยค และความมั่นใจของนักเรียนขณะเฉลยปากเปล่า"
